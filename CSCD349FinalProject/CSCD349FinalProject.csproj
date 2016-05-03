@@ -57,6 +57,15 @@
     </ApplicationDefinition>
     <Compile Include="Accessories\IAccessory.cs" />
     <Compile Include="Accessories\IAccessoryEffect.cs" />
+    <Compile Include="Characters\ICharacter.cs" />
+    <Compile Include="Characters\IGoodGuy.cs" />
+    <Compile Include="Characters\Medic.cs" />
+    <Compile Include="Characters\Mutants.cs" />
+    <Compile Include="Characters\Raiders.cs" />
+    <Compile Include="Characters\Sharpshooter.cs" />
+    <Compile Include="Characters\Tank.cs" />
+    <Compile Include="Characters\Zombies.cs" />
+    <Compile Include="Inventory\InvItem.cs" />
     <Compile Include="Spaces\TravelSpace.cs" />
     <Compile Include="States\IState.cs" />
     <Compile Include="States\TravelState.cs" />
