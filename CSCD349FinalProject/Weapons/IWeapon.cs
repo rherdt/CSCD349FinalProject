@@ -11,7 +11,7 @@ namespace CSCD349FinalProject.Weapons
         int getWeight();
         string getName();
         int getDamage();
-        void setDamage(int);
+        void setDamage(int i);
         IWeaponEffect getWeaponEffect();
 
         //possibly getter for block/defense?
