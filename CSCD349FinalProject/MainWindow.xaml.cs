@@ -32,13 +32,17 @@ namespace CSCD349FinalProject
             int maxHeight = 10, maxWidth = 10, maxFloors = 10;
 
             int x, y, z;
-            if (!(int.TryParse(HeightEntryTextBox.Text, out x) && (x > 0 && x <= maxHeight)) || !(int.TryParse(WidthEntryTextBox.Text, out y) && (y > 0 && y <= MaxWidth)) || !(int.TryParse(FloorEntryTextBox.Text, out z) && (z > 0 && z <= maxFloors)))
+            if (!(int.TryParse(HeightEntryTextBox.Text, out x) && (x > 0 && x <= maxHeight)) || !(int.TryParse(WidthEntryTextBox.Text, out y) && (y > 0 && y <= maxWidth)) || !(int.TryParse(FloorEntryTextBox.Text, out z) && (z > 0 && z <= maxFloors)))
             {
                 MessageBox.Show("One or more inputs is invalid.", "Invalid Input");
                 return;
             }
             else
             {
+                
+                GameBoard = RawGrid;
+                GameBoard.Visibility = Visibility.Visible;
+                GameBoard.IsEnabled = true;
                 int columns = int.Parse(WidthEntryTextBox.Text);
                 int rows = int.Parse(HeightEntryTextBox.Text);
 
