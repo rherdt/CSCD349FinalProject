@@ -66,7 +66,12 @@
     <Compile Include="Characters\Tank.cs" />
     <Compile Include="Characters\Zombies.cs" />
     <Compile Include="Inventory\InvItem.cs" />
+    <Compile Include="Spaces\EdgeSquare.cs" />
+    <Compile Include="Spaces\EnemySquare.cs" />
+    <Compile Include="Spaces\Map.cs" />
+    <Compile Include="Spaces\TrapSquare.cs" />
     <Compile Include="Spaces\TravelSpace.cs" />
+    <Compile Include="Spaces\TreasureSquare.cs" />
     <Compile Include="States\IState.cs" />
     <Compile Include="States\TravelState.cs" />
     <Compile Include="Weapons\IWeapon.cs" />
