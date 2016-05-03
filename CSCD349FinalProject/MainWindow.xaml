@@ -29,6 +29,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
+        <Grid x:Name="RawGrid" HorizontalAlignment="Left" Height="453" Margin="10,21,0,0" VerticalAlignment="Top" Width="507" Background="#FF1E1F1E" IsEnabled="False" Visibility="Hidden"/>
 
     </Grid>
 </Window>

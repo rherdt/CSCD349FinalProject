@@ -55,9 +55,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Accessories\IAccessory.cs" />
+    <Compile Include="Accessories\IAccessoryEffect.cs" />
     <Compile Include="Spaces\TravelSpace.cs" />
     <Compile Include="States\IState.cs" />
     <Compile Include="States\TravelState.cs" />
+    <Compile Include="Weapons\IWeapon.cs" />
+    <Compile Include="Weapons\IWeaponEffect.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
