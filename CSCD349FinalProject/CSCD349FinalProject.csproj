@@ -55,7 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-	<Compile Include="Accessories\IAccessory.cs" />
+    <Compile Include="Accessories\IAccessory.cs" />
     <Compile Include="Accessories\IAccessoryEffect.cs" />
     <Compile Include="Spaces\TravelSpace.cs" />
     <Compile Include="States\IState.cs" />
