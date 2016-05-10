@@ -59,8 +59,10 @@
     <Compile Include="Accessories\IAccessoryEffect.cs" />
     <Compile Include="Characters\ICharacter.cs" />
     <Compile Include="Characters\IGoodGuy.cs" />
+    <Compile Include="Characters\IParty.cs" />
     <Compile Include="Characters\Medic.cs" />
     <Compile Include="Characters\Mutants.cs" />
+    <Compile Include="Characters\Party.cs" />
     <Compile Include="Characters\Raiders.cs" />
     <Compile Include="Characters\Sharpshooter.cs" />
     <Compile Include="Characters\Tank.cs" />
