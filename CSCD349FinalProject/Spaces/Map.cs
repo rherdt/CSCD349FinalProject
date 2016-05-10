@@ -8,10 +8,11 @@ namespace CSCD349FinalProject.Spaces
 {
     class Map
     {
-        ISpace[,] grid;
-        int trapCount;
-        int enemyCount;
-        int treasureCount;
+        private ISpace[,] grid;
+        private int trapCount;
+        private int enemyCount;
+        private int treasureCount;
+        private int level;
          
         Map()//default map build
         {
@@ -19,6 +20,8 @@ namespace CSCD349FinalProject.Spaces
             trapCount = 3;
             enemyCount = 4;
             treasureCount = 2;
+            level = 1;
+            GenerateMap();
         }
         Map(int rows,int col,int traps,int enemy,int treasure)
         {
@@ -26,6 +29,8 @@ namespace CSCD349FinalProject.Spaces
             trapCount = traps;
             enemyCount = enemy;
             treasureCount = treasure;
+            level = 1;
+            GenerateMap();
         }
         Map(int rows, int col)
         {
@@ -34,6 +39,46 @@ namespace CSCD349FinalProject.Spaces
             trapCount = (int)Math.Floor(rand.NextDouble() * rows);
             enemyCount = (int)Math.Floor(rand.NextDouble() * col);
             treasureCount = (int)Math.Floor(rand.NextDouble() * col);
+            level = 1;
+            GenerateMap();
+        }
+        private void GenerateMap()
+        {
+            for(int x = 0; x < grid.GetLength(0); x++)
+            {
+                for(int y = 0; y < grid.GetLength(1); y++)
+                {
+                    if(y == 0 || y == (grid.GetLength(1) - 1) || x == 0 || x == (grid.GetLength(0) - 1))
+                    {
+                        grid[x, y] = new EdgeSquare();
+                    }
+                    else
+                    {
+                        IspaceGen(x, y);
+                    }
+                }
+            }
+        }
+        private void IspaceGen(int x, int y)
+        {
+            Random rand = new Random();
+            int temp = rand.Next(0, 100);
+            if (temp < 33)
+            {
+                grid[x, y] = new TreasureSquare();
+            }
+            else if(temp < 70)
+            {
+                grid[x, y] = new EnemySquare();
+            }
+            else if(temp < 85)
+            {
+                grid[x, y] = new TrapSquare();
+            }
+            else
+            {
+                grid[x, y] = new BlankSquare();
+            }
         }
     }
 }
