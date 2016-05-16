@@ -23,6 +23,9 @@ namespace CSCD349FinalProject.Spaces
         {
              return this.space;
         }
+        public void runAction()
+        {
 
+        }
     }
 }

@@ -10,6 +10,6 @@ namespace CSCD349FinalProject.Spaces
     interface ISpace
     {
         Rectangle getSpace();
-
+        void runAction(/*Pass in party object*/);
     }
 }
