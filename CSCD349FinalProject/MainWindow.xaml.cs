@@ -38,52 +38,63 @@ namespace CSCD349FinalProject
                 return;
             }
             else
-            {
-                
-                GameBoard = RawGrid;
-                GameBoard.Visibility = Visibility.Visible;
-                GameBoard.IsEnabled = true;
+            {              
                 int columns = int.Parse(WidthEntryTextBox.Text);
                 int rows = int.Parse(HeightEntryTextBox.Text);
 
-                ISpace currentSpace;
-                Button btn;
-                int i = 0;
+                CreateGameBoard(rows, columns);
 
-                for (int a = 0; a < columns; a++)
-                {
-                    GameBoard.ColumnDefinitions.Add(new ColumnDefinition());
-                }
-
-                for (int b = 0; b < rows; b++)
-                {
-                    GameBoard.RowDefinitions.Add(new RowDefinition());
-                }
-
-                for (int row = 0; row < GameBoard.RowDefinitions.Count; row++)
-                {
-                    for (int column = 0; column < GameBoard.ColumnDefinitions.Count; column++)
-                    {
-                        i++;
-                        currentSpace = new TravelSpace();
-                        currentSpace.getSpace().Width = GameBoard.Width / columns;
-                        currentSpace.getSpace().Height = GameBoard.Width / columns;
-                        currentSpace.getSpace().Fill = new SolidColorBrush(Colors.Aqua);
-                        //Need to make border, or switch back to buttons 
-                        currentSpace.getSpace().VerticalAlignment = VerticalAlignment.Center;
-                        currentSpace.getSpace().SetValue(Grid.ColumnProperty, column);
-                        currentSpace.getSpace().SetValue(Grid.RowProperty, row);
-                        //Need to add text element to each rectangle
-                        //btn = new Button();
-                        // btn.Width = GameBoard.Width / columns;
-                        //btn.Height = GameBoard.Width / columns;
-                        //btn.Content = i.ToString();
-                        
-                        GameBoard.Children.Add(currentSpace.getSpace());
-                    }
-                }
+                
 
             }//end elserfd
+        }
+
+        private void CreateGameBoard(int rows, int columns)
+        {
+            ISpace currentSpace;
+            int i = 0;
+            ImageBrush texture = new ImageBrush();
+            texture.ImageSource = new BitmapImage(new Uri(@"../../Images/metal_plates.png", UriKind.Relative));
+
+            for (int a = 0; a < columns; a++)
+            {
+                GameBoard.ColumnDefinitions.Add(new ColumnDefinition());
+            }
+
+            for (int b = 0; b < rows; b++)
+            {
+                GameBoard.RowDefinitions.Add(new RowDefinition());
+            }
+
+            for (int row = 0; row < GameBoard.RowDefinitions.Count; row++)
+            {
+                for (int column = 0; column < GameBoard.ColumnDefinitions.Count; column++)
+                {
+                    i++;
+                    currentSpace = new TravelSpace();
+                    currentSpace.getSpace().Width = GameBoard.Width / columns;
+                    currentSpace.getSpace().Height = GameBoard.Width / columns;
+                    currentSpace.getSpace().Fill = texture;
+                    //Need to make border, or switch back to buttons 
+                    currentSpace.getSpace().VerticalAlignment = VerticalAlignment.Center;
+                    currentSpace.getSpace().SetValue(Grid.ColumnProperty, column);
+                    currentSpace.getSpace().SetValue(Grid.RowProperty, row);
+                    //Need to add text element to each rectangle
+                    //btn = new Button();
+                    // btn.Width = GameBoard.Width / columns;
+                    //btn.Height = GameBoard.Width / columns;
+                    //btn.Content = i.ToString();
+
+                    GameBoard.Children.Add(currentSpace.getSpace());
+                }
+            }
+        }
+
+        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            GameBoard.RowDefinitions.Clear();
+            GameBoard.ColumnDefinitions.Clear();
+            GameBoard.Children.Clear();
         }
     }
 }
