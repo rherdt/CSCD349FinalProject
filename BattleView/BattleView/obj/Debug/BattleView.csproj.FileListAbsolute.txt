@@ -1,0 +1,28 @@
+c:\users\jnestoss\documents\visual studio 2015\Projects\BattleView\BattleView\bin\Debug\BattleView.exe.config
+c:\users\jnestoss\documents\visual studio 2015\Projects\BattleView\BattleView\bin\Debug\BattleView.exe
+c:\users\jnestoss\documents\visual studio 2015\Projects\BattleView\BattleView\bin\Debug\BattleView.pdb
+c:\users\jnestoss\documents\visual studio 2015\Projects\BattleView\BattleView\obj\Debug\BattleView.csprojResolveAssemblyReference.cache
+c:\users\jnestoss\documents\visual studio 2015\Projects\BattleView\BattleView\obj\Debug\MainWindow.g.cs
+c:\users\jnestoss\documents\visual studio 2015\Projects\BattleView\BattleView\obj\Debug\App.g.cs
+c:\users\jnestoss\documents\visual studio 2015\Projects\BattleView\BattleView\obj\Debug\BattleView_MarkupCompile.cache
+c:\users\jnestoss\documents\visual studio 2015\Projects\BattleView\BattleView\obj\Debug\BattleView_MarkupCompile.lref
+c:\users\jnestoss\documents\visual studio 2015\Projects\BattleView\BattleView\obj\Debug\MainWindow.baml
+c:\users\jnestoss\documents\visual studio 2015\Projects\BattleView\BattleView\obj\Debug\BattleView.g.resources
+c:\users\jnestoss\documents\visual studio 2015\Projects\BattleView\BattleView\obj\Debug\BattleView.Properties.Resources.resources
+c:\users\jnestoss\documents\visual studio 2015\Projects\BattleView\BattleView\obj\Debug\BattleView.csproj.GenerateResource.Cache
+c:\users\jnestoss\documents\visual studio 2015\Projects\BattleView\BattleView\obj\Debug\BattleView.exe
+c:\users\jnestoss\documents\visual studio 2015\Projects\BattleView\BattleView\obj\Debug\BattleView.pdb
+C:\Users\Echo\Desktop\BattleView\BattleView\bin\Debug\BattleView.exe.config
+C:\Users\Echo\Desktop\BattleView\BattleView\obj\Debug\BattleView.exe
+C:\Users\Echo\Desktop\BattleView\BattleView\obj\Debug\BattleView.pdb
+C:\Users\Echo\Desktop\BattleView\BattleView\obj\Debug\BattleView.csprojResolveAssemblyReference.cache
+C:\Users\Echo\Desktop\BattleView\BattleView\obj\Debug\MainWindow.g.cs
+C:\Users\Echo\Desktop\BattleView\BattleView\obj\Debug\App.g.cs
+C:\Users\Echo\Desktop\BattleView\BattleView\obj\Debug\BattleView_MarkupCompile.cache
+C:\Users\Echo\Desktop\BattleView\BattleView\obj\Debug\BattleView_MarkupCompile.lref
+C:\Users\Echo\Desktop\BattleView\BattleView\bin\Debug\BattleView.exe
+C:\Users\Echo\Desktop\BattleView\BattleView\bin\Debug\BattleView.pdb
+C:\Users\Echo\Desktop\BattleView\BattleView\obj\Debug\MainWindow.baml
+C:\Users\Echo\Desktop\BattleView\BattleView\obj\Debug\BattleView.g.resources
+C:\Users\Echo\Desktop\BattleView\BattleView\obj\Debug\BattleView.Properties.Resources.resources
+C:\Users\Echo\Desktop\BattleView\BattleView\obj\Debug\BattleView.csproj.GenerateResource.Cache
