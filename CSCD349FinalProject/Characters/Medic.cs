@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CSCD349FinalProject.Inventory;
+using CSCD349FinalProject.Weapons;
 
 namespace CSCD349FinalProject.Characters
 {
@@ -12,6 +13,7 @@ namespace CSCD349FinalProject.Characters
         private string name;
         private int attack;
         private int defense;
+        private IWeapon weapon;
         private int invSlots;
         private InvItem[] inv;
 
@@ -20,6 +22,7 @@ namespace CSCD349FinalProject.Characters
             this.name = "Medic";
             this.attack = 5;
             this.defense = 5;
+            this.weapon = new TempWeapon();
             this.invSlots = 10;
             this.inv = new InvItem[invSlots];
         }
@@ -90,6 +93,11 @@ namespace CSCD349FinalProject.Characters
             }
 
             return emptySlot;
+        }
+
+        public void ChangeWeapon(IWeapon weapon)
+        {
+            this.weapon = weapon;
         }
     }
 }
