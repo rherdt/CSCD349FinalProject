@@ -7,32 +7,19 @@ using System.Windows.Shapes;
 
 namespace CSCD349FinalProject.Spaces
 {
-    class EnemySquare:ISpace
+    class EnemySquare: ASpace
     {
         /*Enemy Party object*/
-        private Rectangle sprite;
-        private bool traversed;
-        public EnemySquare()
+        public EnemySquare(): base()
         {
-            traversed = false;
         }
-        public Rectangle getSpace()
-        {
-            return sprite;
-        }
-        public void runAction(/*party object*/)
+
+        public override void runAction()
         {
             //could use this to deal with change state?
             //could use this to deal with change state?
             //redirect back onto playing board
             //traversed = true;
-        }
-        public bool Traversed
-        {
-            get
-            {
-                return traversed;
-            }
         }
     }
 }

@@ -7,30 +7,21 @@ using System.Windows.Shapes;
 
 namespace CSCD349FinalProject.Spaces
 {
-    class TrapSquare: ISpace
+    class TrapSquare: ASpace
     {
-        private Rectangle sprite;
-        private bool traversed;
-        public TrapSquare()
+
+        public TrapSquare(): base()
         {
-            traversed = false;
+
         }
-       public Rectangle getSpace()
+
+        public override void runAction()
         {
-            return sprite;
-        }
-        public void runAction(/*party object*/)
-        {
+            //could use this to deal with change state?
             //could use this to deal with change state?
             //redirect back onto playing board
             //traversed = true;
         }
-        public bool Traversed
-        {
-            get
-            {
-                return traversed;
-            }
-        }
+
     }
 }

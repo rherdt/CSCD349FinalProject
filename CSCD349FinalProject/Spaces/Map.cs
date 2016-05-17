@@ -32,7 +32,7 @@ namespace CSCD349FinalProject.Spaces
             level = 1;
             GenerateMap();
         }
-        Map(int rows, int col)
+        public Map(int rows, int col)
         {
             grid = new ISpace[rows, col];
             Random rand = new Random();
@@ -79,6 +79,30 @@ namespace CSCD349FinalProject.Spaces
             {
                 grid[x, y] = new BlankSquare();
             }
+            
+        }
+
+        public int GetColumns()
+        {
+            return this.grid.GetLength(1);
+        }
+
+        public int GetRows()
+        {
+            return this.grid.GetLength(0);
+        }
+
+        public ISpace GetBoardSpace(int row, int column)
+        {
+            if (row > GetRows() - 1 || column > GetColumns() - 1)
+                throw new IndexOutOfRangeException("Row or column is out of range");
+
+            return this.grid[row, column];
+        }
+
+        public ISpace[,] getGrid()
+        {
+            return this.grid;
         }
     }
 }

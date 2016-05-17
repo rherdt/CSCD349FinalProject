@@ -38,6 +38,11 @@
             <MenuItem x:Name="AboutMenuItem" Header="About"/>
             <MenuItem x:Name="HelpMenuItem" Header="Help"/>
         </Menu>
+        <Button x:Name="UpButton" Content="Up" Grid.Column="1" HorizontalAlignment="Left" Margin="163,306,0,0" VerticalAlignment="Top" Width="44" Click="UpButton_Click"/>
+        <Button x:Name="LeftButton" Content="Left" Grid.Column="1" HorizontalAlignment="Left" Margin="119,331,0,0" VerticalAlignment="Top" Width="44" Click="LeftButton_Click"/>
+        <Button x:Name="RightButton" Content="Right" Grid.Column="1" HorizontalAlignment="Left" Margin="209,331,0,0" VerticalAlignment="Top" Width="44" Click="RightButton_Click"/>
+        <Button x:Name="DownButton" Content="Down" Grid.Column="1" HorizontalAlignment="Left" Margin="163,356,0,0" VerticalAlignment="Top" Width="44" Click="DownButton_Click"/>
+        <TextBox x:Name="CurrentPositionTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="143,434,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
 </Window>

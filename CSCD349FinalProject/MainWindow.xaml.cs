@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CSCD349FinalProject.States;
 using CSCD349FinalProject.Spaces;
+using CSCD349FinalProject.GamePlay;
 
 namespace CSCD349FinalProject
 {
@@ -38,30 +39,32 @@ namespace CSCD349FinalProject
                 return;
             }
             else
-            {              
+            {
+                
                 int columns = int.Parse(WidthEntryTextBox.Text);
                 int rows = int.Parse(HeightEntryTextBox.Text);
-
-                CreateGameBoard(rows, columns);
+                MapArray.SetMapArray(new Map(rows, columns));
+                CreateGameBoard();
+                
 
                 
 
             }//end elserfd
         }
 
-        private void CreateGameBoard(int rows, int columns)
+        private void CreateGameBoard()
         {
             ISpace currentSpace;
             int i = 0;
             ImageBrush texture = new ImageBrush();
             texture.ImageSource = new BitmapImage(new Uri(@"../../Images/metal_plates.png", UriKind.Relative));
 
-            for (int a = 0; a < columns; a++)
+            for (int a = 0; a < MapArray.GetMapArray().GetColumns(); a++)
             {
                 GameBoard.ColumnDefinitions.Add(new ColumnDefinition());
             }
 
-            for (int b = 0; b < rows; b++)
+            for (int b = 0; b < MapArray.GetMapArray().GetRows(); b++)
             {
                 GameBoard.RowDefinitions.Add(new RowDefinition());
             }
@@ -71,23 +74,19 @@ namespace CSCD349FinalProject
                 for (int column = 0; column < GameBoard.ColumnDefinitions.Count; column++)
                 {
                     i++;
-                    currentSpace = new TravelSpace();
-                    currentSpace.getSpace().Width = GameBoard.Width / columns;
-                    currentSpace.getSpace().Height = GameBoard.Width / columns;
-                    currentSpace.getSpace().Fill = texture;
-                    //Need to make border, or switch back to buttons 
+                    currentSpace = MapArray.GetMapArray().GetBoardSpace(row, column);
+                    currentSpace.getSpace().Width = GameBoard.Width / MapArray.GetMapArray().GetColumns();
+                    currentSpace.getSpace().Height = GameBoard.Width / MapArray.GetMapArray().GetColumns();
+                    currentSpace.getSpace().Background = texture;
                     currentSpace.getSpace().VerticalAlignment = VerticalAlignment.Center;
                     currentSpace.getSpace().SetValue(Grid.ColumnProperty, column);
                     currentSpace.getSpace().SetValue(Grid.RowProperty, row);
-                    //Need to add text element to each rectangle
-                    //btn = new Button();
-                    // btn.Width = GameBoard.Width / columns;
-                    //btn.Height = GameBoard.Width / columns;
-                    //btn.Content = i.ToString();
 
                     GameBoard.Children.Add(currentSpace.getSpace());
                 }
             }
+
+            InitializePlayer();
         }
 
         private void ResetButton_Click(object sender, RoutedEventArgs e)
@@ -95,6 +94,40 @@ namespace CSCD349FinalProject
             GameBoard.RowDefinitions.Clear();
             GameBoard.ColumnDefinitions.Clear();
             GameBoard.Children.Clear();
+        }
+
+
+        private void InitializePlayer()
+        {
+            MapArray.DrawSprite(MapArray.GetMapArray().GetRows() - 1, 0);
+            MapArray.SetCurrentPosition(MapArray.GetMapArray().GetRows() - 1, 0);
+            CurrentPositionTextBox.Text = MapArray.GetCurrentPosition().ToString();
+        }
+
+        private void UpButton_Click(object sender, RoutedEventArgs e)
+        {
+            PlayerMovement.KeyUp();
+            CurrentPositionTextBox.Text = MapArray.GetCurrentPosition().ToString();
+        }
+
+        private void LeftButton_Click(object sender, RoutedEventArgs e)
+        {
+            PlayerMovement.KeyLeft();
+            CurrentPositionTextBox.Text = MapArray.GetCurrentPosition().ToString();
+        }
+
+        private void RightButton_Click(object sender, RoutedEventArgs e)
+        {
+            PlayerMovement.KeyRight();
+            CurrentPositionTextBox.Text = MapArray.GetCurrentPosition().ToString();
+        }
+
+
+
+        private void DownButton_Click(object sender, RoutedEventArgs e)
+        {
+            PlayerMovement.KeyDown();
+            CurrentPositionTextBox.Text = MapArray.GetCurrentPosition().ToString();
         }
     }
 }
