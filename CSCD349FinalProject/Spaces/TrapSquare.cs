@@ -23,5 +23,9 @@ namespace CSCD349FinalProject.Spaces
             //traversed = true;
         }
 
+        public override string ToString()
+        {
+            return "Trap Square";
+        }
     }
 }

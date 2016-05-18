@@ -14,11 +14,7 @@ namespace CSCD349FinalProject.GamePlay
         public static void KeyUp(Map gameBoardMap)
         {
             Point currentPosition = gameBoardMap.GetCurrentPosition();
-
-            Console.WriteLine("Number of Rows: " + gameBoardMap.GetRows());
-
             Point newPosition = new Point(currentPosition.X - 1, currentPosition.Y);
-            Console.WriteLine("New Position: " + newPosition.ToString());
 
             if (newPosition.X >= 0)
             {
@@ -29,11 +25,7 @@ namespace CSCD349FinalProject.GamePlay
         public static void KeyDown(Map gameBoardMap)
         {
             Point currentPosition = gameBoardMap.GetCurrentPosition();
-
-            Console.WriteLine("Number of Rows: " + gameBoardMap.GetRows());
-
             Point newPosition = new Point(currentPosition.X + 1, currentPosition.Y);
-            Console.WriteLine("New Position: " + newPosition.ToString());
 
             if(newPosition.X < gameBoardMap.GetRows())
             {
@@ -45,10 +37,7 @@ namespace CSCD349FinalProject.GamePlay
         {
             Point currentPosition = gameBoardMap.GetCurrentPosition();
 
-            Console.WriteLine("Number of Rows: " + gameBoardMap.GetRows());
-
             Point newPosition = new Point(currentPosition.X, currentPosition.Y - 1);
-            Console.WriteLine("New Position: " + newPosition.ToString());
 
             if (newPosition.Y >= 0)
             {
@@ -60,10 +49,7 @@ namespace CSCD349FinalProject.GamePlay
         {
             Point currentPosition = gameBoardMap.GetCurrentPosition();
 
-            Console.WriteLine("Number of Rows: " + gameBoardMap.GetRows());
-
             Point newPosition = new Point(currentPosition.X, currentPosition.Y + 1);
-            Console.WriteLine("New Position: " + newPosition.ToString());
 
             if (currentPosition.X < gameBoardMap.GetColumns())
             {

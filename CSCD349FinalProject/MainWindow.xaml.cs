@@ -42,17 +42,13 @@ namespace CSCD349FinalProject
                 return;
             }
             else
-            {
-                
+            {               
                 int columns = int.Parse(WidthEntryTextBox.Text);
                 int rows = int.Parse(HeightEntryTextBox.Text);
                 gameBoardMap = new Map(rows, columns);
                 CreateGameBoard();
-                
-
-                
-
-            }//end elserfd
+             
+            }//end else
         }
 
         private void CreateGameBoard()
@@ -96,8 +92,7 @@ namespace CSCD349FinalProject
         {
             GameBoard.RowDefinitions.Clear();
             GameBoard.ColumnDefinitions.Clear();
-            GameBoard.Children.Clear();
-            
+            GameBoard.Children.Clear();           
         }
 
 
@@ -108,30 +103,38 @@ namespace CSCD349FinalProject
             CurrentPositionTextBox.Text = gameBoardMap.GetCurrentPosition().ToString();
         }
 
-        private void UpButton_Click(object sender, RoutedEventArgs e)
+        private void checkSpace()
         {
-            PlayerMovement.KeyUp(gameBoardMap);
-            CurrentPositionTextBox.Text = gameBoardMap.GetCurrentPosition().ToString();
+            CurrentSpaceTextBox.Text = gameBoardMap.GetBoardSpace((int)gameBoardMap.GetCurrentPosition().X, (int)gameBoardMap.GetCurrentPosition().Y).ToString();
         }
 
-        private void LeftButton_Click(object sender, RoutedEventArgs e)
+        private void MainWindow1_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            PlayerMovement.KeyLeft(gameBoardMap);
-            CurrentPositionTextBox.Text = gameBoardMap.GetCurrentPosition().ToString();
-        }
+            if (e.Key == Key.Up)
+            {
+                PlayerMovement.KeyUp(gameBoardMap);
+                CurrentPositionTextBox.Text = gameBoardMap.GetCurrentPosition().ToString();
+                checkSpace();
+            }
+            else if (e.Key == Key.Down)
+            {
+                PlayerMovement.KeyDown(gameBoardMap);
+                CurrentPositionTextBox.Text = gameBoardMap.GetCurrentPosition().ToString();
+                checkSpace();
+            }
+            else if(e.Key == Key.Right)
+            {
+                PlayerMovement.KeyRight(gameBoardMap);
+                CurrentPositionTextBox.Text = gameBoardMap.GetCurrentPosition().ToString();
+                checkSpace();
+            }
+            else if (e.Key == Key.Left)
+            {
+                PlayerMovement.KeyLeft(gameBoardMap);
+                CurrentPositionTextBox.Text = gameBoardMap.GetCurrentPosition().ToString();
+                checkSpace();
+            }
 
-        private void RightButton_Click(object sender, RoutedEventArgs e)
-        {
-            PlayerMovement.KeyRight(gameBoardMap);
-            CurrentPositionTextBox.Text = gameBoardMap.GetCurrentPosition().ToString();
-        }
-
-
-
-        private void DownButton_Click(object sender, RoutedEventArgs e)
-        {
-            PlayerMovement.KeyDown(gameBoardMap);
-            CurrentPositionTextBox.Text = gameBoardMap.GetCurrentPosition().ToString();
         }
     }
 }

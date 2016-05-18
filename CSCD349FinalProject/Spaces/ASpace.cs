@@ -30,6 +30,8 @@ namespace CSCD349FinalProject.Spaces
         }
         public abstract void runAction();
 
+        public abstract string ToString();
+
 
     }
 }

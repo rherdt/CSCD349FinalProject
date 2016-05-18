@@ -19,5 +19,10 @@ namespace CSCD349FinalProject.Spaces
             //redirect back onto playing board
             //traversed = true;
         }
+
+        public override string ToString()
+        {
+            return "Treasure Square";
+        }
     }
 }
