@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media;
+using System.Windows.Shapes;
 
 namespace CSCD349FinalProject.Spaces
 {
@@ -13,6 +16,7 @@ namespace CSCD349FinalProject.Spaces
         private int enemyCount;
         private int treasureCount;
         private int level;
+        private Point currentPosition;
          
         Map()//default map build
         {
@@ -103,6 +107,30 @@ namespace CSCD349FinalProject.Spaces
         public ISpace[,] getGrid()
         {
             return this.grid;
+        }
+
+        public void DrawSprite(int row, int col)
+        {
+            Rectangle rec = new Rectangle();
+            //will need to change dynamically based on rectangle size
+            rec.Height = 60;
+            rec.Width = 60;
+            rec.Fill = new SolidColorBrush(Colors.AliceBlue);
+            this.GetBoardSpace(row, col).getSpace().Child = rec;
+        }
+
+        public Point GetCurrentPosition()
+        {
+            return this.currentPosition;
+        }
+
+        public void SetCurrentPosition(int row, int column)
+        {
+            if (row <= this.GetRows() && column < this.GetColumns())
+            {
+                currentPosition.X = row;
+                currentPosition.Y = column;
+            }
         }
     }
 }

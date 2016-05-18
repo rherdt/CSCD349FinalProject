@@ -67,7 +67,6 @@
     <Compile Include="Characters\Sharpshooter.cs" />
     <Compile Include="Characters\Tank.cs" />
     <Compile Include="Characters\Zombies.cs" />
-    <Compile Include="GamePlay\MapArray.cs" />
     <Compile Include="GamePlay\PlayerMovement.cs" />
     <Compile Include="Inventory\InvItem.cs" />
     <Compile Include="Spaces\ASpace.cs" />
