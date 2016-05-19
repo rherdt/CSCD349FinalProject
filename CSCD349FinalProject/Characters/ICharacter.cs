@@ -12,6 +12,5 @@ namespace CSCD349FinalProject.Characters
         int GetAttack();
         int GetDefense();
         string GetName();
-        void ChangeWeapon(IWeapon weapon);
     }
 }
