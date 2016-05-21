@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSCD349FinalProject.Weapons;
+using System;
 
 namespace CSCD349FinalProject.Characters
 {
@@ -21,6 +22,12 @@ namespace CSCD349FinalProject.Characters
             partyDefense = level * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense());
         }
 
+        private void RecalcStats()
+        {
+            partyAttack = level * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack());
+            partyDefense = level * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense());
+        }
+
         public int GetPartyAttack()
         {
             return partyAttack;
@@ -39,6 +46,12 @@ namespace CSCD349FinalProject.Characters
         public void LevelUp()
         {
             level += 1;
+        }
+
+        public void PickupWeapon(int character, IWeapon weapon)
+        {
+            party[character].ChangeWeapon(weapon);
+            RecalcStats();
         }
     }
 }
