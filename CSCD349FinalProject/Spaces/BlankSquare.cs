@@ -7,33 +7,24 @@ using System.Windows.Shapes;
 
 namespace CSCD349FinalProject.Spaces
 {
-    class BlankSquare:ISpace
+    class BlankSquare : ASpace
     {
-        private Rectangle sprite;
-        private bool traversed;
-
-        public BlankSquare()
+        public BlankSquare() : base()
         {
-            traversed = false;
         }
 
-        public bool Traversed
-        {
-            get
-            {
-                return traversed;
-            }
-        }
-
-        public Rectangle getSpace()
-        {
-            return sprite;
-        }
-        public void runAction(/*party object*/)
+        public override void runAction()
         {
             //could use this to deal with change state?
             //redirect back onto playing board
             //traversed = true;
         }
+
+        public override string ToString()
+        {
+            return "Blank Square";
+        }
     }
+
+        
 }

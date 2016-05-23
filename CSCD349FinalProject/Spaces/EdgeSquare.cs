@@ -7,33 +7,23 @@ using System.Windows.Shapes;
 
 namespace CSCD349FinalProject.Spaces
 {
-    class EdgeSquare:ISpace
+    class EdgeSquare: ASpace
     {
-        private Rectangle sprite;
-        private bool traversed;
 
-        public EdgeSquare()
+        public EdgeSquare(): base()
         {
-            traversed = false;
         }
 
-        public bool Traversed
-        {
-            get
-            {
-                return traversed;
-            }
-        }
-
-        public Rectangle getSpace()
-        {
-            return sprite;
-        }
-        public void runAction(/*party object*/)
+        public override void runAction()
         {
             //could use this to deal with change state?
             //redirect back onto playing board
             //traversed = true;
+        }
+
+        public override string ToString()
+        {
+            return "Edge Square";
         }
     }
 }

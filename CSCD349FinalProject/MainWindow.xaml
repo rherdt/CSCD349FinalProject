@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CSCD349FinalProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="659.5" Width="1004.167" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="659.5" Width="1004.167" WindowStartupLocation="CenterScreen" PreviewKeyDown="MainWindow1_PreviewKeyDown">
     <Grid x:Name="MainGrid" Background="#FF666565">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="331*"/>
             <ColumnDefinition Width="186*"/>
         </Grid.ColumnDefinitions>
-        <Grid x:Name="GameBoard" HorizontalAlignment="Left" Height="453" Margin="10,21,0,0" VerticalAlignment="Top" Width="507" Background="#FF1E1F1E"/>
+        <Grid x:Name="GameBoard" HorizontalAlignment="Left" Height="453" Margin="10,21,0,0" VerticalAlignment="Top" Width="507" Background="#FF1E1F1E" Focusable="True"/>
         <Label x:Name="HeightBoxLabel" Content="Height:" HorizontalAlignment="Left" Margin="108,146,0,0" VerticalAlignment="Top" Height="29" Width="55" Grid.Column="1"/>
         <TextBox x:Name="HeightEntryTextBox" HorizontalAlignment="Left" Height="23" Margin="163,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" MaxLength="2" Grid.Column="1"/>
         <TextBox x:Name="WidthEntryTextBox" HorizontalAlignment="Left" Height="23" Margin="163,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" MaxLength="2" Grid.Column="1"/>
@@ -38,6 +38,10 @@
             <MenuItem x:Name="AboutMenuItem" Header="About"/>
             <MenuItem x:Name="HelpMenuItem" Header="Help"/>
         </Menu>
+        <TextBox x:Name="CurrentPositionTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="143,434,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="CurrentSpaceTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="143,479,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="CurrentLocationLabel" Content="Current Location" Grid.Column="1" HorizontalAlignment="Left" Margin="45,434,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="CurrentSpaceLabel" Content="Currrent Space Type" Grid.Column="1" HorizontalAlignment="Left" Margin="21,479,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
