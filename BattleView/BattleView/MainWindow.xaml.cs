@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Drawing;
+using System.Runtime.InteropServices;
+using System.Media;
+using System.IO;
+using BattleView.Properties;
 
 namespace BattleView
 {
@@ -21,11 +25,35 @@ namespace BattleView
     /// </summary>
     public partial class MainWindow : Window
     {
+        SoundPlayer music;
+
         public MainWindow()
         {
             InitializeComponent();
-            //Image temp = Image.FromFile("tempenemy.png");
+            
+        }
 
+        private void Attack_Click(object sender, RoutedEventArgs e)
+        {
+            PlayFile();
+        }
+        private void Mute_Checked(object sender, RoutedEventArgs e)
+        {
+            if ((bool)Mute.IsChecked)
+            {
+               // player.settings.mute = true;
+               
+            }
+            else
+            {
+             //   player.settings.mute = false;
+            }
+        }
+        private void PlayFile()
+        {
+            music = new SoundPlayer();
+            music.Stream = Properties.Resources.battlemusic;
+            music.Play();
         }
     }
 }

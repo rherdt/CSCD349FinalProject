@@ -74,6 +74,7 @@
     <Compile Include="Spaces\TrapSquare.cs" />
     <Compile Include="Spaces\TravelSpace.cs" />
     <Compile Include="Spaces\TreasureSquare.cs" />
+    <Compile Include="States\BattleState.cs" />
     <Compile Include="States\IState.cs" />
     <Compile Include="States\TravelState.cs" />
     <Compile Include="Weapons\IWeapon.cs" />
