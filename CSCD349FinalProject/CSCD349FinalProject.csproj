@@ -76,7 +76,9 @@
     <Compile Include="Spaces\Map.cs" />
     <Compile Include="Spaces\TrapSquare.cs" />
     <Compile Include="Spaces\TreasureSquare.cs" />
-    <Compile Include="States\BattleState.cs" />
+    <Compile Include="StartMenu.xaml.cs">
+      <DependentUpon>StartMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="States\IState.cs" />
     <Compile Include="States\TravelState.cs" />
     <Compile Include="Weapons\IWeapon.cs" />
@@ -95,6 +97,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="StartMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
