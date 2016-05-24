@@ -1,4 +1,5 @@
 ﻿using CSCD349FinalProject.Inventory;
+using CSCD349FinalProject.Weapons;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace CSCD349FinalProject.Characters
         private string name;
         private int attack;
         private int defense;
+        private IWeapon weapon;
         private int invSlots;
         private InvItem[] inv;
 
@@ -20,6 +22,7 @@ namespace CSCD349FinalProject.Characters
             this.name = "Sharpshooter";
             this.attack = 10;
             this.defense = 3;
+            this.weapon = new TempWeapon();
             this.invSlots = 4;
             this.inv = new InvItem[invSlots];
         }
@@ -90,6 +93,11 @@ namespace CSCD349FinalProject.Characters
             }
 
             return emptySlot;
+        }
+
+        public void ChangeWeapon(IWeapon weapon)
+        {
+            this.weapon = weapon;
         }
     }
 }
