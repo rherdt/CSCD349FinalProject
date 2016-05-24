@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using CSCD349FinalProject.States;
 using CSCD349FinalProject.Spaces;
 using CSCD349FinalProject.GamePlay;
+using CSCD349FinalProject.Characters;
 
 namespace CSCD349FinalProject
 {
@@ -31,25 +32,13 @@ namespace CSCD349FinalProject
             InitializeComponent();
         }
 
-        private void InitializeButton_Click(object sender, RoutedEventArgs e)
-        {
-            int maxHeight = 10, maxWidth = 10, maxFloors = 10;
+        //private void InitializeButton_Click(object sender, RoutedEventArgs e)
+        //{      
+        //    gameBoardMap = new Map(8, 8);
+        //    CreateGameBoard();
 
-            int x, y, z;
-            if (!(int.TryParse(HeightEntryTextBox.Text, out x) && (x > 0 && x <= maxHeight)) || !(int.TryParse(WidthEntryTextBox.Text, out y) && (y > 0 && y <= maxWidth)) || !(int.TryParse(FloorEntryTextBox.Text, out z) && (z > 0 && z <= maxFloors)))
-            {
-                MessageBox.Show("One or more inputs is invalid.", "Invalid Input");
-                return;
-            }
-            else
-            {               
-                int columns = int.Parse(WidthEntryTextBox.Text);
-                int rows = int.Parse(HeightEntryTextBox.Text);
-                gameBoardMap = new Map(rows, columns);
-                CreateGameBoard();
-             
-            }//end else
-        }
+        //    InitializeButton.Opacity = 0;
+        //}
 
         private void CreateGameBoard()
         {
@@ -100,12 +89,11 @@ namespace CSCD349FinalProject
         {
             gameBoardMap.DrawSprite(gameBoardMap.GetRows() - 1, 0);
             gameBoardMap.SetCurrentPosition(gameBoardMap.GetRows() - 1, 0);
-            CurrentPositionTextBox.Text = gameBoardMap.GetCurrentPosition().ToString();
         }
 
         private void checkSpace()
         {
-            CurrentSpaceTextBox.Text = gameBoardMap.GetBoardSpace((int)gameBoardMap.GetCurrentPosition().X, (int)gameBoardMap.GetCurrentPosition().Y).ToString();
+            //CurrentSpaceTextBox.Text = gameBoardMap.GetBoardSpace((int)gameBoardMap.GetCurrentPosition().X, (int)gameBoardMap.GetCurrentPosition().Y).ToString();
         }
 
         private void MainWindow1_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -113,28 +101,33 @@ namespace CSCD349FinalProject
             if (e.Key == Key.Up)
             {
                 PlayerMovement.KeyUp(gameBoardMap);
-                CurrentPositionTextBox.Text = gameBoardMap.GetCurrentPosition().ToString();
                 checkSpace();
             }
             else if (e.Key == Key.Down)
             {
                 PlayerMovement.KeyDown(gameBoardMap);
-                CurrentPositionTextBox.Text = gameBoardMap.GetCurrentPosition().ToString();
                 checkSpace();
             }
             else if(e.Key == Key.Right)
             {
                 PlayerMovement.KeyRight(gameBoardMap);
-                CurrentPositionTextBox.Text = gameBoardMap.GetCurrentPosition().ToString();
                 checkSpace();
             }
             else if (e.Key == Key.Left)
             {
                 PlayerMovement.KeyLeft(gameBoardMap);
-                CurrentPositionTextBox.Text = gameBoardMap.GetCurrentPosition().ToString();
                 checkSpace();
             }
+        }
 
+        private void SharpshooterPartyButtonClick(object sender, EventArgs e)
+        {
+            Party party = new Party(new Sharpshooter(), new Sharpshooter(), new Sharpshooter(), @"..\..\Images\Sharpshooter.png");
+            gameBoardMap = new Map(8, 8, party);
+            CreateGameBoard();
+            sharpshooterPartybutton.Opacity = 0;
+            sharpshooterParyLabel.Opacity = 0;
+            choosePartyLabel.Opacity = 0;
         }
     }
 }

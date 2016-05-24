@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSCD349FinalProject.Characters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,7 @@ namespace CSCD349FinalProject.Spaces
         private int trapCount;
         private int enemyCount;
         private int treasureCount;
+        private Party party;
         private int level;
         private Point currentPosition;
          
@@ -37,13 +39,14 @@ namespace CSCD349FinalProject.Spaces
             level = 1;
             GenerateMap();
         }
-        public Map(int rows, int col)
+        public Map(int rows, int col, Party party)
         {
             grid = new ASpace[rows, col];
             Random rand = new Random();
             trapCount = (int)Math.Floor(rand.NextDouble() * rows);
             enemyCount = (int)Math.Floor(rand.NextDouble() * col);
             treasureCount = (int)Math.Floor(rand.NextDouble() * col);
+            this.party = party;
             level = 1;
             GenerateMap();
         }
@@ -114,14 +117,11 @@ namespace CSCD349FinalProject.Spaces
 
         public void DrawSprite(int row, int col)
         {
-            ImageBrush texture = new ImageBrush();
-            texture.ImageSource = new BitmapImage(new Uri(@"../../Images/player.png", UriKind.Relative));
-
             Rectangle rec = new Rectangle();
             //will need to change dynamically based on rectangle size
             rec.Height = 60;
             rec.Width = 60;
-            rec.Fill = texture;
+            rec.Fill = party.GetImg();
             this.GetBoardSpace(row, col).getSpace().Child = rec;
         }
 

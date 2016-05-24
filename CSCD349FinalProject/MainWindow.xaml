@@ -5,43 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CSCD349FinalProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="659.5" Width="1004.167" WindowStartupLocation="CenterScreen" PreviewKeyDown="MainWindow1_PreviewKeyDown">
+        Title="MainWindow" Height="724" Width="1113.667" WindowStartupLocation="CenterScreen" PreviewKeyDown="MainWindow1_PreviewKeyDown">
     <Grid x:Name="MainGrid" Background="#FF666565">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="331*"/>
             <ColumnDefinition Width="186*"/>
         </Grid.ColumnDefinitions>
         <Grid x:Name="GameBoard" HorizontalAlignment="Left" Height="453" Margin="10,21,0,0" VerticalAlignment="Top" Width="507" Background="#FF1E1F1E" Focusable="True"/>
-        <Label x:Name="HeightBoxLabel" Content="Height:" HorizontalAlignment="Left" Margin="108,146,0,0" VerticalAlignment="Top" Height="29" Width="55" Grid.Column="1"/>
-        <TextBox x:Name="HeightEntryTextBox" HorizontalAlignment="Left" Height="23" Margin="163,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" MaxLength="2" Grid.Column="1"/>
-        <TextBox x:Name="WidthEntryTextBox" HorizontalAlignment="Left" Height="23" Margin="163,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" MaxLength="2" Grid.Column="1"/>
-        <TextBox x:Name="FloorEntryTextBox" HorizontalAlignment="Left" Height="23" Margin="163,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" RenderTransformOrigin="2.376,1.29" MaxLength="2" Grid.Column="1"/>
-        <Label x:Name="WidthBoxLabel" Content="Width:" HorizontalAlignment="Left" Margin="108,180,0,0" VerticalAlignment="Top" Height="29" Width="55" Grid.Column="1"/>
-        <Label x:Name="FloorEntryLabel" Content="Floors:" HorizontalAlignment="Left" Margin="108,214,0,0" VerticalAlignment="Top" Height="32" Width="55" Grid.Column="1"/>
-        <Button x:Name="InitializeButton" Content="Go!" Grid.Column="1" HorizontalAlignment="Left" Margin="163,251,0,0" VerticalAlignment="Top" Width="31" Click="InitializeButton_Click"/>
-        <Label x:Name="TitleLabel" Content="APOCOLYPTO" HorizontalAlignment="Left" Margin="608,28,0,0" VerticalAlignment="Top" Height="93" Width="355" FontSize="48" RenderTransformOrigin="0.5,0.5" FontFamily="MV Boli" Grid.ColumnSpan="2" FontStyle="Italic" Foreground="#FF06C529">
+        <Label x:Name="TitleLabel" Content="APOCOLYPTO" Margin="674,31,78,0" VerticalAlignment="Top" Height="93" FontSize="48" RenderTransformOrigin="0.5,0.5" FontFamily="MV Boli" FontStyle="Italic" Foreground="#FF06C529" Grid.ColumnSpan="2">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
-                    <RotateTransform Angle="14.69"/>
+                    <RotateTransform Angle="-0.266"/>
                     <TranslateTransform/>
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
         <Grid x:Name="RawGrid" HorizontalAlignment="Left" Height="453" Margin="10,21,0,0" VerticalAlignment="Top" Width="507" Background="#FF1E1F1E" IsEnabled="False" Visibility="Hidden"/>
-        <Button x:Name="ResetButton" Content="Reset" Grid.Column="1" HorizontalAlignment="Left" Margin="199,251,0,0" VerticalAlignment="Top" Width="75" Click="ResetButton_Click"/>
-        <Menu x:Name="MainMenu" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="996" Grid.ColumnSpan="2">
+        <Menu x:Name="MainMenu" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="1106" Grid.ColumnSpan="2">
             <MenuItem Header="_File">
                 <MenuItem Header="Exit" />
             </MenuItem>
             <MenuItem x:Name="AboutMenuItem" Header="About"/>
             <MenuItem x:Name="HelpMenuItem" Header="Help"/>
         </Menu>
-        <TextBox x:Name="CurrentPositionTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="143,434,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="CurrentSpaceTextBox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="143,479,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="CurrentLocationLabel" Content="Current Location" Grid.Column="1" HorizontalAlignment="Left" Margin="45,434,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="CurrentSpaceLabel" Content="Currrent Space Type" Grid.Column="1" HorizontalAlignment="Left" Margin="21,479,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="choosePartyLabel" Content="Choose your party!" Grid.Column="1" HorizontalAlignment="Left" Height="42" Margin="10,145,0,0" VerticalAlignment="Top" Width="257" HorizontalContentAlignment="Center" FontSize="24" Foreground="Lime"/>
+        <Label x:Name="sharpshooterParyLabel" Content="Sharpshooters" HorizontalAlignment="Left" Height="32" Margin="608,222,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button x:Name="sharpshooterPartybutton" HorizontalAlignment="Left" Height="100" Margin="598,259,0,0" VerticalAlignment="Top" Width="100" Background ="Transparent" Click="SharpshooterPartyButtonClick">
+            <StackPanel>
+                <Image Source="Images\Sharpshooter.png"/>
+            </StackPanel>
+        </Button>
 
     </Grid>
 </Window>
