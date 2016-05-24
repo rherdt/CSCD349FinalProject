@@ -26,10 +26,14 @@ namespace CSCD349FinalProject
     public partial class MainWindow : Window
     {
         private static Map gameBoardMap;
+        private Party party = new Party(new Sharpshooter(), new Sharpshooter(), new Sharpshooter(), @"..\..\images\sharpshooter.png");
+        private int difficulty;
 
         public MainWindow()
         {
             InitializeComponent();
+            gameBoardMap = new Map(10, 10, party);
+            CreateGameBoard();
         }
 
         //private void InitializeButton_Click(object sender, RoutedEventArgs e)
@@ -120,14 +124,14 @@ namespace CSCD349FinalProject
             }
         }
 
-        private void SharpshooterPartyButtonClick(object sender, EventArgs e)
-        {
-            Party party = new Party(new Sharpshooter(), new Sharpshooter(), new Sharpshooter(), @"..\..\Images\Sharpshooter.png");
-            gameBoardMap = new Map(8, 8, party);
-            CreateGameBoard();
-            sharpshooterPartybutton.Opacity = 0;
-            sharpshooterParyLabel.Opacity = 0;
-            choosePartyLabel.Opacity = 0;
-        }
+        //private void sharpshooterpartybuttonclick(object sender, eventargs e)
+        //{
+        //    party party = new party(new sharpshooter(), new sharpshooter(), new sharpshooter(), @"..\..\images\sharpshooter.png");
+        //    gameboardmap = new map(8, 8, party);
+        //    creategameboard();
+        //    sharpshooterpartybutton.opacity = 0;
+        //    sharpshooterparylabel.opacity = 0;
+        //    choosepartylabel.opacity = 0;
+        //}
     }
 }
