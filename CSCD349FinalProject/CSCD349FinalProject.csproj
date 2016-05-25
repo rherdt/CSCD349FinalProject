@@ -74,6 +74,7 @@
     <Compile Include="Spaces\EdgeSquare.cs" />
     <Compile Include="Spaces\EnemySquare.cs" />
     <Compile Include="Spaces\Map.cs" />
+    <Compile Include="Spaces\StairSquare.cs" />
     <Compile Include="Spaces\TrapSquare.cs" />
     <Compile Include="Spaces\TreasureSquare.cs" />
     <Compile Include="StartMenu.xaml.cs">

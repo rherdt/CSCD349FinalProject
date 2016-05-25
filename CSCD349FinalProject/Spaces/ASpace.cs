@@ -28,7 +28,7 @@ namespace CSCD349FinalProject.Spaces
         {
             return traversed;
         }
-        public abstract void runAction();
+        public abstract void runAction(MainWindow gameboard);
 
         public abstract string ToString();
 

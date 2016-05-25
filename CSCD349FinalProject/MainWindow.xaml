@@ -26,6 +26,8 @@
             <MenuItem x:Name="AboutMenuItem" Header="About"/>
             <MenuItem x:Name="HelpMenuItem" Header="Help"/>
         </Menu>
+        <Label x:Name="FloorLabel" Content="Floor:" HorizontalAlignment="Left" Height="30" Margin="803,152,0,0" VerticalAlignment="Top" Width="61" FontSize="18.667" FontFamily="Aharoni"/>
+        <Label x:Name="FloorNumberLabel" Content="1" HorizontalAlignment="Left" Height="30" Margin="864,148,0,0" VerticalAlignment="Top" Width="32" FontSize="24" FontFamily="Aharoni"/>
 
     </Grid>
 </Window>

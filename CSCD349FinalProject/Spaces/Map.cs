@@ -68,6 +68,7 @@ namespace CSCD349FinalProject.Spaces
                     }
                 }
             }
+            grid[0, grid.GetLength(1) - 1] = new StairSquare();
         }
         private void IspaceGen(int x, int y, Random rand)
         {
@@ -138,5 +139,6 @@ namespace CSCD349FinalProject.Spaces
                 currentPosition.Y = column;
             }
         }
+
     }
 }

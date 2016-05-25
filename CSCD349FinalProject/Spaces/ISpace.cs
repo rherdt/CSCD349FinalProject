@@ -11,7 +11,7 @@ namespace CSCD349FinalProject.Spaces
     interface ISpace
     {
         Border getSpace();
-        void runAction(/*Pass in party object*/);
+        void runAction(MainWindow gameboard);
 
     }
 }
