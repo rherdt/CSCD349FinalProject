@@ -19,7 +19,7 @@
             </Label.RenderTransform>
         </Label>
         <Grid x:Name="RawGrid" HorizontalAlignment="Left" Height="600" Margin="10,21,0,0" VerticalAlignment="Top" Width="600" Background="#FF1E1F1E" IsEnabled="False" Visibility="Hidden"/>
-        <Menu x:Name="MainMenu" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="1106" Grid.ColumnSpan="2">
+        <Menu x:Name="MainMenu" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="970">
             <MenuItem Header="_File">
                 <MenuItem Header="Exit" />
             </MenuItem>
@@ -27,7 +27,7 @@
             <MenuItem x:Name="HelpMenuItem" Header="Help"/>
         </Menu>
         <Label x:Name="FloorLabel" Content="Floor:" HorizontalAlignment="Left" Height="30" Margin="803,152,0,0" VerticalAlignment="Top" Width="61" FontSize="18.667" FontFamily="Aharoni"/>
-        <Label x:Name="FloorNumberLabel" Content="1" HorizontalAlignment="Left" Height="30" Margin="864,148,0,0" VerticalAlignment="Top" Width="32" FontSize="24" FontFamily="Aharoni"/>
+        <Label x:Name="FloorNumberLabel" Content="1" HorizontalAlignment="Left" Height="34" Margin="864,148,0,0" VerticalAlignment="Top" Width="38" FontSize="24" FontFamily="Aharoni"/>
 
     </Grid>
 </Window>

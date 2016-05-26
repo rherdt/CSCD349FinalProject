@@ -17,6 +17,7 @@ using CSCD349FinalProject.States;
 using CSCD349FinalProject.Spaces;
 using CSCD349FinalProject.GamePlay;
 using CSCD349FinalProject.Characters;
+using System.Windows.Controls.Primitives;
 
 namespace CSCD349FinalProject
 {
@@ -27,13 +28,22 @@ namespace CSCD349FinalProject
     {
         private static Map gameBoardMap;
         private static int floor = 1;
-        private Party party = new Party(new Sharpshooter(), new Sharpshooter(), new Sharpshooter(), @"..\..\images\sharpshooter.png");
+        private Party party;
         private int difficulty;
 
         public MainWindow()
         {
             InitializeComponent();
             gameBoardMap = new Map(10, 10, party);
+            CreateGameBoard();
+        }
+
+        public MainWindow(int difficulty, int party)
+        {
+            InitializeComponent();
+            this.difficulty = difficulty;
+            this.party = new Party(party);
+            gameBoardMap = new Map(10, 10, this.party);
             CreateGameBoard();
         }
 
@@ -141,14 +151,6 @@ namespace CSCD349FinalProject
             }
         }
 
-        //private void sharpshooterpartybuttonclick(object sender, eventargs e)
-        //{
-        //    party party = new party(new sharpshooter(), new sharpshooter(), new sharpshooter(), @"..\..\images\sharpshooter.png");
-        //    gameboardmap = new map(8, 8, party);
-        //    creategameboard();
-        //    sharpshooterpartybutton.opacity = 0;
-        //    sharpshooterparylabel.opacity = 0;
-        //    choosepartylabel.opacity = 0;
-        //}
+        
     }
 }
