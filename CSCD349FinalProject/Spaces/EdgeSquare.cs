@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSCD349FinalProject.Characters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace CSCD349FinalProject.Spaces
         {
         }
 
-        public override void runAction()
+        public override void runAction(Party user)
         {
             //could use this to deal with change state?
             //redirect back onto playing board

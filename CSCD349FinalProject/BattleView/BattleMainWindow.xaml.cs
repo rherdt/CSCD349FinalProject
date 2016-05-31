@@ -17,6 +17,8 @@ using System.Runtime.InteropServices;
 using System.Media;
 using System.IO;
 using CSCD349FinalProject.Properties;
+using System.ComponentModel;
+using CSCD349FinalProject.Characters;
 
 namespace BattleView
 {
@@ -26,16 +28,18 @@ namespace BattleView
     public partial class BattleMainWindow : Window
     {
         SoundPlayer music;
+        Party user;
+        Party enemy;
 
-        public BattleMainWindow()
+        public BattleMainWindow(Party good,Party bad)
         {
             InitializeComponent();
-            
+            PlayFile();
         }
 
         private void Attack_Click(object sender, RoutedEventArgs e)
         {
-            PlayFile();
+            
         }
         private void Mute_Checked(object sender, RoutedEventArgs e)
         {
@@ -54,6 +58,19 @@ namespace BattleView
             music = new SoundPlayer();
             music.Stream = CSCD349FinalProject.Properties.Resources.battlemusic;
             music.Play();
+        }
+        private void BattleMainWindow_Closing(object sender, CancelEventArgs e)
+        {
+            music.Stop();
+        }
+        private void setPartys(Party userParty,Party enemyParty)
+        {
+            user = userParty;
+            enemy = enemyParty;
+        }
+        public void Battle()
+        {
+            //battle logic 
         }
     }
 }
