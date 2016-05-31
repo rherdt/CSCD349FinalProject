@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSCD349FinalProject.Characters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace CSCD349FinalProject.Spaces
     interface ISpace
     {
         Border getSpace();
-        void runAction(MainWindow gameboard);
+        void runAction(Party user, MainWindow gameboard);
 
     }
 }

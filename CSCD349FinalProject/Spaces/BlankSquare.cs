@@ -1,9 +1,9 @@
-﻿using System;
+﻿using CSCD349FinalProject.Characters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Shapes;
 
 namespace CSCD349FinalProject.Spaces
@@ -14,7 +14,7 @@ namespace CSCD349FinalProject.Spaces
         {
         }
 
-        public override void runAction(MainWindow gameboard)
+        public override void runAction(Party user, MainWindow gameboard)
         {
             //could use this to deal with change state?
             //redirect back onto playing board

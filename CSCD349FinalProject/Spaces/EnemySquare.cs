@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Shapes;
+using BattleView;
+using CSCD349FinalProject.Characters;
 
 namespace CSCD349FinalProject.Spaces
 {
@@ -16,9 +16,13 @@ namespace CSCD349FinalProject.Spaces
         {
         }
 
-        public override void runAction(MainWindow gameboard)
+        public override void runAction(Party user, MainWindow gameboard)
         {
-            MessageBox.Show("Enemy!");
+            //could use this to deal with change state?
+            //could use this to deal with change state?
+            //redirect back onto playing board
+            //traversed = true;
+            BattleMainWindow bv = new BattleMainWindow();
         }
 
         public override string ToString()
