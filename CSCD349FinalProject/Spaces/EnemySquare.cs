@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Shapes;
 using BattleView;
+using CSCD349FinalProject.Characters;
 
 namespace CSCD349FinalProject.Spaces
 {
@@ -15,7 +16,7 @@ namespace CSCD349FinalProject.Spaces
         {
         }
 
-        public override void runAction()
+        public override void runAction(Party user, MainWindow gameboard)
         {
             //could use this to deal with change state?
             //could use this to deal with change state?
