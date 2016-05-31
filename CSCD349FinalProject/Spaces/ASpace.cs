@@ -29,7 +29,7 @@ namespace CSCD349FinalProject.Spaces
         {
             return traversed;
         }
-        public abstract void runAction(Party user);
+        public abstract void runAction(Party user, MainWindow gameboard);
 
         public abstract string ToString();
 

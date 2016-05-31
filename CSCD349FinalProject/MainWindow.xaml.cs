@@ -26,6 +26,7 @@ namespace CSCD349FinalProject
     public partial class MainWindow : Window
     {
         private static Map gameBoardMap;
+        private static int floor = 1;
         private Party party = new Party(new Sharpshooter(), new Sharpshooter(), new Sharpshooter(), @"..\..\images\sharpshooter.png");
         private int difficulty;
 
@@ -35,14 +36,6 @@ namespace CSCD349FinalProject
             gameBoardMap = new Map(10, 10, party);
             CreateGameBoard();
         }
-
-        //private void InitializeButton_Click(object sender, RoutedEventArgs e)
-        //{      
-        //    gameBoardMap = new Map(8, 8);
-        //    CreateGameBoard();
-
-        //    InitializeButton.Opacity = 0;
-        //}
 
         private void CreateGameBoard()
         {
@@ -79,9 +72,11 @@ namespace CSCD349FinalProject
             }
 
             InitializePlayer();
+            InitializeStairs();
+
         }
 
-        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        private void Reset()
         {
             GameBoard.RowDefinitions.Clear();
             GameBoard.ColumnDefinitions.Clear();
@@ -95,9 +90,31 @@ namespace CSCD349FinalProject
             gameBoardMap.SetCurrentPosition(gameBoardMap.GetRows() - 1, 0);
         }
 
+        public void NextFloor()
+        {
+            Reset();
+            CreateGameBoard();
+            floor++;
+            FloorNumberLabel.Content = floor;
+        }
+
+        private void InitializeStairs()
+        {
+            ImageBrush texture = new ImageBrush();
+            texture.ImageSource = new BitmapImage(new Uri(@"../../Images/stairs.png", UriKind.Relative));
+
+            Rectangle rec = new Rectangle();
+            rec.Height = 60;
+            rec.Width = 60;
+            rec.Fill = texture;
+            gameBoardMap.GetBoardSpace(0, gameBoardMap.GetColumns() - 1).getSpace().Child = rec;
+        }
+
         private void checkSpace()
         {
             //CurrentSpaceTextBox.Text = gameBoardMap.GetBoardSpace((int)gameBoardMap.GetCurrentPosition().X, (int)gameBoardMap.GetCurrentPosition().Y).ToString();
+            gameBoardMap.GetBoardSpace((int)gameBoardMap.GetCurrentPosition().X, (int)gameBoardMap.GetCurrentPosition().Y).runAction(party,this);
+            
         }
 
         private void MainWindow1_PreviewKeyDown(object sender, KeyEventArgs e)

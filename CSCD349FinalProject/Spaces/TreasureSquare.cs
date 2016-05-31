@@ -10,12 +10,11 @@ namespace CSCD349FinalProject.Spaces
 {
     class TreasureSquare: ASpace
     {
-        //set an item object to add to player inventory
         public TreasureSquare() : base()
         {
         }
 
-        public override void runAction(Party user)
+        public override void runAction(Party user, MainWindow gameboard)
         {
             //could use this to deal with change state?
             //redirect back onto playing board
