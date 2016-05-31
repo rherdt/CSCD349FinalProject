@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSCD349FinalProject.Characters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace CSCD349FinalProject.Spaces
         {
         }
 
-        public override void runAction(MainWindow gameboard)
+        public override void runAction(Party user, MainWindow gameboard)
         {
             
             gameboard.NextFloor();

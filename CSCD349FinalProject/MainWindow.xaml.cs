@@ -113,7 +113,7 @@ namespace CSCD349FinalProject
         private void checkSpace()
         {
             //CurrentSpaceTextBox.Text = gameBoardMap.GetBoardSpace((int)gameBoardMap.GetCurrentPosition().X, (int)gameBoardMap.GetCurrentPosition().Y).ToString();
-            gameBoardMap.GetBoardSpace((int)gameBoardMap.GetCurrentPosition().X, (int)gameBoardMap.GetCurrentPosition().Y).runAction(this);
+            gameBoardMap.GetBoardSpace((int)gameBoardMap.GetCurrentPosition().X, (int)gameBoardMap.GetCurrentPosition().Y).runAction(party,this);
             
         }
 
