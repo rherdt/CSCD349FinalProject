@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Shapes;
+using BattleView;
 
 namespace CSCD349FinalProject.Spaces
 {
@@ -20,6 +21,7 @@ namespace CSCD349FinalProject.Spaces
             //could use this to deal with change state?
             //redirect back onto playing board
             //traversed = true;
+            BattleMainWindow bv = new BattleMainWindow();
         }
 
         public override string ToString()
