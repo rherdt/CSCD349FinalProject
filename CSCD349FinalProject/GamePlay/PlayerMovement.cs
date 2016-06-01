@@ -67,7 +67,7 @@ namespace CSCD349FinalProject.GamePlay
                     gameBoardMap.DrawSprite((int)newPosition.X, (int)newPosition.Y);
 
                     gameBoardMap.SetCurrentPosition((int)newPosition.X, (int)newPosition.Y);
-                    gameBoardMap.GetBoardSpace((int)newPosition.X, (int)newPosition.Y).runAction(gameBoardMap.getParty());
+                    gameBoardMap.GetBoardSpace((int)newPosition.X, (int)newPosition.Y).runAction(gameBoardMap.getParty(),(MainWindow)Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive));
                 }
             }
         }

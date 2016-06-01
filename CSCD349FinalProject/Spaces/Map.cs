@@ -139,6 +139,9 @@ namespace CSCD349FinalProject.Spaces
                 currentPosition.Y = column;
             }
         }
-
+        public Party getParty()
+        {
+            return party;
+        }
     }
 }

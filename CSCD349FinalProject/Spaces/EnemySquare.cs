@@ -17,16 +17,16 @@ namespace CSCD349FinalProject.Spaces
             enemy = null;
         }
 
-        public override void runAction(Party user)
+        public override void runAction(Party user, MainWindow gameboard)
         {
-            //could use this to deal with change state?
-            //could use this to deal with change state?
-            //redirect back onto playing board
-            //traversed = true;
-            BattleMainWindow bv = new BattleMainWindow(user, enemy);
-            bv.Show();
+            if(traversed == false)
+            {
+                BattleMainWindow bv = new BattleMainWindow();
+                bv.ShowDialog();
+                traversed = true;
+            }
+            
         }
-
         public override string ToString()
         {
             return "Enemy Square";

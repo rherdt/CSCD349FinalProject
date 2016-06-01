@@ -25,13 +25,13 @@ namespace BattleView
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class BattleMainWindow : Window
+    partial class BattleMainWindow : Window
     {
         SoundPlayer music;
-        Party user;
-        Party enemy;
+        private Party user;
+        private Party enemy;
 
-        public BattleMainWindow(Party good,Party bad)
+        public BattleMainWindow()
         {
             InitializeComponent();
             PlayFile();
