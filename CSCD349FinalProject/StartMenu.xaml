@@ -71,6 +71,13 @@
         <Label x:Name="balancedDefenseNumberLabel" Content="60" Margin="875,637,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
         <Label x:Name="balancedInvNumberLabel" Content="7" Margin="875,674,0,0" FontSize="18" RenderTransformOrigin="0.55,2.391" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
         <Button x:Name="readyButton" Content="Ready!" Margin="377,734,0,0" FontSize="36" Foreground="Lime" Background="Gray" HorizontalContentAlignment="Center" Height="56" VerticalAlignment="Top" HorizontalAlignment="Left" Width="216" PreviewMouseDown="PreviewReadyButtonClick"/>
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="970">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Exit"/>
+            </MenuItem>
+            <MenuItem x:Name="AboutMenuItem" Header="About"/>
+            <MenuItem x:Name="HelpMenuItem" Header="Help"/>
+        </Menu>
 
     </Grid>
 </Window>
