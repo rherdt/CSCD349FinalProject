@@ -8,11 +8,8 @@ namespace CSCD349FinalProject.Weapons
 {
     interface IWeapon
     {
-        int getWeight();
         string getName();
-        int getDamage();
-        void setDamage(int dmg);
-        IWeaponEffect getWeaponEffect();
+        int getAttack();
 
         //possibly getter for block/defense?
         //possibly a getter for a sprite?

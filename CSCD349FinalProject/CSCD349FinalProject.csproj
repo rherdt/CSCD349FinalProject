@@ -99,9 +99,14 @@
     </Compile>
     <Compile Include="States\IState.cs" />
     <Compile Include="States\TravelState.cs" />
+    <Compile Include="Weapons\AWP.cs" />
+    <Compile Include="Weapons\DesertEagle.cs" />
     <Compile Include="Weapons\IWeapon.cs" />
-    <Compile Include="Weapons\IWeaponEffect.cs" />
+    <Compile Include="Weapons\Negev.cs" />
+    <Compile Include="Weapons\P90.cs" />
+    <Compile Include="Weapons\Scout.cs" />
     <Compile Include="Weapons\TempWeapon.cs" />
+    <Compile Include="Weapons\USPS.cs" />
     <Page Include="BattleView\BattleMainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
