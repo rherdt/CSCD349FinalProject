@@ -80,10 +80,7 @@ namespace CSCD349FinalProject
                     GameBoard.Children.Add(currentSpace.getSpace());
                 }
             }
-
             InitializePlayer();
-            InitializeStairs();
-
         }
 
         private void Reset()
@@ -92,7 +89,6 @@ namespace CSCD349FinalProject
             GameBoard.ColumnDefinitions.Clear();
             GameBoard.Children.Clear();           
         }
-
 
         private void InitializePlayer()
         {
@@ -103,26 +99,14 @@ namespace CSCD349FinalProject
         public void NextFloor()
         {
             Reset();
+            gameBoardMap = new Map(10, 10, party);
             CreateGameBoard();
             floor++;
             FloorNumberLabel.Content = floor;
         }
 
-        private void InitializeStairs()
-        {
-            ImageBrush texture = new ImageBrush();
-            texture.ImageSource = new BitmapImage(new Uri(@"../../Images/stairs.png", UriKind.Relative));
-
-            Rectangle rec = new Rectangle();
-            rec.Height = 60;
-            rec.Width = 60;
-            rec.Fill = texture;
-            gameBoardMap.GetBoardSpace(0, gameBoardMap.GetColumns() - 1).getSpace().Child = rec;
-        }
-
         private void checkSpace()
         {
-            //CurrentSpaceTextBox.Text = gameBoardMap.GetBoardSpace((int)gameBoardMap.GetCurrentPosition().X, (int)gameBoardMap.GetCurrentPosition().Y).ToString();
             gameBoardMap.GetBoardSpace((int)gameBoardMap.GetCurrentPosition().X, (int)gameBoardMap.GetCurrentPosition().Y).runAction(party,this);
             
         }
