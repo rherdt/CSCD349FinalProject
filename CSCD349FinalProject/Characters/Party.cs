@@ -8,6 +8,7 @@ namespace CSCD349FinalProject.Characters
     class Party : IParty
     {
         private IGoodGuy[] party = new IGoodGuy[3];
+        private int partyHealth;
         private int partyAttack;
         private int partyDefense;
         private int level;
@@ -15,6 +16,7 @@ namespace CSCD349FinalProject.Characters
 
         public Party(int p)
         {
+            partyHealth = 100;
             level = 1;
             ConvertNumToParty(p);
             partyAttack = level * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack());
@@ -64,6 +66,19 @@ namespace CSCD349FinalProject.Characters
         {
             partyAttack = level * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack());
             partyDefense = level * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense());
+        }
+
+        public int GetPartyHealth()
+        {
+            return partyHealth;
+        }
+
+        public void Damage(int hp)
+        {
+            partyHealth -= hp;
+
+            if (hp < 0)
+                hp = 0;
         }
 
         public int GetPartyAttack()
