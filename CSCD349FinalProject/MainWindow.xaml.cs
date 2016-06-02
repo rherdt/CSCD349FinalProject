@@ -67,7 +67,7 @@ namespace CSCD349FinalProject
                     currentSpace.getSpace().SetValue(Grid.ColumnProperty, column);
                     currentSpace.getSpace().SetValue(Grid.RowProperty, row);
 
-                    GameBoard.Children.Add(currentSpace.getSpace());
+                    GameBoard.Children.Add(currentSpace.getSpace());                    
                 }
             }
             InitializePlayer();
@@ -123,6 +123,12 @@ namespace CSCD349FinalProject
                 PlayerMovement.KeyLeft(gameBoardMap);
                 checkSpace();
             }
+        }
+
+        private void DamageButton_Click(object sender, RoutedEventArgs e)
+        {
+            ForegroundHealthBar.Height += 10;
+            
         }
 
         //private void sharpshooterpartybuttonclick(object sender, eventargs e)
