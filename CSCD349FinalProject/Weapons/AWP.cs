@@ -11,12 +11,12 @@ namespace CSCD349FinalProject.Weapons
         private int attack = 12;
         private string name = "AWP";
 
-        public int getAttack()
+        public int GetAttack()
         {
             return attack;
         }
 
-        public string getName()
+        public string GetName()
         {
             return name;
         }

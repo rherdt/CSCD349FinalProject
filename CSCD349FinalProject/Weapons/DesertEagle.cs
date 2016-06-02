@@ -11,12 +11,12 @@ namespace CSCD349FinalProject.Weapons
         private int attack = 5;
         private string name = "Desert Eagle";
 
-        public int getAttack()
+        public int GetAttack()
         {
             return attack;
         }
 
-        public string getName()
+        public string GetName()
         {
             return name;
         }
