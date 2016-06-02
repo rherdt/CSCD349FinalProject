@@ -180,6 +180,12 @@
   <ItemGroup>
     <Resource Include="Images\Sharpshooters.png" />
     <Resource Include="Images\Medics.png" />
+    <Resource Include="Images\Tanks.png" />
+    <Resource Include="Images\Balanced.png" />
+    <Resource Include="Images\Medkit.png" />
+    <Resource Include="Images\Bandaid.png" />
+    <Resource Include="Images\Grenade.png" />
+    <Resource Include="Images\Molotov.png" />
     <Content Include="Music\battlemusic.wav" />
     <None Include="Resources\battlemusic.wav" />
   </ItemGroup>

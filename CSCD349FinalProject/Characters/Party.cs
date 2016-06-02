@@ -49,7 +49,7 @@ namespace CSCD349FinalProject.Characters
                 party[1] = new Tank();
                 party[2] = new Tank();
                 img = new ImageBrush();
-                img.ImageSource = new BitmapImage(new Uri(@"../../Images/sharpshooter.png", UriKind.Relative));
+                img.ImageSource = new BitmapImage(new Uri(@"../../Images/Tanks.png", UriKind.Relative));
             }
 
             else
@@ -58,7 +58,7 @@ namespace CSCD349FinalProject.Characters
                 party[1] = new Medic();
                 party[2] = new Tank();
                 img = new ImageBrush();
-                img.ImageSource = new BitmapImage(new Uri(@"../../Images/sharpshooter.png", UriKind.Relative));
+                img.ImageSource = new BitmapImage(new Uri(@"../../Images/Balanced.png", UriKind.Relative));
             }
         }
 
