@@ -85,7 +85,11 @@
     <Compile Include="HelpWindow\HelpWindow.xaml.cs">
       <DependentUpon>HelpWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Inventory\InvItem.cs" />
+    <Compile Include="Inventory\Bandage.cs" />
+    <Compile Include="Inventory\Grenade.cs" />
+    <Compile Include="Inventory\IInvItem.cs" />
+    <Compile Include="Inventory\Medkit.cs" />
+    <Compile Include="Inventory\Molotov.cs" />
     <Compile Include="Spaces\ASpace.cs" />
     <Compile Include="Spaces\BlankSquare.cs" />
     <Compile Include="Spaces\EdgeSquare.cs" />

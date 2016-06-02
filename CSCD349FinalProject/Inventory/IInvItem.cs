@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace CSCD349FinalProject.Inventory
 {
-    class InvItem
+    interface IInvItem
     {
-
+        string GetName();
+        void GetEffect();
     }
 }
