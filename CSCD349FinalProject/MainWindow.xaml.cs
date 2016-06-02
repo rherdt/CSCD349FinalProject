@@ -151,6 +151,21 @@ namespace CSCD349FinalProject
             }
         }
 
-        
+        private void MenuExitClick(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void AboutMenuClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Developer: Brogrammers\r\n\r\nVersion: 1.0\r\n\r\n.NET Framework Version: 4.5.2\r\n\r\nBit Version: 32-bit" +
+                "\r\n\r\nBattle Music: Property of Nintendo,\r\n\t     Composed by Junichi Masuda");
+        }
+
+        private void HelpMenuClick(object sender, RoutedEventArgs e)
+        {
+            HelpWindow hw = new HelpWindow();
+            hw.Show();
+        }
     }
 }

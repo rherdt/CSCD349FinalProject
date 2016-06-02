@@ -73,10 +73,10 @@
         <Button x:Name="readyButton" Content="Ready!" Margin="377,734,0,0" FontSize="36" Foreground="Lime" Background="Gray" HorizontalContentAlignment="Center" Height="56" VerticalAlignment="Top" HorizontalAlignment="Left" Width="216" PreviewMouseDown="PreviewReadyButtonClick"/>
         <Menu x:Name="menu" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="970">
             <MenuItem Header="_File">
-                <MenuItem Header="_Exit"/>
+                <MenuItem Header="_Exit" Click="MenuExitClick"/>
             </MenuItem>
-            <MenuItem x:Name="AboutMenuItem" Header="About"/>
-            <MenuItem x:Name="HelpMenuItem" Header="Help"/>
+            <MenuItem x:Name="AboutMenuItem" Header="About" Click="AboutMenuClick"/>
+            <MenuItem x:Name="HelpMenuItem" Header="Help" Click="HelpMenuClick"/>
         </Menu>
 
     </Grid>
