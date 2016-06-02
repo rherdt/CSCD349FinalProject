@@ -178,9 +178,8 @@
     <Folder Include="StartWindow\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Sharpshooter.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="Images\Sharpshooters.png" />
+    <Resource Include="Images\Medics.png" />
     <Content Include="Music\battlemusic.wav" />
     <None Include="Resources\battlemusic.wav" />
   </ItemGroup>

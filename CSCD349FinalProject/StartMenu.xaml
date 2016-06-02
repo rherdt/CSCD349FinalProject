@@ -25,13 +25,13 @@
         <Label x:Name="sharpshooterPartyLabel" Content="Sharpshooters" Margin="78,374,0,0" HorizontalContentAlignment="Center" FontSize="20" Height="46" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
         <RadioButton x:Name="sharpshooterPartyButton" Style="{StaticResource {x:Type ToggleButton}}" GroupName="Party" Margin="78,428,0,0" Background ="Transparent" Height="146" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Checked="PartyButtonChecked">
             <StackPanel>
-                <Image Source="Images/Sharpshooter.png"/>
+                <Image Source="Images/Sharpshooters.png"/>
             </StackPanel>
         </RadioButton>
         <Label x:Name="medicsPartyLabel" Content="Medics" Margin="306,374,0,0" HorizontalContentAlignment="Center" FontSize="20" Height="46" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
         <RadioButton x:Name="medicsPartyButton" Style="{StaticResource {x:Type ToggleButton}}" GroupName="Party" Margin="306,428,0,0" Background ="Transparent" Height="146" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Checked="PartyButtonChecked">
             <StackPanel>
-                <Image Source="Images/Sharpshooter.png"/>
+                <Image Source="Images/Medics.png"/>
             </StackPanel>
         </RadioButton>
         <Label x:Name="tanksPartyLabel" Content="Tanks" Margin="530,374,0,0" HorizontalContentAlignment="Center" FontSize="20" Height="46" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>

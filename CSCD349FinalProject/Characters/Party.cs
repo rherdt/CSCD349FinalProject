@@ -31,7 +31,7 @@ namespace CSCD349FinalProject.Characters
                 party[1] = new Sharpshooter();
                 party[2] = new Sharpshooter();
                 img = new ImageBrush();
-                img.ImageSource = new BitmapImage(new Uri(@"../../Images/sharpshooter.png", UriKind.Relative));
+                img.ImageSource = new BitmapImage(new Uri(@"../../Images/Sharpshooters.png", UriKind.Relative));
             }
 
             else if (p == 2)
@@ -40,7 +40,7 @@ namespace CSCD349FinalProject.Characters
                 party[1] = new Medic();
                 party[2] = new Medic();
                 img = new ImageBrush();
-                img.ImageSource = new BitmapImage(new Uri(@"../../Images/sharpshooter.png", UriKind.Relative));
+                img.ImageSource = new BitmapImage(new Uri(@"../../Images/Medics.png", UriKind.Relative));
             }
 
             else if (p == 3)
