@@ -62,7 +62,7 @@ namespace CSCD349FinalProject.Spaces
                     IspaceGen(x, y, rand);
                 }
             }
-            grid[9, 0] = new EnemySquare();
+            grid[9, 0] = new BlankSquare();
             grid[0, grid.GetLength(1) - 1] = new StairSquare();
         }
         private void IspaceGen(int x, int y, Random rand)
