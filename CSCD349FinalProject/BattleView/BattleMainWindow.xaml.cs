@@ -20,6 +20,7 @@ using CSCD349FinalProject.Properties;
 using System.ComponentModel;
 using CSCD349FinalProject.Characters;
 using System.Threading;
+using System.Windows.Controls.Primitives;
 
 namespace BattleView
 {
@@ -30,7 +31,7 @@ namespace BattleView
     {
         SoundPlayer music;
         private Party user;
-        private Party enemy;
+        private IBadGuy enemy;
 
         internal Party User
         {
@@ -43,10 +44,11 @@ namespace BattleView
             {
                 user = value;
                 UserHealth.Value = user.GetHP();
+                UserParty.Fill = user.GetImg();
             }
         }
 
-        internal Party Enemy
+        internal IBadGuy Enemy
         {
             get
             {
@@ -57,6 +59,7 @@ namespace BattleView
             {
                 enemy = value;
                 EnemyHealth.Value = enemy.GetHP();
+                WriteOutput("You are being attacked by " + enemy.GetName());
             }
         }
 
@@ -98,11 +101,6 @@ namespace BattleView
         {
             music.Stop();
         }
-        private void setPartys(Party userParty,Party enemyParty)
-        {
-            User = userParty;
-            Enemy = enemyParty;
-        }
         private void DestroyedEnemy()
         {
             WriteOutput("You have slain the enemy party");
@@ -111,12 +109,20 @@ namespace BattleView
         }
         private void UserAttack()
         {
-            int damage = Attacking(user);
-            if (Defend(enemy))
+            int damage = UserAttacking();
+            if (EnemyDefend())
             {
-                enemy.TakeDamage(damage);
-                EnemyHealth.Value = (EnemyHealth.Value - damage);
-                WriteOutput("The enemy party took " + damage + " points of damage");
+                if (enemy.TakeDamage(damage))
+                {
+                    EnemyHealth.Value = (EnemyHealth.Value - damage);
+                    WriteOutput("The enemy party took " + damage + " points of damage");
+                    BattleVictory();
+                }
+                else
+                {
+                    EnemyHealth.Value = (EnemyHealth.Value - damage);
+                    WriteOutput("The enemy party took " + damage + " points of damage");
+                }
             }
             else
             {
@@ -125,8 +131,8 @@ namespace BattleView
         }
         private void EnemyAttack()
         {
-            int damage = Attacking(enemy);
-            if (!Defend(user))
+            int damage = EnemyAttacking();
+            if (!UserDefend())
             {
                 UserHealth.Value = (UserHealth.Value - damage);
                 WriteOutput("Your party took " + damage + " points of damage");
@@ -137,22 +143,34 @@ namespace BattleView
                 WriteOutput("The enemies attack missed...");
             }
         }
-        private int Attacking(Party attacker)
+        private int UserAttacking()
         {
             Random rand = new Random();
-            if ((attacker.GetPartyAttack() * rand.NextDouble()) > .3)
+            if ((user.GetPartyAttack() * rand.NextDouble()) > .3)
             {
-                return Convert.ToInt32(Math.Floor(Convert.ToInt32(attacker.GetPartyAttack()) * rand.NextDouble()));
+                return Convert.ToInt32(Math.Floor(Convert.ToInt32(user.GetPartyAttack()) * rand.NextDouble()));
             }
             else
             {
                 return 0;
             }
         }
-        private bool Defend(Party defender)
+        private int EnemyAttacking()
         {
             Random rand = new Random();
-            if((defender.GetPartyDefense()*rand.NextDouble()) > .4)
+            if ((enemy.GetAttack() * rand.NextDouble()) > .3)
+            {
+                return Convert.ToInt32(Math.Floor(Convert.ToInt32(enemy.GetAttack()) * rand.NextDouble()));
+            }
+            else
+            {
+                return 0;
+            }
+        }
+        private bool UserDefend()
+        {
+            Random rand = new Random();
+            if((user.GetPartyDefense()*rand.NextDouble()) > 5*user.GetLevel())
             {
                 return true;
             }
@@ -160,6 +178,24 @@ namespace BattleView
             {
                 return false;
             }
+        }
+        private bool EnemyDefend()
+        {
+            Random rand = new Random();
+            if ((enemy.GetDefense() * rand.NextDouble()) > 1.5*user.GetLevel())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        private void BattleVictory()
+        {
+            MessageBox.Show(this, "You have vanquished the " + enemy.GetName() + "\n The party has leveled up");
+            user.LevelUp();
+            this.Close();
         }
     }
 }

@@ -21,7 +21,7 @@
             <Button x:Name="button" Grid.ColumnSpan="2" Content="Items" Width="75"/>
             <Button x:Name="button1" Content="Run" Width="75"/>
         </Menu>
-        <TextBox x:Name="Output" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" TextWrapping="Wrap" Text="Combat output" BorderThickness="2px" BorderBrush="Black" VerticalAlignment="Top" Width="287"/>
+        <TextBox x:Name="Output" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" TextWrapping="Wrap" BorderThickness="2px" BorderBrush="Black" VerticalAlignment="Top" Width="287"/>
         <CheckBox x:Name="Mute" Grid.ColumnSpan="2" Content="Mute" HorizontalAlignment="Left" Margin="462,249,0,0" VerticalAlignment="Top" Checked="Mute_Checked"/>
 
     </Grid>
