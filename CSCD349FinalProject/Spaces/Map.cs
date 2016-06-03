@@ -58,16 +58,11 @@ namespace CSCD349FinalProject.Spaces
             {
                 for(int y = 0; y < grid.GetLength(1); y++)
                 {
-                    if(y == 0 || y == (grid.GetLength(1) - 1) || x == 0 || x == (grid.GetLength(0) - 1))
-                    {
-                        grid[x, y] = new EdgeSquare();
-                    }
-                    else
-                    {
-                        IspaceGen(x, y, rand);
-                    }
+                    //bottom left corner is (9,0) instead of (0,0)
+                    IspaceGen(x, y, rand);
                 }
             }
+            grid[9, 0] = new EnemySquare();
             grid[0, grid.GetLength(1) - 1] = new StairSquare();
         }
         private void IspaceGen(int x, int y, Random rand)

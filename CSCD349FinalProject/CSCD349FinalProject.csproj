@@ -174,9 +174,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="StartWindow\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\Sharpshooters.png" />
     <Resource Include="Images\Medics.png" />
