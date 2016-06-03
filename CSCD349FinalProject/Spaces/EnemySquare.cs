@@ -22,8 +22,11 @@ namespace CSCD349FinalProject.Spaces
             if(traversed == false)
             {
                 BattleMainWindow bv = new BattleMainWindow();
-                bv.ShowDialog();
                 traversed = true;
+                bv.User = user;
+                enemy = user;
+                bv.Enemy = enemy;
+                bv.ShowDialog();
             }
             
         }

@@ -11,6 +11,7 @@ namespace CSCD349FinalProject.Characters
         private int partyAttack;
         private int partyDefense;
         private int level;
+        private int hp;
         private ImageBrush img;
 
         public Party(IGoodGuy p1, IGoodGuy p2, IGoodGuy p3, string imgPath)
@@ -20,7 +21,7 @@ namespace CSCD349FinalProject.Characters
             party[2] = p3;
 
             level = 1;
-
+            hp = 100;
             partyAttack = level * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack());
             partyDefense = level * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense());
 
@@ -57,12 +58,28 @@ namespace CSCD349FinalProject.Characters
         public void LevelUp()
         {
             level += 1;
+            RecalcStats();
         }
-
+        public int GetHP()
+        {
+            return hp;
+        }
+        public void TakeDamage(int damage)
+        {
+            hp = hp - damage;
+            if(hp < 1)
+            {
+                GameOver();
+            }
+        }
         public void PickupWeapon(int character, IWeapon weapon)
         {
             party[character].ChangeWeapon(weapon);
             RecalcStats();
+        }
+        private void GameOver()
+        {
+
         }
     }
 }

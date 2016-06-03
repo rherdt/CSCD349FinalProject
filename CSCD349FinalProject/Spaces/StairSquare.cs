@@ -16,9 +16,8 @@ namespace CSCD349FinalProject.Spaces
         {
         }
 
-        public override void runAction(Party user, MainWindow gameboard)
+        public override void runAction(Party user,MainWindow gameboard)
         {
-            
             gameboard.NextFloor();
         }
         public override string ToString()

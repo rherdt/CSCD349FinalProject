@@ -14,14 +14,14 @@
         </Grid.ColumnDefinitions>
         <Rectangle Name="UserParty" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="10,210,0,0" Stroke="Black" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="2"/>
         <Rectangle Name="EnemyParty" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="100" Margin="407,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="2"/>
-        <ProgressBar Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="10" Margin="302,10,0,0" Value="70" Background="Red" VerticalAlignment="Top" Width="100"/>
-        <ProgressBar Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="10" Margin="115,300,0,0" Value="90" Background="Red" VerticalAlignment="Top" Width="100"/>
+        <ProgressBar Name="EnemyHealth" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="10" Margin="302,10,0,0" Background="Red" VerticalAlignment="Top" Width="100"/>
+        <ProgressBar Name="UserHealth" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="10" Margin="115,300,0,0" Background="Red" VerticalAlignment="Top" Width="100"/>
         <Menu x:Name="menu" Grid.ColumnSpan="2" HorizontalAlignment="Left" BorderThickness="2px" BorderBrush="black" Height="29" Margin="233,281,0,0" VerticalAlignment="Top" Width="274">
             <Button x:Name="Attack" Content="Attack" Width="75" Click="Attack_Click"/>
             <Button x:Name="button" Grid.ColumnSpan="2" Content="Items" Width="75"/>
             <Button x:Name="button1" Content="Run" Width="75"/>
         </Menu>
-        <TextBox x:Name="textBox" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" TextWrapping="Wrap" Text="Combat output" BorderThickness="2px" BorderBrush="Black" VerticalAlignment="Top" Width="287"/>
+        <TextBox x:Name="Output" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" TextWrapping="Wrap" Text="Combat output" BorderThickness="2px" BorderBrush="Black" VerticalAlignment="Top" Width="287"/>
         <CheckBox x:Name="Mute" Grid.ColumnSpan="2" Content="Mute" HorizontalAlignment="Left" Margin="462,249,0,0" VerticalAlignment="Top" Checked="Mute_Checked"/>
 
     </Grid>
