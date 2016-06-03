@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Shapes;
 using BattleView;
 using CSCD349FinalProject.Characters;
+using System.Windows;
 
 namespace CSCD349FinalProject.Spaces
 {

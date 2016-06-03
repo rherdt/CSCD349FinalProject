@@ -170,7 +170,7 @@ namespace BattleView
         private bool UserDefend()
         {
             Random rand = new Random();
-            if((user.GetPartyDefense()*rand.NextDouble()) > 5*user.GetLevel())
+            if((user.GetPartyDefense()*rand.NextDouble()) > 2*user.GetLevel())
             {
                 return true;
             }
@@ -196,6 +196,12 @@ namespace BattleView
             MessageBox.Show(this, "You have vanquished the " + enemy.GetName() + "\n The party has leveled up");
             user.LevelUp();
             this.Close();
+        }
+
+        private void Window_Deactivated(object sender, EventArgs e)
+        {
+            music.Stop();
+            
         }
     }
 }

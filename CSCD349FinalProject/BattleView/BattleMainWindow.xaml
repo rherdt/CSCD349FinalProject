@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BattleView"
         Closing="BattleMainWindow_Closing"
+        Deactivated="Window_Deactivated"
         mc:Ignorable="d"
-        Title="Battle View" Height="350" Width="525">
+        Title="Battle View" Height="350" Width="525"
+        WindowStartupLocation="CenterScreen">
     <Grid Background="LightGray">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
