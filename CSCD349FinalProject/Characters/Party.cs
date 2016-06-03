@@ -68,17 +68,25 @@ namespace CSCD349FinalProject.Characters
             partyDefense = level * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense());
         }
 
-        public int GetPartyHealth()
+        public void LevelUp()
+        {
+            level += 1;
+            RecalcStats();
+        }
+
+        public int GetHP()
         {
             return partyHealth;
         }
 
-        public void Damage(int hp)
+        public void TakeDamage(int damage)
         {
-            partyHealth -= hp;
+            partyHealth = partyHealth - damage;
 
-            if (hp < 0)
-                hp = 0;
+            if (partyHealth < 1)
+            {
+                GameOver();
+            }
         }
 
         public int GetPartyAttack()
@@ -101,15 +109,15 @@ namespace CSCD349FinalProject.Characters
             return img;
         }
 
-        public void LevelUp()
+        public void UpgradeWeapon(int character)
         {
-            level += 1;
+            party[character].UpgradeWeapon();
+            RecalcStats();
         }
 
-        public void PickupWeapon(int character, IWeapon weapon)
+        private void GameOver()
         {
-            party[character].ChangeWeapon(weapon);
-            RecalcStats();
+
         }
     }
 }
