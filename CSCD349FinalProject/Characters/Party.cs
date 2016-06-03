@@ -2,6 +2,7 @@
 using System;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using CSCD349FinalProject.Inventory;
 
 namespace CSCD349FinalProject.Characters
 {
@@ -12,6 +13,7 @@ namespace CSCD349FinalProject.Characters
         private int partyAttack;
         private int partyDefense;
         private int level;
+        private Inventory.Inventory inventory;
         private ImageBrush img;
 
         public Party(int p)
@@ -31,6 +33,7 @@ namespace CSCD349FinalProject.Characters
                 party[1] = new Sharpshooter();
                 party[2] = new Sharpshooter();
                 img = new ImageBrush();
+                inventory = new Inventory.Inventory(5);
                 img.ImageSource = new BitmapImage(new Uri(@"../../Images/Sharpshooters.png", UriKind.Relative));
             }
 
@@ -40,6 +43,7 @@ namespace CSCD349FinalProject.Characters
                 party[1] = new Medic();
                 party[2] = new Medic();
                 img = new ImageBrush();
+                inventory = new Inventory.Inventory(10);
                 img.ImageSource = new BitmapImage(new Uri(@"../../Images/Medics.png", UriKind.Relative));
             }
 
@@ -49,6 +53,7 @@ namespace CSCD349FinalProject.Characters
                 party[1] = new Tank();
                 party[2] = new Tank();
                 img = new ImageBrush();
+                inventory = new Inventory.Inventory(3);
                 img.ImageSource = new BitmapImage(new Uri(@"../../Images/Tanks.png", UriKind.Relative));
             }
 
@@ -58,6 +63,7 @@ namespace CSCD349FinalProject.Characters
                 party[1] = new Medic();
                 party[2] = new Tank();
                 img = new ImageBrush();
+                inventory = new Inventory.Inventory(7);
                 img.ImageSource = new BitmapImage(new Uri(@"../../Images/Balanced.png", UriKind.Relative));
             }
         }
@@ -99,6 +105,11 @@ namespace CSCD349FinalProject.Characters
         public ImageBrush GetImg()
         {
             return img;
+        }
+
+        public Inventory.Inventory GetInventory()
+        {
+            return inventory;
         }
 
         public void LevelUp()

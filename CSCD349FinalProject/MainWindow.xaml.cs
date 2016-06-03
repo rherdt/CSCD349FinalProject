@@ -93,6 +93,13 @@ namespace CSCD349FinalProject
             GameBoard.Children.Clear();           
         }
 
+        private void InitializeInventory()
+        {
+            int slots = party.GetInventory().getNumSlots();
+
+
+        }
+
 
         private void InitializePlayer()
         {
@@ -122,7 +129,6 @@ namespace CSCD349FinalProject
 
         private void checkSpace()
         {
-            //CurrentSpaceTextBox.Text = gameBoardMap.GetBoardSpace((int)gameBoardMap.GetCurrentPosition().X, (int)gameBoardMap.GetCurrentPosition().Y).ToString();
             gameBoardMap.GetBoardSpace((int)gameBoardMap.GetCurrentPosition().X, (int)gameBoardMap.GetCurrentPosition().Y).runAction(party,this);
             
         }
