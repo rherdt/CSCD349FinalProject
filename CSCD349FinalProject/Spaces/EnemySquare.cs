@@ -4,24 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Shapes;
+using BattleView;
+using CSCD349FinalProject.Characters;
+using System.Windows;
 
 namespace CSCD349FinalProject.Spaces
 {
     class EnemySquare: ASpace
     {
-        /*Enemy Party object*/
+        IBadGuy enemy;
         public EnemySquare(): base()
         {
+            enemy = new Mutants();
         }
 
-        public override void runAction()
+        public override void runAction(Party user, MainWindow gameboard)
         {
-            //could use this to deal with change state?
-            //could use this to deal with change state?
-            //redirect back onto playing board
-            //traversed = true;
+            if(traversed == false)
+            {
+                BattleMainWindow bv = new BattleMainWindow();
+                traversed = true;
+                bv.User = user;
+                bv.Enemy = enemy;
+                bv.ShowDialog();
+            }
+            
         }
-
         public override string ToString()
         {
             return "Enemy Square";

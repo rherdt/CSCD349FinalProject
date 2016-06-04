@@ -26,19 +26,16 @@ namespace CSCD349FinalProject
     public partial class MainWindow : Window
     {
         private static Map gameBoardMap;
+        private static int floor = 1;
+        private Party party = new Party(new Sharpshooter(), new Sharpshooter(), new Sharpshooter(), @"..\..\images\sharpshooter.png");
+        private int difficulty;
 
         public MainWindow()
         {
             InitializeComponent();
+            gameBoardMap = new Map(10, 10, party);
+            CreateGameBoard();
         }
-
-        //private void InitializeButton_Click(object sender, RoutedEventArgs e)
-        //{      
-        //    gameBoardMap = new Map(8, 8);
-        //    CreateGameBoard();
-
-        //    InitializeButton.Opacity = 0;
-        //}
 
         private void CreateGameBoard()
         {
@@ -73,17 +70,15 @@ namespace CSCD349FinalProject
                     GameBoard.Children.Add(currentSpace.getSpace());
                 }
             }
-
             InitializePlayer();
         }
 
-        private void ResetButton_Click(object sender, RoutedEventArgs e)
+        private void Reset()
         {
             GameBoard.RowDefinitions.Clear();
             GameBoard.ColumnDefinitions.Clear();
             GameBoard.Children.Clear();           
         }
-
 
         private void InitializePlayer()
         {
@@ -91,9 +86,19 @@ namespace CSCD349FinalProject
             gameBoardMap.SetCurrentPosition(gameBoardMap.GetRows() - 1, 0);
         }
 
+        public void NextFloor()
+        {
+            Reset();
+            gameBoardMap = new Map(10, 10, party);
+            CreateGameBoard();
+            floor++;
+            FloorNumberLabel.Content = floor;
+        }
+
         private void checkSpace()
         {
-            //CurrentSpaceTextBox.Text = gameBoardMap.GetBoardSpace((int)gameBoardMap.GetCurrentPosition().X, (int)gameBoardMap.GetCurrentPosition().Y).ToString();
+            gameBoardMap.GetBoardSpace((int)gameBoardMap.GetCurrentPosition().X, (int)gameBoardMap.GetCurrentPosition().Y).runAction(party,this);
+            
         }
 
         private void MainWindow1_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -120,20 +125,14 @@ namespace CSCD349FinalProject
             }
         }
 
-        private void SharpshooterPartyButtonClick(object sender, EventArgs e)
-        {
-            Party party = new Party(new Sharpshooter(), new Sharpshooter(), new Sharpshooter(), @"..\..\Images\Sharpshooter.png");
-            gameBoardMap = new Map(8, 8, party);
-            CreateGameBoard();
-            sharpshooterPartybutton.Opacity = 0;
-            sharpshooterParyLabel.Opacity = 0;
-            choosePartyLabel.Opacity = 0;
-        }
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            BattleState temp = new BattleState();
-            temp.RunBattle(gameBoardMap.getParty(), gameBoardMap.getParty());
-        }
+        //private void sharpshooterpartybuttonclick(object sender, eventargs e)
+        //{
+        //    party party = new party(new sharpshooter(), new sharpshooter(), new sharpshooter(), @"..\..\images\sharpshooter.png");
+        //    gameboardmap = new map(8, 8, party);
+        //    creategameboard();
+        //    sharpshooterpartybutton.opacity = 0;
+        //    sharpshooterparylabel.opacity = 0;
+        //    choosepartylabel.opacity = 0;
+        //}
     }
 }

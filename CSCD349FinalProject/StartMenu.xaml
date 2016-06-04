@@ -1,0 +1,76 @@
+﻿<Window x:Class="CSCD349FinalProject.StartMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CSCD349FinalProject"
+        mc:Ignorable="d"
+        Title="Apocolypto" Height="834" Width="978" WindowStartupLocation="CenterScreen">
+    <Grid x:Name="startMenuGrid" Background="#FF666565">
+        <Label x:Name="choosePartyLabel" Content="Choose your party!" Margin="358,306,0,0" HorizontalContentAlignment="Center" FontSize="24" Foreground="Lime" HorizontalAlignment="Left" Width="256" Height="48" VerticalAlignment="Top"/>
+        <Label x:Name="chooseDifficultyLabel" Content="Choose your difficulty!" Margin="358,126,0,0" HorizontalContentAlignment="Center" FontSize="24" Foreground="Lime" Height="46" VerticalAlignment="Top" HorizontalAlignment="Left" Width="256"/>
+        <Label x:Name="TitleLabel" Content="APOCOLYPTO" Margin="306,36,0,0" FontSize="48" RenderTransformOrigin="0.5,0.5" FontFamily="MV Boli" FontStyle="Italic" Foreground="#FF06C529" Height="92" VerticalAlignment="Top" HorizontalAlignment="Left" Width="354">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.266"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <RadioButton x:Name="easyButton" Style="{StaticResource {x:Type ToggleButton}}" Content="EASY" Margin="176,212,0,0" GroupName="Difficulty" FontSize="30" HorizontalContentAlignment="Center" Foreground="Lime" Background="Gray" Checked="ButtonChecked" Unchecked="ButtonUnchecked" Height="48" VerticalAlignment="Top" HorizontalAlignment="Left" Width="174"/>
+        <RadioButton x:Name="normalButton" Style="{StaticResource ResourceKey={x:Type ToggleButton}}" Content="NORMAL" Margin="398,212,0,0" GroupName="Difficulty" FontSize="30" HorizontalContentAlignment="Center" Foreground="Lime" Background="Gray" Checked="ButtonChecked" Unchecked="ButtonUnchecked" Height="48" VerticalAlignment="Top" HorizontalAlignment="Left" Width="174"/>
+        <RadioButton x:Name="hardButton" Style="{StaticResource ResourceKey={x:Type ToggleButton}}" Content="HARD" Margin="620,212,0,0" GroupName="Difficulty" FontSize="30" HorizontalContentAlignment="Center" Foreground="Lime" Background="Gray" Checked="ButtonChecked" Unchecked="ButtonUnchecked" Height="48" VerticalAlignment="Top" HorizontalAlignment="Left" Width="174"/>
+        <Label x:Name="sharpshooterPartyLabel" Content="Sharpshooters" Margin="78,374,0,0" HorizontalContentAlignment="Center" FontSize="20" Height="46" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
+        <RadioButton x:Name="sharpshooterPartyButton" Style="{StaticResource {x:Type ToggleButton}}" GroupName="Party" Margin="78,428,0,0" Background ="Transparent" Height="146" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Checked="PartyButtonChecked">
+            <StackPanel>
+                <Image Source="Images/Sharpshooter.png"/>
+            </StackPanel>
+        </RadioButton>
+        <Label x:Name="medicsPartyLabel" Content="Medics" Margin="306,374,0,0" HorizontalContentAlignment="Center" FontSize="20" Height="46" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
+        <RadioButton x:Name="medicsPartyButton" Style="{StaticResource {x:Type ToggleButton}}" GroupName="Party" Margin="306,428,0,0" Background ="Transparent" Height="146" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Checked="PartyButtonChecked">
+            <StackPanel>
+                <Image Source="Images/Sharpshooter.png"/>
+            </StackPanel>
+        </RadioButton>
+        <Label x:Name="tanksPartyLabel" Content="Tanks" Margin="530,374,0,0" HorizontalContentAlignment="Center" FontSize="20" Height="46" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
+        <RadioButton x:Name="tanksPartyButton" Style="{StaticResource {x:Type ToggleButton}}" GroupName="Party" Margin="530,428,0,0" Background ="Transparent" Height="146" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Checked="PartyButtonChecked">
+            <StackPanel>
+                <Image Source="Images/Sharpshooter.png"/>
+            </StackPanel>
+        </RadioButton>
+        <Label x:Name="balancedParty" Content="Balanced" Margin="742,374,0,0" HorizontalContentAlignment="Center" FontSize="20" Height="46" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
+        <RadioButton x:Name="balancedPartyButton" Style="{StaticResource {x:Type ToggleButton}}" GroupName="Party" Margin="742,428,0,0" Background ="Transparent" Height="146" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Checked="PartyButtonChecked">
+            <StackPanel>
+                <Image Source="Images/Sharpshooter.png"/>
+            </StackPanel>
+        </RadioButton>
+        <Label x:Name="sharpshooterAttackLabel" Content="Attack:" Margin="78,600,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="128"/>
+        <Label x:Name="sharpshooterDefenseLabel" Content="Defense:" Margin="78,637,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="128"/>
+        <Label x:Name="sharpshooterInvLabel" Content="Inventory Slots:" Margin="78,674,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="132"/>
+        <Label x:Name="sharpshooterAttackNumberLabel" Content="80" Margin="211,600,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
+        <Label x:Name="sharpshooterDefenseNumberLabel" Content="20" Margin="211,637,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
+        <Label x:Name="sharpshooterInvNumberLabel" Content="5" Margin="211,674,0,0" FontSize="18" RenderTransformOrigin="0.55,2.391" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
+        <Label x:Name="medicAttackLabel" Content="Attack:" Margin="306,600,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="128"/>
+        <Label x:Name="medicDefenseLabel" Content="Defense:" Margin="306,637,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="128"/>
+        <Label x:Name="medicInvLabel" Content="Inventory Slots:" Margin="306,674,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="132"/>
+        <Label x:Name="medicAttackNumberLabel" Content="20" Margin="440,600,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
+        <Label x:Name="medicDefenseNumberLabel" Content="20" Margin="440,637,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
+        <Label x:Name="medicInvNumberLabel" Content="10" Margin="440,674,0,0" FontSize="18" RenderTransformOrigin="0.55,2.391" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
+        <Label x:Name="tankAttackLabel" Content="Attack:" Margin="530,600,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="128"/>
+        <Label x:Name="tankDefenseLabel" Content="Defense:" Margin="530,637,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="128"/>
+        <Label x:Name="tankInvLabel" Content="Inventory Slots:" Margin="530,674,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="132"/>
+        <Label x:Name="tankAttackNumberLabel" Content="40" Margin="663,600,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
+        <Label x:Name="tankDefenseNumberLabel" Content="80" Margin="663,637,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
+        <Label x:Name="tankInvNumberLabel" Content="3" Margin="663,674,0,0" FontSize="18" RenderTransformOrigin="0.55,2.391" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
+        <Label x:Name="balancedAttackLabel" Content="Attack:" Margin="742,600,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="128"/>
+        <Label x:Name="balancedDefenseLabel" Content="Defense:" Margin="742,637,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="128"/>
+        <Label x:Name="balancedInvLabel" Content="Inventory Slots:" Margin="742,674,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="132"/>
+        <Label x:Name="balancedAttackNumberLabel" Content="60" Margin="875,600,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
+        <Label x:Name="balancedDefenseNumberLabel" Content="60" Margin="875,637,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
+        <Label x:Name="balancedInvNumberLabel" Content="7" Margin="875,674,0,0" FontSize="18" RenderTransformOrigin="0.55,2.391" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
+        <Button x:Name="readyButton" Content="Ready!" Margin="377,734,0,0" FontSize="36" Foreground="Lime" Background="Gray" HorizontalContentAlignment="Center" Height="56" VerticalAlignment="Top" HorizontalAlignment="Left" Width="216" PreviewMouseDown="PreviewReadyButtonClick"/>
+
+    </Grid>
+</Window>

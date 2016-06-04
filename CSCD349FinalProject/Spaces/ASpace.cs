@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSCD349FinalProject.Characters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,7 +29,7 @@ namespace CSCD349FinalProject.Spaces
         {
             return traversed;
         }
-        public abstract void runAction();
+        public abstract void runAction(Party user, MainWindow gameboard);
 
         public abstract string ToString();
 
