@@ -64,5 +64,9 @@ namespace CSCD349FinalProject.Characters
             party[character].ChangeWeapon(weapon);
             RecalcStats();
         }
+        public ImageBrush getImg()
+        {
+            return img;
+        }
     }
 }

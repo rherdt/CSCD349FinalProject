@@ -129,5 +129,11 @@ namespace CSCD349FinalProject
             sharpshooterParyLabel.Opacity = 0;
             choosePartyLabel.Opacity = 0;
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            BattleState temp = new BattleState();
+            temp.RunBattle(gameBoardMap.getParty(), gameBoardMap.getParty());
+        }
     }
 }

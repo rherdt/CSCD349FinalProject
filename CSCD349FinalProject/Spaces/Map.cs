@@ -124,7 +124,10 @@ namespace CSCD349FinalProject.Spaces
             rec.Fill = party.GetImg();
             this.GetBoardSpace(row, col).getSpace().Child = rec;
         }
-
+        public Party getParty()
+        {
+            return this.party;
+        }
         public Point GetCurrentPosition()
         {
             return this.currentPosition;
