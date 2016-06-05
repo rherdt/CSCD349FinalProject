@@ -14,24 +14,33 @@ namespace CSCD349FinalProject.Spaces
 {
     class TreasureSquare: ASpace
     {
+
         public TreasureSquare() : base()
         {
+            this.traversed = false;
             this.Decorate();
         }
 
         public override void runAction(Party user, MainWindow gameboard)
         {
-            Random rand = new Random();
-            int temp = rand.Next(7);
-            Console.WriteLine("Number of items: " + user.GetInventory().GetItems().Count);
-            if(temp < 2)
+            if(!Traversed())
             {
-                //user.UpgradeWeapon();
+                this.traversed = true;
+                Random rand = new Random();
+                int temp = rand.Next(7);
+                Console.WriteLine("Number of items: " + user.GetInventory().GetItems().Count);
+                if (temp < 2)
+                {
+                    //user.UpgradeWeapon();
+                }
+                else
+                {
+                    user.GetInventory().AddItem(GenerateItem());
+                    gameboard.RedrawInventory();
+
+                }
             }
-            else
-            {
-                user.GetInventory().AddItem(GenerateItem());
-            }
+            
         }
 
         public override string ToString()

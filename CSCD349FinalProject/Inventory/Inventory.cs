@@ -16,7 +16,7 @@ namespace CSCD349FinalProject.Inventory
         {
             this.numSlots = numSlots;
             this.items = new List<IInvItem>(numSlots);
-            this.numAvailableSlots = this.items.Count();
+            this.numAvailableSlots = numSlots -  this.items.Count();
         }
 
         public bool AvailableSlots()
@@ -31,6 +31,7 @@ namespace CSCD349FinalProject.Inventory
                 if (AvailableSlots())
                 {
                     this.items.Add(item);
+                    this.numAvailableSlots--;
                 }
                 else
                 {//Can take out after debugging, or add to info panel
@@ -45,6 +46,7 @@ namespace CSCD349FinalProject.Inventory
             if(item != null && this.items.Count > 0)
             {
                 this.items.Remove(item);
+                this.numAvailableSlots++;
             }
         }
 
