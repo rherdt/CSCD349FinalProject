@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 using System.Windows.Shapes;
 using BattleView;
 using CSCD349FinalProject.Characters;
+using System.Windows;
 
 namespace CSCD349FinalProject.Spaces
 {
     class EnemySquare: ASpace
     {
-        Party enemy;
+        IBadGuy enemy;
         public EnemySquare(): base()
         {
-            enemy = null;
+            enemy = new Mutants();
         }
 
         public override void runAction(Party user, MainWindow gameboard)
@@ -24,7 +25,6 @@ namespace CSCD349FinalProject.Spaces
                 BattleMainWindow bv = new BattleMainWindow();
                 traversed = true;
                 bv.User = user;
-                enemy = user;
                 bv.Enemy = enemy;
                 bv.ShowDialog();
             }

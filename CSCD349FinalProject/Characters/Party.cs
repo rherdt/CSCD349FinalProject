@@ -69,7 +69,7 @@ namespace CSCD349FinalProject.Characters
             hp = hp - damage;
             if(hp < 1)
             {
-                GameOver();
+                PartyDead();
             }
         }
         public void PickupWeapon(int character, IWeapon weapon)
@@ -77,9 +77,10 @@ namespace CSCD349FinalProject.Characters
             party[character].ChangeWeapon(weapon);
             RecalcStats();
         }
-        private void GameOver()
+        private void PartyDead()
         {
-
+            GameOver go = new GameOver();
+            go.ShowDialog();
         }
     }
 }
