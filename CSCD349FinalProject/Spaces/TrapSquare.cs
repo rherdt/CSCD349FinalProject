@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Shapes;
 
 namespace CSCD349FinalProject.Spaces
@@ -18,10 +19,12 @@ namespace CSCD349FinalProject.Spaces
 
         public override void runAction(Party user, MainWindow gameboard)
         {
-            //could use this to deal with change state?
-            //could use this to deal with change state?
-            //redirect back onto playing board
-            //traversed = true;
+            if (!traversed)
+            {
+                traversed = true;
+                MessageBox.Show("You landed on a trap!");
+                user.TakeDamage(5);
+            }
         }
 
         public override string ToString()
