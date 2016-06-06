@@ -137,5 +137,13 @@ namespace CSCD349FinalProject.Spaces
                 currentPosition.Y = column;
             }
         }
+        public void setLevel(int levelnumber)
+        {
+            level = levelnumber;
+        }
+        public int getLevel()
+        {
+            return level;
+        }
     }
 }

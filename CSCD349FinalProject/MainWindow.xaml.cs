@@ -18,6 +18,10 @@ using CSCD349FinalProject.Spaces;
 using CSCD349FinalProject.GamePlay;
 using CSCD349FinalProject.Characters;
 using System.Windows.Controls.Primitives;
+using CSCD349FinalProject.Inventory;
+using System.Data.SQLite;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace CSCD349FinalProject
 {
@@ -30,12 +34,14 @@ namespace CSCD349FinalProject
         private static int floor = 1;
         private Party party;
         private int difficulty;
+        private int LoadedHealth;
 
         public MainWindow()
         {
             InitializeComponent();
             gameBoardMap = new Map(10, 10, party);
             CreateGameBoard();
+            LoadedHealth = 100;
         }
 
         public MainWindow(int difficulty, int party)
@@ -43,14 +49,30 @@ namespace CSCD349FinalProject
             InitializeComponent();
             this.difficulty = difficulty;
             this.party = new Party(party);
+            PartyLevel.Text = this.party.GetLevel().ToString();
             gameBoardMap = new Map(10, 10, this.party);
             CreateGameBoard();
             InitializeInventory();
             RoutedCommand ToggleStatCheats = new RoutedCommand();
             ToggleStatCheats.InputGestures.Add(new KeyGesture(Key.P, ModifierKeys.Control));
             CommandBindings.Add(new CommandBinding(ToggleStatCheats, ToggleCheats));
+            LoadedHealth = 100;
         }
-
+        public MainWindow(int difficulty, int party,int health)
+        {
+            InitializeComponent();
+            this.difficulty = difficulty;
+            this.party = new Party(party);
+            PartyLevel.Text = this.party.GetLevel().ToString();
+            gameBoardMap = new Map(10, 10, this.party);
+            CreateGameBoard();
+            InitializeInventory();
+            RoutedCommand ToggleStatCheats = new RoutedCommand();
+            ToggleStatCheats.InputGestures.Add(new KeyGesture(Key.P, ModifierKeys.Control));
+            CommandBindings.Add(new CommandBinding(ToggleStatCheats, ToggleCheats));
+            LoadedHealth = health;
+            HealthBar.Value = LoadedHealth;
+        }
         private void CreateGameBoard()
         {
             ISpace currentSpace;
@@ -108,10 +130,6 @@ namespace CSCD349FinalProject
                 borderArray[x] = new Border();
                 borderArray[x].Height = InventoryGrid.Height;
                 borderArray[x].Width = InventoryGrid.Width / slots;
-                //ImageBrush itemSprite = party.GetInventory().GetItems().ElementAt(x).GetImg();
-                //if (itemSprite != null)
-                //    borderArray[x].Background = party.GetInventory().GetItems().ElementAt(x).GetImg();
-                //else
                 borderArray[x].Background = Brushes.Gray;
                 borderArray[x].VerticalAlignment = VerticalAlignment.Center;
                 borderArray[x].SetValue(Grid.ColumnProperty, x);
@@ -123,12 +141,16 @@ namespace CSCD349FinalProject
 
         public void RedrawInventory()
         {
+
             int numItems = party.GetInventory().GetItems().Count;
 
             for(int x = 0; x < numItems; x++)
             {
                 Border b = (Border)InventoryGrid.Children[x];
                 b.Background = party.GetInventory().GetItems().ElementAt(x).GetImg();
+                b.Tag = party.GetInventory().GetItems().ElementAt(x);
+                InventoryGrid.Children[x].MouseLeftButtonDown -= new MouseButtonEventHandler(InventoryItemClick);
+                InventoryGrid.Children[x].MouseLeftButtonDown += new MouseButtonEventHandler(InventoryItemClick);
             }
         }
 
@@ -213,6 +235,40 @@ namespace CSCD349FinalProject
             hw.Show();
         }
 
+        private void MainWindow1_Activated(object sender, EventArgs e)
+        {
+            HealthBar.Value = LoadedHealth;
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            SaveGame();
+        }
+        private void SaveGame()
+        {
+            party.Savedname = textBox.Text;
+            Random random = new Random();
+
+            string connection = "Data Source = ../../GameSaves.db; Version = 3; Password = test;";
+            string command = "INSERT INTO  [SavedGames] Values(" + Convert.ToInt32(Math.Floor(random.NextDouble() * 1000)) + ",'" + party.Savedname + "', " + gameBoardMap.getLevel() + ", " + party.GetLevel() + ", " + party.GetPartyType() + ", " + party.GetHP() + ");";
+            SQLiteConnection connect = new SQLiteConnection(connection);
+            connect.Open();
+            SQLiteCommand run = new SQLiteCommand(command,connect);
+            run.ExecuteNonQuery();
+        }
+
+        private SqlDataAdapter SqlDataAdapter(object selectCommand, object connectionString)
+        {
+            throw new NotImplementedException();
+        }
+        public void setLevel(int lv)
+        {
+            PartyLevel.Text = lv.ToString();
+        }
+        public void setPartyHP(int hp)
+        {
+            HealthBar.Value = hp;
+        }
         private void ToggleCheats(object sender, ExecutedRoutedEventArgs e)
         {
             party.ToggleCheat();
@@ -247,6 +303,25 @@ namespace CSCD349FinalProject
                     win.ShowDialog();
                 }
             }
+        }
+
+        private void InventoryItemClick(object sender, RoutedEventArgs e)
+        {
+            Border b = (Border)sender;
+            if(b.Tag != null)
+            {
+                party.GetInventory().UseItem((IInvItem)b.Tag);
+                foreach(Border bor in InventoryGrid.Children)
+                {
+                    bor.Background = Brushes.Gray;
+                }
+                RedrawInventory();
+            }
+        }
+
+        private void textBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            textBox.Text = "";
         }
     }
 }

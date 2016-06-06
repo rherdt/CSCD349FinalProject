@@ -1,0 +1,15 @@
+﻿<Window x:Class="CSCD349FinalProject.LoadGame"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CSCD349FinalProject"
+        mc:Ignorable="d"
+        Title="LoadGame" Height="300" Width="300"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="214" Background="gray" Margin="10,46,0,0" VerticalAlignment="Top" Width="272" SelectionChanged="listBox_SelectionChanged"/>
+        <Label x:Name="label" Content="Select Saved Game" HorizontalAlignment="Left" Margin="64,10,0,0" VerticalAlignment="Top" Width="157"/>
+    </Grid>
+</Window>

@@ -128,6 +128,9 @@
     <Compile Include="Inventory\Inventory.cs" />
     <Compile Include="Inventory\Medkit.cs" />
     <Compile Include="Inventory\Molotov.cs" />
+    <Compile Include="LoadGame.xaml.cs">
+      <DependentUpon>LoadGame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Spaces\ASpace.cs" />
     <Compile Include="Spaces\BlankSquare.cs" />
     <Compile Include="Spaces\EdgeSquare.cs" />
@@ -158,6 +161,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HelpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadGame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -201,6 +208,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="GameSaves.db" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -208,6 +216,7 @@
     </None>
     <AppDesigner Include="Properties\" />
     <None Include="SavedGames.db" />
+    <None Include="SavedGames.sqlite3" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

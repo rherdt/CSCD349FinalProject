@@ -23,9 +23,9 @@
         <RadioButton x:Name="normalButton" Style="{StaticResource ResourceKey={x:Type ToggleButton}}" Content="NORMAL" Margin="398,212,0,0" GroupName="Difficulty" FontSize="30" HorizontalContentAlignment="Center" Foreground="Lime" Background="Gray" Checked="ButtonChecked" Unchecked="ButtonUnchecked" Height="48" VerticalAlignment="Top" HorizontalAlignment="Left" Width="174"/>
         <RadioButton x:Name="hardButton" Style="{StaticResource ResourceKey={x:Type ToggleButton}}" Content="HARD" Margin="620,212,0,0" GroupName="Difficulty" FontSize="30" HorizontalContentAlignment="Center" Foreground="Lime" Background="Gray" Checked="ButtonChecked" Unchecked="ButtonUnchecked" Height="48" VerticalAlignment="Top" HorizontalAlignment="Left" Width="174"/>
         <Label x:Name="sharpshooterPartyLabel" Content="Sharpshooters" Margin="78,374,0,0" HorizontalContentAlignment="Center" FontSize="20" Height="46" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
-        <RadioButton x:Name="sharpshooterPartyButton" Style="{StaticResource {x:Type ToggleButton}}" GroupName="Party" Margin="78,428,0,0" Background ="Transparent" Height="146" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Checked="PartyButtonChecked">
+        <RadioButton x:Name="sharpshooterPartyButton" Style="{StaticResource {x:Type ToggleButton}}" GroupName="Party" Margin="78,428,742,230" Height="146" FontSize="30" HorizontalContentAlignment="Center" Foreground="Lime" Background="Gray" VerticalAlignment="Center" Width="150" Checked="PartyButtonChecked">
             <StackPanel>
-                <Image Source="Images/Sharpshooters.png"/>
+                <Image Source="Images/Sharpshooters.png" Width="121"/>
             </StackPanel>
         </RadioButton>
         <Label x:Name="medicsPartyLabel" Content="Medics" Margin="306,374,0,0" HorizontalContentAlignment="Center" FontSize="20" Height="46" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
@@ -78,6 +78,7 @@
             <MenuItem x:Name="AboutMenuItem" Header="About" Click="AboutMenuClick"/>
             <MenuItem x:Name="HelpMenuItem" Header="Help" Click="HelpMenuClick"/>
         </Menu>
+        <Button x:Name="button" Content="Load Game" Margin="35,48,0,0" Click="button_Click"  FontSize="36" Foreground="Lime" Background="Gray" HorizontalContentAlignment="Center" Height="56" VerticalAlignment="Top" HorizontalAlignment="Left" Width="216"/>
 
     </Grid>
 </Window>
