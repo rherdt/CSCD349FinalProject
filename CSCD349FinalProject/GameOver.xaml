@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:CSCD349FinalProject"
         mc:Ignorable="d"
         Title="Game Over" Height="300" Width="300"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
     <Grid Background="Black">
         <Label x:Name="GameOverLabel" Content="Game Over..." Foreground="Red" FontFamily="Impact" FontSize="50" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Height="65" Width="272"/>
         <Button x:Name="TA" Content="Try Again?" HorizontalAlignment="Left" Margin="40,176,0,0" VerticalAlignment="Top" Width="75" Click="TryAgain_Click"/>

@@ -32,6 +32,7 @@ namespace BattleView
         SoundPlayer music;
         private Party user;
         private IEnemyParty enemy;
+        private int floor;
 
         internal Party User
         {
@@ -60,6 +61,19 @@ namespace BattleView
                 enemy = value;
                 EnemyHealth.Value = enemy.getHP();
                 WriteOutput("You are being attacked by " + enemy.GetName());
+            }
+        }
+
+        internal int Floor
+        {
+            get
+            {
+                return floor;
+            }
+
+            set
+            {
+                floor = value;
             }
         }
 
@@ -182,7 +196,7 @@ namespace BattleView
         private bool EnemyDefend()
         {
             Random rand = new Random();
-            if ((enemy.GetDefense() * rand.NextDouble()) < (rand.NextDouble()/2)*user.GetLevel())
+            if (((enemy.GetDefense() + floor) * rand.NextDouble()) < rand.NextDouble()*user.GetLevel())
             {
                 return true;
             }

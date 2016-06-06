@@ -26,6 +26,7 @@ namespace CSCD349FinalProject.Spaces
                 traversed = true;
                 bv.User = user;
                 bv.Enemy = enemy;
+                bv.Floor = gameboard.GetFloor();
                 bv.ShowDialog();
             }
             

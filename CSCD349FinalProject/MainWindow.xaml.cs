@@ -139,6 +139,11 @@ namespace CSCD349FinalProject
             gameBoardMap.SetCurrentPosition(gameBoardMap.GetRows() - 1, 0);
         }
 
+        public int GetFloor()
+        {
+            return floor;
+        }
+
         public void NextFloor()
         {
             Reset();
