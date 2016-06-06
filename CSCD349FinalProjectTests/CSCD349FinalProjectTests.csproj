@@ -61,7 +61,6 @@
     <Compile Include="PartyTests.cs" />
     <Compile Include="PlayerMovementTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StartWindowTests.cs" />
     <Compile Include="WeaponTests.cs" />
   </ItemGroup>
   <ItemGroup>
