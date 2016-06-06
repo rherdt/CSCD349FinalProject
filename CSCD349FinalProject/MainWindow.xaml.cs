@@ -17,6 +17,7 @@ using CSCD349FinalProject.States;
 using CSCD349FinalProject.Spaces;
 using CSCD349FinalProject.GamePlay;
 using CSCD349FinalProject.Characters;
+using System.Windows.Controls.Primitives;
 
 namespace CSCD349FinalProject
 {
@@ -27,7 +28,7 @@ namespace CSCD349FinalProject
     {
         private static Map gameBoardMap;
         private static int floor = 1;
-        private Party party = new Party(new Sharpshooter(), new Sharpshooter(), new Sharpshooter(), @"..\..\images\sharpshooter.png");
+        private Party party;
         private int difficulty;
 
         public MainWindow()
@@ -35,6 +36,16 @@ namespace CSCD349FinalProject
             InitializeComponent();
             gameBoardMap = new Map(10, 10, party);
             CreateGameBoard();
+        }
+
+        public MainWindow(int difficulty, int party)
+        {
+            InitializeComponent();
+            this.difficulty = difficulty;
+            this.party = new Party(party);
+            gameBoardMap = new Map(10, 10, this.party);
+            CreateGameBoard();
+            InitializeInventory();
         }
 
         private void CreateGameBoard()
@@ -70,7 +81,10 @@ namespace CSCD349FinalProject
                     GameBoard.Children.Add(currentSpace.getSpace());
                 }
             }
+
             InitializePlayer();
+            InitializeStairs();
+
         }
 
         private void Reset()
@@ -79,6 +93,42 @@ namespace CSCD349FinalProject
             GameBoard.ColumnDefinitions.Clear();
             GameBoard.Children.Clear();           
         }
+
+        private void InitializeInventory()
+        {
+            int slots = party.GetInventory().getNumSlots();
+            Border[] borderArray = new Border[slots];
+
+            for(int x = 0; x < slots; x++)
+            {
+                InventoryGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                borderArray[x] = new Border();
+                borderArray[x].Height = InventoryGrid.Height;
+                borderArray[x].Width = InventoryGrid.Width / slots;
+                //ImageBrush itemSprite = party.GetInventory().GetItems().ElementAt(x).GetImg();
+                //if (itemSprite != null)
+                //    borderArray[x].Background = party.GetInventory().GetItems().ElementAt(x).GetImg();
+                //else
+                borderArray[x].Background = Brushes.Gray;
+                borderArray[x].VerticalAlignment = VerticalAlignment.Center;
+                borderArray[x].SetValue(Grid.ColumnProperty, x);
+
+                InventoryGrid.Children.Add(borderArray[x]);
+
+            }
+        }
+
+        public void RedrawInventory()
+        {
+            int numItems = party.GetInventory().GetItems().Count;
+
+            for(int x = 0; x < numItems; x++)
+            {
+                Border b = (Border)InventoryGrid.Children[x];
+                b.Background = party.GetInventory().GetItems().ElementAt(x).GetImg();
+            }
+        }
+
 
         private void InitializePlayer()
         {
@@ -89,10 +139,22 @@ namespace CSCD349FinalProject
         public void NextFloor()
         {
             Reset();
-            gameBoardMap = new Map(10, 10, party);
+            gameBoardMap = new Map(10, 10, this.party);
             CreateGameBoard();
             floor++;
             FloorNumberLabel.Content = floor;
+        }
+
+        private void InitializeStairs()
+        {
+            ImageBrush texture = new ImageBrush();
+            texture.ImageSource = new BitmapImage(new Uri(@"../../Images/stairs.png", UriKind.Relative));
+
+            Rectangle rec = new Rectangle();
+            rec.Height = 60;
+            rec.Width = 60;
+            rec.Fill = texture;
+            gameBoardMap.GetBoardSpace(0, gameBoardMap.GetColumns() - 1).getSpace().Child = rec;
         }
 
         private void checkSpace()
@@ -106,33 +168,40 @@ namespace CSCD349FinalProject
             if (e.Key == Key.Up)
             {
                 PlayerMovement.KeyUp(gameBoardMap);
-                checkSpace();
+                //checkSpace();
             }
             else if (e.Key == Key.Down)
             {
                 PlayerMovement.KeyDown(gameBoardMap);
-                checkSpace();
+                //checkSpace();
             }
             else if(e.Key == Key.Right)
             {
                 PlayerMovement.KeyRight(gameBoardMap);
-                checkSpace();
+                //checkSpace();
             }
             else if (e.Key == Key.Left)
             {
                 PlayerMovement.KeyLeft(gameBoardMap);
-                checkSpace();
+                //checkSpace();
             }
         }
 
-        //private void sharpshooterpartybuttonclick(object sender, eventargs e)
-        //{
-        //    party party = new party(new sharpshooter(), new sharpshooter(), new sharpshooter(), @"..\..\images\sharpshooter.png");
-        //    gameboardmap = new map(8, 8, party);
-        //    creategameboard();
-        //    sharpshooterpartybutton.opacity = 0;
-        //    sharpshooterparylabel.opacity = 0;
-        //    choosepartylabel.opacity = 0;
-        //}
+        private void MenuExitClick(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void AboutMenuClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Developer: Brogrammers\r\n\r\nVersion: 1.0\r\n\r\n.NET Framework Version: 4.5.2\r\n\r\nBit Version: 32-bit" +
+                "\r\n\r\nBattle Music: Property of Nintendo,\r\n\t     Composed by Junichi Masuda");
+        }
+
+        private void HelpMenuClick(object sender, RoutedEventArgs e)
+        {
+            HelpWindow hw = new HelpWindow();
+            hw.Show();
+        }
     }
 }

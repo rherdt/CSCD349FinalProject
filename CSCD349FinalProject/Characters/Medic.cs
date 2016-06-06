@@ -15,16 +15,16 @@ namespace CSCD349FinalProject.Characters
         private int defense;
         private IWeapon weapon;
         private int invSlots;
-        private InvItem[] inv;
+        private IInvItem[] inv;
 
         public Medic()
         {
             this.name = "Medic";
             this.attack = 5;
             this.defense = 5;
-            this.weapon = new TempWeapon();
+            this.weapon = new USPS();
             this.invSlots = 10;
-            this.inv = new InvItem[invSlots];
+            this.inv = new IInvItem[invSlots];
         }
 
         public string GetName()
@@ -48,7 +48,7 @@ namespace CSCD349FinalProject.Characters
             return defense;
         }
 
-        public InvItem GetInvItem(int slot)
+        public IInvItem GetInvItem(int slot)
         {
             if (slot >= 0 && slot < inv.Length)
                 return inv[slot];
@@ -61,7 +61,7 @@ namespace CSCD349FinalProject.Characters
         {
             bool full = true;
 
-            foreach (InvItem i in inv)
+            foreach (IInvItem i in inv)
             {
                 if (i == null)
                     full = false;
@@ -70,7 +70,7 @@ namespace CSCD349FinalProject.Characters
             return full;
         }
 
-        public void PickUpInvItem(InvItem item)
+        public void PickUpInvItem(IInvItem item)
         {
             if (!InventoryFull())
             {

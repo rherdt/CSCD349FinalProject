@@ -9,25 +9,20 @@
     <Grid x:Name="MainGrid" Background="#FF666565">
         <Grid x:Name="GameBoard" Height="600" Width="600" Margin="185,97,0,0" VerticalAlignment="Top" Background="#FF1E1F1E" Focusable="True" HorizontalAlignment="Left"/>
         <Label x:Name="TitleLabel" Content="APOCOLYPTO" Margin="312,14,0,0" VerticalAlignment="Top" Height="94" FontSize="48" RenderTransformOrigin="0.5,0.5" FontFamily="MV Boli" FontStyle="Italic" Foreground="#FF06C529" HorizontalAlignment="Left" Width="348">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.266"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
         </Label>
         <Grid x:Name="RawGrid" HorizontalAlignment="Left" Height="600" Margin="10,21,0,0" VerticalAlignment="Top" Width="600" Background="#FF1E1F1E" IsEnabled="False" Visibility="Hidden"/>
-        <Menu x:Name="MainMenu" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="1106" Grid.ColumnSpan="2">
+        <Menu x:Name="MainMenu" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="970">
             <MenuItem Header="_File">
-                <MenuItem Header="Exit" />
+                <MenuItem Header="_Exit" Click="MenuExitClick"/>
             </MenuItem>
-            <MenuItem x:Name="AboutMenuItem" Header="About"/>
-            <MenuItem x:Name="HelpMenuItem" Header="Help"/>
+            <MenuItem x:Name="AboutMenuItem" Header="About" Click="AboutMenuClick"/>
+            <MenuItem x:Name="HelpMenuItem" Header="Help" Click="HelpMenuClick"/>
         </Menu>
         <Label x:Name="FloorLabel" Content="Floor:" HorizontalAlignment="Left" Height="30" Margin="803,152,0,0" VerticalAlignment="Top" Width="61" FontSize="18.667" FontFamily="Aharoni"/>
-        <Label x:Name="FloorNumberLabel" Content="1" HorizontalAlignment="Left" Height="30" Margin="864,148,0,0" VerticalAlignment="Top" Width="32" FontSize="24" FontFamily="Aharoni"/>
+        <Label x:Name="FloorNumberLabel" Content="1" HorizontalAlignment="Left" Height="34" Margin="864,148,0,0" VerticalAlignment="Top" Width="38" FontSize="24" FontFamily="Aharoni"/>
+        <Grid x:Name="InventoryGrid" HorizontalAlignment="Left" Height="65" Margin="185,715,0,0" VerticalAlignment="Top" Width="600"/>
+        <Rectangle x:Name="BackgroundHealthBar" Fill="#FF2FEC06" HorizontalAlignment="Left" Height="472" Margin="803,225,0,0" Stroke="Black" VerticalAlignment="Top" Width="100"/>
+        <Rectangle x:Name="ForegroundHealthBar" Fill="Black" HorizontalAlignment="Left" Height="1" Margin="803,225,0,0" Stroke="Black" VerticalAlignment="Top" Width="100"/>
 
     </Grid>
 </Window>

@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace CSCD349FinalProject.Characters
 {
-    class Zombies : IBadGuy
+    class Zombies : IEnemyParty
     {
         private string name;
         private int attack;
         private int defense;
+        private ImageBrush img = new ImageBrush();
         private int hp;
 
         public Zombies()
@@ -48,6 +50,11 @@ namespace CSCD349FinalProject.Characters
                 return true;
             }
             return false;
+        }
+
+        public ImageBrush GetImg()
+        {
+            return img;
         }
     }
 }
