@@ -46,6 +46,9 @@ namespace CSCD349FinalProject
             gameBoardMap = new Map(10, 10, this.party);
             CreateGameBoard();
             InitializeInventory();
+            RoutedCommand ToggleStatCheats = new RoutedCommand();
+            ToggleStatCheats.InputGestures.Add(new KeyGesture(Key.P, ModifierKeys.Control));
+            CommandBindings.Add(new CommandBinding(ToggleStatCheats, ToggleCheats));
         }
 
         private void CreateGameBoard()
@@ -202,6 +205,12 @@ namespace CSCD349FinalProject
         {
             HelpWindow hw = new HelpWindow();
             hw.Show();
+        }
+
+        private void ToggleCheats(object sender, ExecutedRoutedEventArgs e)
+        {
+            party.ToggleCheat();
+            MessageBox.Show("Cheats Toggled");
         }
     }
 }

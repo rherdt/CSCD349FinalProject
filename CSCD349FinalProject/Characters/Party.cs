@@ -15,6 +15,7 @@ namespace CSCD349FinalProject.Characters
         private Inventory.Inventory inventory;
         private int hp;
         private ImageBrush img;
+        private bool cheatEnabled = false;
 
         public Party(int p)
         {
@@ -70,8 +71,11 @@ namespace CSCD349FinalProject.Characters
 
         private void RecalcStats()
         {
-            partyAttack = level * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack());
-            partyDefense = level * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense());
+            if (!cheatEnabled)
+            {
+                partyAttack = level * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack());
+                partyDefense = level * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense());
+            }
         }
 
         public int GetPartyAttack()
@@ -133,6 +137,29 @@ namespace CSCD349FinalProject.Characters
             RecalcStats();
             return true;
         }
+
+        public void ToggleCheat()
+        {
+            if (cheatEnabled)
+                TurnOffCheat();
+
+            else
+                TurnOnCheat();
+        }
+
+        private void TurnOnCheat()
+        {
+            cheatEnabled = true;
+            partyAttack = 1000000;
+            partyDefense = 1000000;
+        }
+
+        private void TurnOffCheat()
+        {
+            cheatEnabled = false;
+            RecalcStats();
+        }
+
         private void PartyDead()
         {
             GameOver go = new GameOver();

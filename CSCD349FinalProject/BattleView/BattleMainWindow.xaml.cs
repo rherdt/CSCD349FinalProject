@@ -182,7 +182,7 @@ namespace BattleView
         private bool EnemyDefend()
         {
             Random rand = new Random();
-            if ((enemy.GetDefense() * rand.NextDouble()) > 1.5*user.GetLevel())
+            if ((enemy.GetDefense() * rand.NextDouble()) < (rand.NextDouble()/2)*user.GetLevel())
             {
                 return true;
             }
