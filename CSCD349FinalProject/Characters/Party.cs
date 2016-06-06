@@ -155,7 +155,7 @@ namespace CSCD349FinalProject.Characters
             if(hp < 1)
             {
                 PartyDead();
-        }
+            }
         }
         public bool UpgradeWeapon()
         {
