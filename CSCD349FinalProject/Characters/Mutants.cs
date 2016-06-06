@@ -38,7 +38,7 @@ namespace CSCD349FinalProject.Characters
             return defense;
         }
 
-        public int GetHP()
+        public int getHP()
         {
             return hp;
         }
