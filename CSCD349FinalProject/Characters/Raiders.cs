@@ -12,6 +12,7 @@ namespace CSCD349FinalProject.Characters
         private string name;
         private int attack;
         private int defense;
+        private int hp;
         private ImageBrush img = new ImageBrush();
 
         public Raiders()
@@ -19,6 +20,7 @@ namespace CSCD349FinalProject.Characters
             this.name = "Raiders";
             this.attack = 4;
             this.defense = 10;
+            this.hp = 100;
         }
 
         public string GetName()
@@ -34,6 +36,20 @@ namespace CSCD349FinalProject.Characters
         public int GetDefense()
         {
             return defense;
+        }
+
+        public int getHP()
+        {
+            return hp;
+        }
+        public bool TakeDamage(int amount)
+        {
+            hp = hp - amount;
+            if (hp < 1)
+            {
+                return true;
+            }
+            return false;
         }
 
         public ImageBrush GetImg()

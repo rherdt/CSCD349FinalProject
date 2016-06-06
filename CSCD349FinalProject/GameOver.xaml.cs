@@ -26,7 +26,8 @@ namespace CSCD349FinalProject
 
         private void TryAgain_Click(object sender, RoutedEventArgs e)
         {
-            
+            System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
+            Application.Current.Shutdown();
         }
 
         private void QuitGame_Click(object sender, RoutedEventArgs e)

@@ -14,12 +14,14 @@ namespace CSCD349FinalProject.Characters
         private int partyDefense;
         private int level;
         private Inventory.Inventory inventory;
+        private int hp;
         private ImageBrush img;
 
         public Party(int p)
         {
             partyHealth = 100;
             level = 1;
+            hp = 100;
             ConvertNumToParty(p);
             partyAttack = level * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack());
             partyDefense = level * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense());
@@ -62,7 +64,7 @@ namespace CSCD349FinalProject.Characters
                 party[0] = new Sharpshooter();
                 party[1] = new Medic();
                 party[2] = new Tank();
-                img = new ImageBrush();
+            img = new ImageBrush();
                 inventory = new Inventory.Inventory(7);
                 img.ImageSource = new BitmapImage(new Uri(@"../../Images/Balanced.png", UriKind.Relative));
             }
@@ -74,25 +76,17 @@ namespace CSCD349FinalProject.Characters
             partyDefense = level * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense());
         }
 
-        public void LevelUp()
-        {
-            level += 1;
-            RecalcStats();
-        }
-
-        public int GetHP()
+        public int GetPartyHealth()
         {
             return partyHealth;
         }
 
-        public void TakeDamage(int damage)
+        public void Damage(int hp)
         {
-            partyHealth = partyHealth - damage;
+            partyHealth -= hp;
 
-            if (partyHealth < 1)
-            {
-                partyHealth = 0;
-            }
+            if (hp < 0)
+                hp = 0;
         }
 
         public int GetPartyAttack()
@@ -120,10 +114,32 @@ namespace CSCD349FinalProject.Characters
             return inventory;
         }
 
-        public void UpgradeWeapon(int character)
+        public void LevelUp()
         {
-            party[character].UpgradeWeapon();
+            level += 1;
             RecalcStats();
+        }
+        public int GetHP()
+        {
+            return hp;
+        }
+        public void TakeDamage(int damage)
+        {
+            hp = hp - damage;
+            if(hp < 1)
+            {
+                PartyDead();
+        }
+        }
+        public void PickupWeapon(int character, IWeapon weapon)
+        {
+            party[character].ChangeWeapon(weapon);
+            RecalcStats();
+        }
+        private void PartyDead()
+        {
+            GameOver go = new GameOver();
+            go.ShowDialog();
         }
     }
 }
