@@ -146,6 +146,9 @@
     <Compile Include="Weapons\P90.cs" />
     <Compile Include="Weapons\Scout.cs" />
     <Compile Include="Weapons\USPS.cs" />
+    <Compile Include="Winner.xaml.cs">
+      <DependentUpon>Winner.xaml</DependentUpon>
+    </Compile>
     <Page Include="BattleView\BattleMainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -172,6 +175,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="StartMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Winner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

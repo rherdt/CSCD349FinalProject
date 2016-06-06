@@ -146,6 +146,7 @@ namespace CSCD349FinalProject
 
         public void NextFloor()
         {
+            CheckIfWin();
             Reset();
             gameBoardMap = new Map(10, 10, this.party);
             CreateGameBoard();
@@ -216,6 +217,36 @@ namespace CSCD349FinalProject
         {
             party.ToggleCheat();
             MessageBox.Show("Cheats Toggled");
+        }
+
+        private void CheckIfWin()
+        {
+            if (difficulty == 1)
+            {
+                if (floor == 5)
+                {
+                    Winner win = new Winner();
+                    win.ShowDialog();
+                }
+            }
+
+            if (difficulty == 2)
+            {
+                if (floor == 10)
+                {
+                    Winner win = new Winner();
+                    win.ShowDialog();
+                }
+            }
+
+            if (difficulty == 3)
+            {
+                if (floor == 15)
+                {
+                    Winner win = new Winner();
+                    win.ShowDialog();
+                }
+            }
         }
     }
 }
