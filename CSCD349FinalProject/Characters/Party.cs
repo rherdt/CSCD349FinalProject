@@ -9,7 +9,6 @@ namespace CSCD349FinalProject.Characters
     class Party : IParty
     {
         private IGoodGuy[] party = new IGoodGuy[3];
-        private int partyHealth;
         private int partyAttack;
         private int partyDefense;
         private int type;
@@ -17,6 +16,7 @@ namespace CSCD349FinalProject.Characters
         private Inventory.Inventory inventory;
         private int hp;
         private ImageBrush img;
+        private bool cheatEnabled = false;
         private string savedname;
 
         public string Savedname
@@ -34,7 +34,6 @@ namespace CSCD349FinalProject.Characters
 
         public Party(int p)
         {
-            partyHealth = 100;
             level = 1;
             hp = 100;
             ConvertNumToParty(p);
@@ -91,21 +90,11 @@ namespace CSCD349FinalProject.Characters
 
         private void RecalcStats()
         {
+            if (!cheatEnabled)
+            {
             partyAttack = level * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack());
             partyDefense = level * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense());
         }
-
-        public int GetPartyHealth()
-        {
-            return partyHealth;
-        }
-
-        public void Damage(int hp)
-        {
-            partyHealth -= hp;
-
-            if (hp < 0)
-                hp = 0;
         }
 
         public int GetPartyAttack()
@@ -150,11 +139,46 @@ namespace CSCD349FinalProject.Characters
                 PartyDead();
         }
         }
-        public void PickupWeapon(int character, IWeapon weapon)
+        public bool UpgradeWeapon()
         {
-            party[character].ChangeWeapon(weapon);
+            int character = 0;
+
+            while (party[character].IsUpgraded())
+            {
+                if (character <= 1)
+                    character++;
+
+                else
+                    return false;
+            }
+
+            party[character].UpgradeWeapon();
+            RecalcStats();
+            return true;
+        }
+
+        public void ToggleCheat()
+        {
+            if (cheatEnabled)
+                TurnOffCheat();
+
+            else
+                TurnOnCheat();
+        }
+
+        private void TurnOnCheat()
+        {
+            cheatEnabled = true;
+            partyAttack = 1000000;
+            partyDefense = 1000000;
+        }
+
+        private void TurnOffCheat()
+        {
+            cheatEnabled = false;
             RecalcStats();
         }
+
         private void PartyDead()
         {
             GameOver go = new GameOver();

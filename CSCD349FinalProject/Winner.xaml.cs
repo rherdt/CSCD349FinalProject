@@ -15,16 +15,16 @@ using System.Windows.Shapes;
 namespace CSCD349FinalProject
 {
     /// <summary>
-    /// Interaction logic for GameOver.xaml
+    /// Interaction logic for Winner.xaml
     /// </summary>
-    public partial class GameOver : Window
+    public partial class Winner : Window
     {
-        public GameOver()
+        public Winner()
         {
             InitializeComponent();
         }
 
-        private void TryAgain_Click(object sender, RoutedEventArgs e)
+        private void PlayAgain_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
             Application.Current.Shutdown();

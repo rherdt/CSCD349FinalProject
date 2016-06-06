@@ -8,7 +8,8 @@
         Deactivated="Window_Deactivated"
         mc:Ignorable="d"
         Title="Battle View" Height="350" Width="525"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None">
     <Grid Background="LightGray">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
