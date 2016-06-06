@@ -45,6 +45,7 @@ namespace CSCD349FinalProject
             this.party = new Party(party);
             gameBoardMap = new Map(10, 10, this.party);
             CreateGameBoard();
+            InitializeInventory();
         }
 
         private void CreateGameBoard()
@@ -80,7 +81,10 @@ namespace CSCD349FinalProject
                     GameBoard.Children.Add(currentSpace.getSpace());
                 }
             }
+
             InitializePlayer();
+            InitializeStairs();
+
         }
 
         private void Reset()
@@ -89,6 +93,42 @@ namespace CSCD349FinalProject
             GameBoard.ColumnDefinitions.Clear();
             GameBoard.Children.Clear();           
         }
+
+        private void InitializeInventory()
+        {
+            int slots = party.GetInventory().getNumSlots();
+            Border[] borderArray = new Border[slots];
+
+            for(int x = 0; x < slots; x++)
+            {
+                InventoryGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                borderArray[x] = new Border();
+                borderArray[x].Height = InventoryGrid.Height;
+                borderArray[x].Width = InventoryGrid.Width / slots;
+                //ImageBrush itemSprite = party.GetInventory().GetItems().ElementAt(x).GetImg();
+                //if (itemSprite != null)
+                //    borderArray[x].Background = party.GetInventory().GetItems().ElementAt(x).GetImg();
+                //else
+                borderArray[x].Background = Brushes.Gray;
+                borderArray[x].VerticalAlignment = VerticalAlignment.Center;
+                borderArray[x].SetValue(Grid.ColumnProperty, x);
+
+                InventoryGrid.Children.Add(borderArray[x]);
+
+            }
+        }
+
+        public void RedrawInventory()
+        {
+            int numItems = party.GetInventory().GetItems().Count;
+
+            for(int x = 0; x < numItems; x++)
+            {
+                Border b = (Border)InventoryGrid.Children[x];
+                b.Background = party.GetInventory().GetItems().ElementAt(x).GetImg();
+            }
+        }
+
 
         private void InitializePlayer()
         {
@@ -99,10 +139,22 @@ namespace CSCD349FinalProject
         public void NextFloor()
         {
             Reset();
-            gameBoardMap = new Map(10, 10, party);
+            gameBoardMap = new Map(10, 10, this.party);
             CreateGameBoard();
             floor++;
             FloorNumberLabel.Content = floor;
+        }
+
+        private void InitializeStairs()
+        {
+            ImageBrush texture = new ImageBrush();
+            texture.ImageSource = new BitmapImage(new Uri(@"../../Images/stairs.png", UriKind.Relative));
+
+            Rectangle rec = new Rectangle();
+            rec.Height = 60;
+            rec.Width = 60;
+            rec.Fill = texture;
+            gameBoardMap.GetBoardSpace(0, gameBoardMap.GetColumns() - 1).getSpace().Child = rec;
         }
 
         private void checkSpace()
@@ -116,22 +168,22 @@ namespace CSCD349FinalProject
             if (e.Key == Key.Up)
             {
                 PlayerMovement.KeyUp(gameBoardMap);
-                checkSpace();
+                //checkSpace();
             }
             else if (e.Key == Key.Down)
             {
                 PlayerMovement.KeyDown(gameBoardMap);
-                checkSpace();
+                //checkSpace();
             }
             else if(e.Key == Key.Right)
             {
                 PlayerMovement.KeyRight(gameBoardMap);
-                checkSpace();
+                //checkSpace();
             }
             else if (e.Key == Key.Left)
             {
                 PlayerMovement.KeyLeft(gameBoardMap);
-                checkSpace();
+                //checkSpace();
             }
         }
 

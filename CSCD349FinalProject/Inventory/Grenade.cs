@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace CSCD349FinalProject.Inventory
 {
     class Grenade : IInvItem
     {
         private string name = "Grenade";
-        private ImageBrush img = new ImageBrush();
+        private ImageBrush img = new ImageBrush(new BitmapImage(new Uri(@"../../Images/Grenade.png", UriKind.Relative)));
 
         public string GetName()
         {
