@@ -143,8 +143,7 @@ namespace CSCD349FinalProject
             lgScreen.ShowDialog();
             Party partyLoad = LoadGame();
             Map loadedMap = new Map(10, 10, partyLoad);
-            MainWindow mw = new MainWindow(1, ConvertPartyButtonToNumber());
-            mw.setPartyHP(partyLoad.GetHP());
+            MainWindow mw = new MainWindow(1, ConvertPartyButtonToNumber(), partyLoad.GetHP());
             mw.setLevel(partyLoad.GetLevel());
             connection.Close();
             this.Close();

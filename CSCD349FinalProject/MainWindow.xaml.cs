@@ -34,6 +34,7 @@ namespace CSCD349FinalProject
         private static int floor = 1;
         private Party party;
         private int difficulty;
+        private int LoadedHealth;
 
         public MainWindow()
         {
@@ -55,7 +56,21 @@ namespace CSCD349FinalProject
             ToggleStatCheats.InputGestures.Add(new KeyGesture(Key.P, ModifierKeys.Control));
             CommandBindings.Add(new CommandBinding(ToggleStatCheats, ToggleCheats));
         }
-
+        public MainWindow(int difficulty, int party,int health)
+        {
+            InitializeComponent();
+            this.difficulty = difficulty;
+            this.party = new Party(party);
+            PartyLevel.Text = this.party.GetLevel().ToString();
+            gameBoardMap = new Map(10, 10, this.party);
+            CreateGameBoard();
+            InitializeInventory();
+            RoutedCommand ToggleStatCheats = new RoutedCommand();
+            ToggleStatCheats.InputGestures.Add(new KeyGesture(Key.P, ModifierKeys.Control));
+            CommandBindings.Add(new CommandBinding(ToggleStatCheats, ToggleCheats));
+            LoadedHealth = health;
+            HealthBar.Value = LoadedHealth;
+        }
         private void CreateGameBoard()
         {
             ISpace currentSpace;
@@ -220,7 +235,7 @@ namespace CSCD349FinalProject
 
         private void MainWindow1_Activated(object sender, EventArgs e)
         {
-            HealthBar.Value = party.GetHP();
+            HealthBar.Value = LoadedHealth;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
