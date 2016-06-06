@@ -237,7 +237,7 @@ namespace CSCD349FinalProject
 
         private void MainWindow1_Activated(object sender, EventArgs e)
         {
-            HealthBar.Value = LoadedHealth;
+            HealthBar.Value = party.GetHP();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
