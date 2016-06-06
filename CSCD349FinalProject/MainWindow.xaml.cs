@@ -41,6 +41,7 @@ namespace CSCD349FinalProject
             InitializeComponent();
             gameBoardMap = new Map(10, 10, party);
             CreateGameBoard();
+            LoadedHealth = 100;
         }
 
         public MainWindow(int difficulty, int party)
@@ -55,6 +56,7 @@ namespace CSCD349FinalProject
             RoutedCommand ToggleStatCheats = new RoutedCommand();
             ToggleStatCheats.InputGestures.Add(new KeyGesture(Key.P, ModifierKeys.Control));
             CommandBindings.Add(new CommandBinding(ToggleStatCheats, ToggleCheats));
+            LoadedHealth = 100;
         }
         public MainWindow(int difficulty, int party,int health)
         {
@@ -315,6 +317,11 @@ namespace CSCD349FinalProject
                 }
                 RedrawInventory();
             }
+        }
+
+        private void textBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            textBox.Text = "";
         }
     }
 }
