@@ -238,6 +238,7 @@ namespace CSCD349FinalProject
         private void MainWindow1_Activated(object sender, EventArgs e)
         {
             HealthBar.Value = party.GetHP();
+            PartyLevel.Text = party.GetLevel().ToString();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
