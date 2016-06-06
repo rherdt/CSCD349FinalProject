@@ -144,6 +144,14 @@ namespace CSCD349FinalProject.Characters
                 PartyDead();
             }
         }
+
+        public void Damage(int damage)
+        {
+            hp = hp - damage;
+            if (hp < 1)
+                hp = 0;
+        }
+
         public bool UpgradeWeapon()
         {
             int character = 0;

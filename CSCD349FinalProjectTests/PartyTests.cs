@@ -20,9 +20,9 @@ namespace CSCD349FinalProjectTests
         {
             Party p = new Party(1);
             Assert.AreEqual(100, p.GetHP());
-            p.TakeDamage(10);
+            p.Damage(10);
             Assert.AreEqual(90, p.GetHP());
-            p.TakeDamage(100);
+            p.Damage(100);
             Assert.AreEqual(0, p.GetHP());
         }
 
