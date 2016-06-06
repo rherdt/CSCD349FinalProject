@@ -53,6 +53,14 @@ namespace CSCD349FinalProject.Characters
             weapon = new Negev();
         }
 
+        public bool IsUpgraded()
+        {
+            if (weapon.GetName().Equals("Negev"))
+                return true;
+
+            return false;
+        }
+
         //public IInvItem GetInvItem(int slot)
         //{
         //    if (slot >= 0 && slot < inv.Length)

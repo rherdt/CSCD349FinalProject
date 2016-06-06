@@ -116,10 +116,22 @@ namespace CSCD349FinalProject.Characters
                 PartyDead();
             }
         }
-        public void UpgradeWeapon(int character)
+        public bool UpgradeWeapon()
         {
+            int character = 0;
+
+            while (party[character].IsUpgraded())
+            {
+                if (character <= 1)
+                    character++;
+
+                else
+                    return false;
+            }
+
             party[character].UpgradeWeapon();
             RecalcStats();
+            return true;
         }
         private void PartyDead()
         {

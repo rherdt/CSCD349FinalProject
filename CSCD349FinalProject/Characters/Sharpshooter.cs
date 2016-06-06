@@ -52,6 +52,15 @@ namespace CSCD349FinalProject.Characters
         {
             weapon = new AWP();
         }
+
+        public bool IsUpgraded()
+        {
+            if (weapon.GetName().Equals("AWP"))
+                return true;
+
+            return false;
+        }
+
         //public IInvItem GetInvItem(int slot)
         //{
         //    if (slot >= 0 && slot < inv.Length)

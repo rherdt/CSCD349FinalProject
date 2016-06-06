@@ -17,6 +17,6 @@ namespace CSCD349FinalProject.Characters
         ImageBrush GetImg();
         Inventory.Inventory GetInventory();
         void LevelUp();
-        void UpgradeWeapon(int character);
+        bool UpgradeWeapon();
     }
 }

@@ -53,6 +53,14 @@ namespace CSCD349FinalProject.Characters
             weapon = new DesertEagle();
         }
 
+        public bool IsUpgraded()
+        {
+            if (weapon.GetName().Equals("Desert Eagle"))
+                return true;
+
+            return false;
+        }
+
         //public IInvItem GetInvItem(int slot)
         //{
         //    if (slot >= 0 && slot < inv.Length)
