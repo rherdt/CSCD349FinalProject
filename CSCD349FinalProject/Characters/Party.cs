@@ -3,6 +3,9 @@ using System;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using CSCD349FinalProject.Inventory;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("CSCD349FinalProjectTests")]
 
 namespace CSCD349FinalProject.Characters
 {
