@@ -18,6 +18,7 @@ using CSCD349FinalProject.Spaces;
 using CSCD349FinalProject.GamePlay;
 using CSCD349FinalProject.Characters;
 using System.Windows.Controls.Primitives;
+using CSCD349FinalProject.Inventory;
 
 namespace CSCD349FinalProject
 {
@@ -95,7 +96,7 @@ namespace CSCD349FinalProject
         }
 
         private void InitializeInventory()
-        {
+         {
             int slots = party.GetInventory().getNumSlots();
             Border[] borderArray = new Border[slots];
 
@@ -105,10 +106,6 @@ namespace CSCD349FinalProject
                 borderArray[x] = new Border();
                 borderArray[x].Height = InventoryGrid.Height;
                 borderArray[x].Width = InventoryGrid.Width / slots;
-                //ImageBrush itemSprite = party.GetInventory().GetItems().ElementAt(x).GetImg();
-                //if (itemSprite != null)
-                //    borderArray[x].Background = party.GetInventory().GetItems().ElementAt(x).GetImg();
-                //else
                 borderArray[x].Background = Brushes.Gray;
                 borderArray[x].VerticalAlignment = VerticalAlignment.Center;
                 borderArray[x].SetValue(Grid.ColumnProperty, x);
@@ -120,12 +117,16 @@ namespace CSCD349FinalProject
 
         public void RedrawInventory()
         {
+
             int numItems = party.GetInventory().GetItems().Count;
 
             for(int x = 0; x < numItems; x++)
             {
                 Border b = (Border)InventoryGrid.Children[x];
                 b.Background = party.GetInventory().GetItems().ElementAt(x).GetImg();
+                b.Tag = party.GetInventory().GetItems().ElementAt(x);
+                InventoryGrid.Children[x].MouseLeftButtonDown -= new MouseButtonEventHandler(InventoryItemClick);
+                InventoryGrid.Children[x].MouseLeftButtonDown += new MouseButtonEventHandler(InventoryItemClick);
             }
         }
 
@@ -202,6 +203,20 @@ namespace CSCD349FinalProject
         {
             HelpWindow hw = new HelpWindow();
             hw.Show();
+        }
+
+        private void InventoryItemClick(object sender, RoutedEventArgs e)
+        {
+            Border b = (Border)sender;
+            if(b.Tag != null)
+            {
+                party.GetInventory().UseItem((IInvItem)b.Tag);
+                foreach(Border bor in InventoryGrid.Children)
+                {
+                    bor.Background = Brushes.Gray;
+                }
+                RedrawInventory();
+            }
         }
     }
 }
