@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace CSCD349FinalProject.Characters
 {
@@ -21,6 +22,7 @@ namespace CSCD349FinalProject.Characters
             this.attack = 7;
             this.defense = 7;
             this.hp = 100;
+            img.ImageSource = new BitmapImage(new Uri(@"../../Images/Zombies.png", UriKind.Relative));
         }
 
         public string GetName()
