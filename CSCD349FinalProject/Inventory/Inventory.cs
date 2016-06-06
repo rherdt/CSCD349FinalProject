@@ -14,9 +14,19 @@ namespace CSCD349FinalProject.Inventory
         List<IInvItem> items;
         public Inventory(int numSlots)
         {
-            this.numSlots = numSlots;
-            this.items = new List<IInvItem>(numSlots);
-            this.numAvailableSlots = numSlots -  this.items.Count();
+            if(numSlots >= 0)
+            {
+                this.numSlots = numSlots;
+                this.items = new List<IInvItem>(this.numSlots);
+                this.numAvailableSlots = numSlots - this.items.Count();
+            }
+            else
+            {
+                this.numSlots = 3;
+                this.items = new List<IInvItem>(this.numSlots);
+                this.numAvailableSlots = numSlots - this.items.Count();
+            }
+            
         }
 
         public bool AvailableSlots()
@@ -40,7 +50,6 @@ namespace CSCD349FinalProject.Inventory
             }
             
         }
-
         public void UseItem(IInvItem item)
         {
             if(item != null && this.items.Count > 0)
@@ -50,7 +59,7 @@ namespace CSCD349FinalProject.Inventory
             }
         }
 
-        public int getNumSlots()
+        public int GetNumSlots()
         {
             return this.numSlots;
         }
