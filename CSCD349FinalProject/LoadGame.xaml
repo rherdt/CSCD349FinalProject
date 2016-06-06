@@ -5,9 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CSCD349FinalProject"
         mc:Ignorable="d"
-        Title="LoadGame" Height="300" Width="300">
-    <Grid>
-        <DataGrid x:Name="dataGrid" AutoGenerateColumns="True" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Height="211" Width="272" Background="#FF727272"/>
+        Title="LoadGame" Height="300" Width="300"
+        WindowStartupLocation="CenterScreen">
 
+    <Grid>
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="214" Background="gray" Margin="10,46,0,0" VerticalAlignment="Top" Width="272" SelectionChanged="listBox_SelectionChanged"/>
+        <Label x:Name="label" Content="Select Saved Game" HorizontalAlignment="Left" Margin="64,10,0,0" VerticalAlignment="Top" Width="157"/>
     </Grid>
 </Window>

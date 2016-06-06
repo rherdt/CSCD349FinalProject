@@ -22,21 +22,35 @@ namespace CSCD349FinalProject
     /// </summary>
     public partial class LoadGame : Window
     {
-        DataSet savedGames;
+        SQLiteDataReader savedGames;
+        StartMenu loadscreen;
         public LoadGame()
         {
             InitializeComponent();
         }
-        public LoadGame(DataSet reader)
+        public LoadGame(SQLiteDataReader reader,string name)
         {
             InitializeComponent();
             savedGames = reader;
             PullSaved(reader);
         }
-        public void PullSaved(DataSet reader)
+        public void PullSaved(SQLiteDataReader reader)
         {
-            dataGrid.ItemsSource = reader.Tables["SavedGameMain"].DefaultView;
+            int x, y;
+            while (reader.Read())
+            {
+                listBox.Items.Add(reader.GetString(1));
+            }
+            
         }
-
+        public void SetSetSave(Window parent)
+        {
+            loadscreen = (StartMenu)parent;
+        }
+        private void listBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            loadscreen.SetSelected(e.AddedItems[0].ToString());
+            this.Close();
+        }
     }
 }

@@ -46,6 +46,7 @@ namespace CSCD349FinalProject
             InitializeComponent();
             this.difficulty = difficulty;
             this.party = new Party(party);
+            PartyLevel.Text = this.party.GetLevel().ToString();
             gameBoardMap = new Map(10, 10, this.party);
             CreateGameBoard();
             InitializeInventory();
@@ -214,18 +215,28 @@ namespace CSCD349FinalProject
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-
+            SaveGame();
         }
         private void SaveGame()
         {
-            string connection = "data source=SavedGames.sqlite3";
-            string command = "INSERT INTO  SavedGameMain Values(" + party.GetPartyType() + ", 1 , " + gameBoardMap.getLevel() + ", " + party.GetHP() + ", 0, " + party.Savedname + ");";
-      
+            party.Savedname = textBox.Text;
+            Random random = new Random();
+
+            string connection = "Data Source = ../../GameSaves.db; Version = 3; Password = test;";
+            string command = "INSERT INTO  [SavedGames] Values(" + Convert.ToInt32(Math.Floor(random.NextDouble() * 1000)) + ",'" + party.Savedname + "', " + gameBoardMap.getLevel() + ", " + party.GetLevel() + ", " + party.GetPartyType() + ", " + party.GetHP() + ");";
+            SQLiteConnection connect = new SQLiteConnection(connection);
+            connect.Open();
+            SQLiteCommand run = new SQLiteCommand(command,connect);
+            run.ExecuteNonQuery();
         }
 
         private SqlDataAdapter SqlDataAdapter(object selectCommand, object connectionString)
         {
             throw new NotImplementedException();
+        }
+        public void setLevel(int lv)
+        {
+            PartyLevel.Text = lv.ToString();
         }
     }
 }
