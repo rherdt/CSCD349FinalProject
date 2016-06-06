@@ -12,10 +12,25 @@ namespace CSCD349FinalProject.Characters
         private int partyHealth;
         private int partyAttack;
         private int partyDefense;
+        private int type;
         private int level;
         private Inventory.Inventory inventory;
         private int hp;
         private ImageBrush img;
+        private string savedname;
+
+        public string Savedname
+        {
+            get
+            {
+                return savedname;
+            }
+
+            set
+            {
+                savedname = value;
+            }
+        }
 
         public Party(int p)
         {
@@ -31,6 +46,7 @@ namespace CSCD349FinalProject.Characters
         {
             if (p == 1)
             {
+                type = 1;
                 party[0] = new Sharpshooter();
                 party[1] = new Sharpshooter();
                 party[2] = new Sharpshooter();
@@ -41,6 +57,7 @@ namespace CSCD349FinalProject.Characters
 
             else if (p == 2)
             {
+                type = 2;
                 party[0] = new Medic();
                 party[1] = new Medic();
                 party[2] = new Medic();
@@ -51,6 +68,7 @@ namespace CSCD349FinalProject.Characters
 
             else if (p == 3)
             {
+                type = 3;
                 party[0] = new Tank();
                 party[1] = new Tank();
                 party[2] = new Tank();
@@ -61,6 +79,7 @@ namespace CSCD349FinalProject.Characters
 
             else
             {
+                type = 4;
                 party[0] = new Sharpshooter();
                 party[1] = new Medic();
                 party[2] = new Tank();
@@ -140,6 +159,18 @@ namespace CSCD349FinalProject.Characters
         {
             GameOver go = new GameOver();
             go.ShowDialog();
+        }
+        public void SetPartyLevel(int Setlevel)
+        {
+            level = Setlevel;
+        }
+        public void setHealth(int health)
+        {
+            hp = health;
+        }
+        public int GetPartyType()
+        {
+            return type;
         }
     }
 }

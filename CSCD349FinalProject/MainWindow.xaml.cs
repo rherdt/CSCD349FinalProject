@@ -18,6 +18,9 @@ using CSCD349FinalProject.Spaces;
 using CSCD349FinalProject.GamePlay;
 using CSCD349FinalProject.Characters;
 using System.Windows.Controls.Primitives;
+using System.Data.SQLite;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace CSCD349FinalProject
 {
@@ -202,6 +205,27 @@ namespace CSCD349FinalProject
         {
             HelpWindow hw = new HelpWindow();
             hw.Show();
+        }
+
+        private void MainWindow1_Activated(object sender, EventArgs e)
+        {
+            HealthBar.Value = party.GetHP();
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void SaveGame()
+        {
+            string connection = "data source=SavedGames.sqlite3";
+            string command = "INSERT INTO  SavedGameMain Values(" + party.GetPartyType() + ", 1 , " + gameBoardMap.getLevel() + ", " + party.GetHP() + ", 0, " + party.Savedname + ");";
+      
+        }
+
+        private SqlDataAdapter SqlDataAdapter(object selectCommand, object connectionString)
+        {
+            throw new NotImplementedException();
         }
     }
 }

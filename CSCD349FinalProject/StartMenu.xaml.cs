@@ -13,6 +13,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using CSCD349FinalProject.Spaces;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace CSCD349FinalProject
 {
@@ -66,8 +69,8 @@ namespace CSCD349FinalProject
             //Need to pass difficulty and party to next window.
 
             MainWindow mw = new MainWindow(ConvertDifficultyButtonToNumber(), ConvertPartyButtonToNumber());
-            mw.Show();
             this.Close();
+            mw.ShowDialog();
         }
 
         private int ConvertDifficultyButtonToNumber()
@@ -112,6 +115,32 @@ namespace CSCD349FinalProject
         {
             HelpWindow hw = new HelpWindow();
             hw.Show();
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            //pass in difficulty from sql and party info
+            string name = "test";
+            int level = 1;
+            int partytype = 1;
+            int health = 100;
+            int floornumber = 1;
+            string command = "Select * From SavedGameMain;";
+            string connection = "SavedGames.sqlite3";
+            DataSet ds = new DataSet("SavedGames");
+            SqlDataAdapter sqd = new SqlDataAdapter(command, connection);
+            sqd = new SqlDataAdapter();
+            sqd.Fill(ds);
+            LoadGame lgScreen = new LoadGame(ds);
+            Party partyLoad = new Party(partytype);
+            partyLoad.SetPartyLevel(level);
+            partyLoad.Savedname = name;
+            partyLoad.setHealth(health);
+            Map loadedMap = new Map(10, 10, partyLoad);
+            loadedMap.setLevel(floornumber);
+            MainWindow mw = new MainWindow(1, ConvertPartyButtonToNumber());
+            this.Close();
+            mw.ShowDialog();
         }
     }
 }
