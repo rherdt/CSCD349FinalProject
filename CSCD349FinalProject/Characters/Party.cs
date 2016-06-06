@@ -9,7 +9,6 @@ namespace CSCD349FinalProject.Characters
     class Party : IParty
     {
         private IGoodGuy[] party = new IGoodGuy[3];
-        private int partyHealth;
         private int partyAttack;
         private int partyDefense;
         private int level;
@@ -19,7 +18,6 @@ namespace CSCD349FinalProject.Characters
 
         public Party(int p)
         {
-            partyHealth = 100;
             level = 1;
             hp = 100;
             ConvertNumToParty(p);
@@ -64,7 +62,7 @@ namespace CSCD349FinalProject.Characters
                 party[0] = new Sharpshooter();
                 party[1] = new Medic();
                 party[2] = new Tank();
-            img = new ImageBrush();
+                img = new ImageBrush();
                 inventory = new Inventory.Inventory(7);
                 img.ImageSource = new BitmapImage(new Uri(@"../../Images/Balanced.png", UriKind.Relative));
             }
@@ -74,19 +72,6 @@ namespace CSCD349FinalProject.Characters
         {
             partyAttack = level * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack());
             partyDefense = level * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense());
-        }
-
-        public int GetPartyHealth()
-        {
-            return partyHealth;
-        }
-
-        public void Damage(int hp)
-        {
-            partyHealth -= hp;
-
-            if (hp < 0)
-                hp = 0;
         }
 
         public int GetPartyAttack()
@@ -129,11 +114,11 @@ namespace CSCD349FinalProject.Characters
             if(hp < 1)
             {
                 PartyDead();
+            }
         }
-        }
-        public void PickupWeapon(int character, IWeapon weapon)
+        public void UpgradeWeapon(int character)
         {
-            party[character].ChangeWeapon(weapon);
+            party[character].UpgradeWeapon();
             RecalcStats();
         }
         private void PartyDead()

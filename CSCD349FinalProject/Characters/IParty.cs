@@ -15,6 +15,8 @@ namespace CSCD349FinalProject.Characters
         int GetPartyDefense();
         int GetLevel();
         ImageBrush GetImg();
+        Inventory.Inventory GetInventory();
         void LevelUp();
+        void UpgradeWeapon(int character);
     }
 }
