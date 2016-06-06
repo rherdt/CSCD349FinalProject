@@ -19,7 +19,6 @@ namespace CSCD349FinalProject.Spaces
                 BattleMainWindow bv = new BattleMainWindow();
                 traversed = true;
                 bv.User = user;
-                //bv.Enemy = enemy;
                 bv.Floor = gameboard.GetFloor();
                 bv.ShowDialog();
             }
