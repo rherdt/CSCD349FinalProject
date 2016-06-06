@@ -19,10 +19,10 @@ namespace CSCD349FinalProject.Characters
 
         public Sharpshooter()
         {
-            this.name = "Sharpshooter";
-            this.attack = 10;
+            this.name = "Sharpshooter";            
             this.defense = 3;
             this.weapon = new Scout();
+            this.attack = this.attack = this.weapon.GetAttack();
             this.invSlots = 4;
             this.inv = new IInvItem[invSlots];
         }
@@ -98,6 +98,7 @@ namespace CSCD349FinalProject.Characters
         public void ChangeWeapon(IWeapon weapon)
         {
             this.weapon = weapon;
+            this.attack = weapon.GetAttack();
         }
     }
 }

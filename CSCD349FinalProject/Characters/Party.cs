@@ -73,8 +73,11 @@ namespace CSCD349FinalProject.Characters
 
         private void RecalcStats()
         {
-            partyAttack = level * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack());
-            partyDefense = level * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense());
+            double factor = Math.Pow(level, (1.0 / 3.0));
+
+            partyAttack = (int)(factor * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack()));
+            partyDefense = (int)(factor * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense()));
+
         }
 
         public int GetPartyHealth()
@@ -86,8 +89,8 @@ namespace CSCD349FinalProject.Characters
         {
             partyHealth -= hp;
 
-            if (hp < 0)
-                hp = 0;
+            if (partyHealth < 0)
+                partyHealth = 0;
         }
 
         public int GetPartyAttack()
@@ -118,6 +121,7 @@ namespace CSCD349FinalProject.Characters
         public void LevelUp()
         {
             level += 1;
+            RecalcStats();
         }
 
         public void PickupWeapon(int character, IWeapon weapon)
