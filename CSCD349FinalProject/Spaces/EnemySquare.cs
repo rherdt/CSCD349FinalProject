@@ -12,12 +12,6 @@ namespace CSCD349FinalProject.Spaces
 {
     class EnemySquare: ASpace
     {
-        IEnemyParty enemy;
-        public EnemySquare(): base()
-        {
-            enemy = new Mutants();
-        }
-
         public override void runAction(Party user, MainWindow gameboard)
         {
             if(traversed == false)
@@ -25,7 +19,7 @@ namespace CSCD349FinalProject.Spaces
                 BattleMainWindow bv = new BattleMainWindow();
                 traversed = true;
                 bv.User = user;
-                bv.Enemy = enemy;
+                //bv.Enemy = enemy;
                 bv.Floor = gameboard.GetFloor();
                 bv.ShowDialog();
             }

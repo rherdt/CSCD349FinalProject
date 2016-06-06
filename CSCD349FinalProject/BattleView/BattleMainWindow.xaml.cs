@@ -81,6 +81,7 @@ namespace BattleView
         public BattleMainWindow()
         {
             InitializeComponent();
+            InitializeEnemy();
             PlayFile();
         }
         private void Attack_Click(object sender, RoutedEventArgs e)
@@ -217,6 +218,25 @@ namespace BattleView
         {
             music.Stop();
             
+        }
+
+        private void InitializeEnemy()
+        {
+            Random rand = new Random();
+            int val = rand.Next(3);
+
+            if (val == 0)
+                enemy = new Mutants();
+
+            else if (val == 1)
+                enemy = new Zombies();
+
+            else
+                enemy = new Raiders();
+
+            EnemyHealth.Value = enemy.getHP();
+            EnemyParty.Fill = enemy.GetImg();
+            WriteOutput("You are being attacked by " + enemy.GetName());
         }
     }
 }

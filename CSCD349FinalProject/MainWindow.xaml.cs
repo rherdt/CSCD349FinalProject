@@ -216,6 +216,8 @@ namespace CSCD349FinalProject
                 PlayerMovement.KeyLeft(gameBoardMap);
                 //checkSpace();
             }
+
+            PartyLevel.Text = party.GetLevel().ToString();
         }
 
         private void MenuExitClick(object sender, RoutedEventArgs e)
