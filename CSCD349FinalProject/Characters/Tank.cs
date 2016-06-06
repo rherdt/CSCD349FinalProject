@@ -51,6 +51,7 @@ namespace CSCD349FinalProject.Characters
         public void UpgradeWeapon()
         {
             weapon = new Negev();
+            attack = weapon.GetAttack();
         }
 
         public bool IsUpgraded()
