@@ -247,7 +247,10 @@ namespace CSCD349FinalProject
         {
             PartyLevel.Text = lv.ToString();
         }
-
+        public void setPartyHP(int hp)
+        {
+            HealthBar.Value = hp;
+        }
         private void ToggleCheats(object sender, ExecutedRoutedEventArgs e)
         {
             party.ToggleCheat();

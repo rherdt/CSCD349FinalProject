@@ -144,7 +144,7 @@ namespace CSCD349FinalProject
             Party partyLoad = LoadGame();
             Map loadedMap = new Map(10, 10, partyLoad);
             MainWindow mw = new MainWindow(1, ConvertPartyButtonToNumber());
-            mw.HealthBar.Value = partyLoad.GetHP();
+            mw.setPartyHP(partyLoad.GetHP());
             mw.setLevel(partyLoad.GetLevel());
             connection.Close();
             this.Close();

@@ -60,6 +60,7 @@ namespace BattleView
             {
                 enemy = value;
                 EnemyHealth.Value = enemy.getHP();
+                EnemyParty.Fill = enemy.GetImg();
                 WriteOutput("You are being attacked by " + enemy.GetName());
             }
         }
