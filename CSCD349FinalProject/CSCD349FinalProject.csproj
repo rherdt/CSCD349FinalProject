@@ -235,6 +235,9 @@
     <Resource Include="Images\Bandaid.png" />
     <Resource Include="Images\Grenade.png" />
     <Resource Include="Images\Molotov.png" />
+    <Resource Include="Images\Mutants.png" />
+    <Resource Include="Images\Raiders.png" />
+    <Resource Include="Images\Zombies.png" />
     <Content Include="Music\battlemusic.wav" />
     <None Include="Resources\battlemusic.wav" />
   </ItemGroup>
