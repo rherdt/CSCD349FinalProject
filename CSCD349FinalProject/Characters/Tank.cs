@@ -20,9 +20,9 @@ namespace CSCD349FinalProject.Characters
         public Tank()
         {
             this.name = "Medic";
-            this.attack = 6;
             this.defense = 10;
             this.weapon = new P90();
+            this.attack = this.weapon.GetAttack();
             //this.invSlots = 3;
             //this.inv = new IInvItem[invSlots];
         }

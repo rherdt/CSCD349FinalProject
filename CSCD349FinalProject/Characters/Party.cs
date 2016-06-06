@@ -95,9 +95,11 @@ namespace CSCD349FinalProject.Characters
         {
             if (!cheatEnabled)
             {
-            partyAttack = level * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack());
-            partyDefense = level * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense());
-        }
+                double factor = Math.Pow(level, (1.0 / 3.0));
+
+                partyAttack = (int)(factor * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack()));
+                partyDefense = (int)(factor * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense()));
+            }
         }
 
         public int GetPartyAttack()

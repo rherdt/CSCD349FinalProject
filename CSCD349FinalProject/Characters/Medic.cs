@@ -20,9 +20,9 @@ namespace CSCD349FinalProject.Characters
         public Medic()
         {
             this.name = "Medic";
-            this.attack = 5;
             this.defense = 5;
             this.weapon = new USPS();
+            this.attack = this.weapon.GetAttack();
             //this.invSlots = 10;
             //this.inv = new IInvItem[invSlots];
         }
