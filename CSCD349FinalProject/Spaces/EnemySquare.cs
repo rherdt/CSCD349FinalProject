@@ -12,7 +12,7 @@ namespace CSCD349FinalProject.Spaces
 {
     class EnemySquare: ASpace
     {
-        IBadGuy enemy;
+        IEnemyParty enemy;
         public EnemySquare(): base()
         {
             enemy = new Mutants();

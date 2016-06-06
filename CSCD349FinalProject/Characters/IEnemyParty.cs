@@ -7,14 +7,10 @@ using System.Windows.Media;
 
 namespace CSCD349FinalProject.Characters
 {
-    interface IParty
+    interface IEnemyParty : ICharacter
     {
-        int GetPartyHealth();
-        void Damage(int hp);
-        int GetPartyAttack();
-        int GetPartyDefense();
-        int GetLevel();
         ImageBrush GetImg();
-        void LevelUp();
+        int getHP();
+        bool TakeDamage(int amount);
     }
 }

@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace CSCD349FinalProject.Characters
 {
-    class Raiders : IBadGuy
+    class Raiders : IEnemyParty
     {
         private string name;
         private int attack;
         private int defense;
         private int hp;
+        private ImageBrush img = new ImageBrush();
 
         public Raiders()
         {
@@ -36,7 +38,7 @@ namespace CSCD349FinalProject.Characters
             return defense;
         }
 
-        public int GetHP()
+        public int getHP()
         {
             return hp;
         }
@@ -48,6 +50,11 @@ namespace CSCD349FinalProject.Characters
                 return true;
             }
             return false;
+        }
+
+        public ImageBrush GetImg()
+        {
+            return img;
         }
     }
 }

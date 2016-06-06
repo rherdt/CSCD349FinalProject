@@ -1,0 +1,33 @@
+﻿<Window x:Class="CSCD349FinalProject.HelpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CSCD349FinalProject"
+        mc:Ignorable="d"
+        Title="Help" Height="420" Width="600">
+    <Grid Background="#FF666565">
+        <Label x:Name="startMenuLabel" Content="Start Menu:" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" VerticalAlignment="Top" Width="74" Foreground="White"/>
+        <TextBlock x:Name="startMenuHelpText" Height="50" Margin="43,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" HorizontalAlignment="Left" Width="506">
+            First, choose a difficulty. Easy, normal, and hard have 5, 10, and 15 levels, respectively. Next, choose the party you would like to play as.
+            Each party has a different skillset, so choose the one that fits your style best.
+        </TextBlock>
+        <Label x:Name="mainWindowLabel" Content="Main Window:" HorizontalAlignment="Left" Height="24" Margin="10,94,0,0" VerticalAlignment="Top" Width="91" Foreground="White"/>
+        <TextBlock x:Name="mainWindowHelpText" Height="149" Margin="43,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="506" Foreground="White">
+            Use the arrow keys to move your character in the direction you would like to move your party. Each square can contain an enemy,
+            (which are hidden from view), an inventory item, a new weapon (which are hidden from view), or treasure. Landing on an enemy
+            will automatically start a battle. Landing on an inventory item will automatically add that item to your inventory, as long as
+            there is sufficient space. Landing on a new weapon will automatically give that weapon to the party member with the weapon that
+            has the lowest attack, as the new weapon is gauranteed to be better. Do your best to get to the stairs in the top right corner
+            of the map. If you reach the stairs, you will either move to the next floor (level), or if you have already reached the last floor
+            you will have completed the game successfully.
+        </TextBlock>
+        <Label x:Name="battleWindowLabel" Content="Battle Window:" HorizontalAlignment="Left" Height="24" Margin="10,277,0,0" VerticalAlignment="Top" Width="91" Foreground="White"/>
+        <TextBlock x:Name="battleWindowHelpText" Height="68" Margin="43,306,0,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Left" Width="506" Foreground="White">
+            A battle is initiated if the party lands on an enemy space. To win the battle, you must attack the enemy party until they have no
+            more hit points left. Game play is turned-based. On your turn, you have the option to attack the enemy, use an applicable inventory
+            item, or try to run away. If you lose all your hit points before you can defeat the enemy, you lose the game.
+        </TextBlock>
+
+    </Grid>
+</Window>

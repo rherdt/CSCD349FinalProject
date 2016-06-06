@@ -25,25 +25,25 @@
         <Label x:Name="sharpshooterPartyLabel" Content="Sharpshooters" Margin="78,374,0,0" HorizontalContentAlignment="Center" FontSize="20" Height="46" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
         <RadioButton x:Name="sharpshooterPartyButton" Style="{StaticResource {x:Type ToggleButton}}" GroupName="Party" Margin="78,428,0,0" Background ="Transparent" Height="146" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Checked="PartyButtonChecked">
             <StackPanel>
-                <Image Source="Images/Sharpshooter.png"/>
+                <Image Source="Images/Sharpshooters.png"/>
             </StackPanel>
         </RadioButton>
         <Label x:Name="medicsPartyLabel" Content="Medics" Margin="306,374,0,0" HorizontalContentAlignment="Center" FontSize="20" Height="46" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
         <RadioButton x:Name="medicsPartyButton" Style="{StaticResource {x:Type ToggleButton}}" GroupName="Party" Margin="306,428,0,0" Background ="Transparent" Height="146" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Checked="PartyButtonChecked">
             <StackPanel>
-                <Image Source="Images/Sharpshooter.png"/>
+                <Image Source="Images/Medics.png"/>
             </StackPanel>
         </RadioButton>
         <Label x:Name="tanksPartyLabel" Content="Tanks" Margin="530,374,0,0" HorizontalContentAlignment="Center" FontSize="20" Height="46" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
         <RadioButton x:Name="tanksPartyButton" Style="{StaticResource {x:Type ToggleButton}}" GroupName="Party" Margin="530,428,0,0" Background ="Transparent" Height="146" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Checked="PartyButtonChecked">
             <StackPanel>
-                <Image Source="Images/Sharpshooter.png"/>
+                <Image Source="Images/Tanks.png"/>
             </StackPanel>
         </RadioButton>
         <Label x:Name="balancedParty" Content="Balanced" Margin="742,374,0,0" HorizontalContentAlignment="Center" FontSize="20" Height="46" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150"/>
         <RadioButton x:Name="balancedPartyButton" Style="{StaticResource {x:Type ToggleButton}}" GroupName="Party" Margin="742,428,0,0" Background ="Transparent" Height="146" VerticalAlignment="Top" HorizontalAlignment="Left" Width="150" Checked="PartyButtonChecked">
             <StackPanel>
-                <Image Source="Images/Sharpshooter.png"/>
+                <Image Source="Images/Balanced.png"/>
             </StackPanel>
         </RadioButton>
         <Label x:Name="sharpshooterAttackLabel" Content="Attack:" Margin="78,600,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="128"/>
@@ -71,6 +71,13 @@
         <Label x:Name="balancedDefenseNumberLabel" Content="60" Margin="875,637,0,0" FontSize="18" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
         <Label x:Name="balancedInvNumberLabel" Content="7" Margin="875,674,0,0" FontSize="18" RenderTransformOrigin="0.55,2.391" Height="32" VerticalAlignment="Top" HorizontalAlignment="Left" Width="40"/>
         <Button x:Name="readyButton" Content="Ready!" Margin="377,734,0,0" FontSize="36" Foreground="Lime" Background="Gray" HorizontalContentAlignment="Center" Height="56" VerticalAlignment="Top" HorizontalAlignment="Left" Width="216" PreviewMouseDown="PreviewReadyButtonClick"/>
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="21" VerticalAlignment="Top" Width="970">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Exit" Click="MenuExitClick"/>
+            </MenuItem>
+            <MenuItem x:Name="AboutMenuItem" Header="About" Click="AboutMenuClick"/>
+            <MenuItem x:Name="HelpMenuItem" Header="Help" Click="HelpMenuClick"/>
+        </Menu>
 
     </Grid>
 </Window>

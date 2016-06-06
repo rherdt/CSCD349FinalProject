@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSCD349FinalProject.Characters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -64,11 +65,53 @@ namespace CSCD349FinalProject
         {
             //Need to pass difficulty and party to next window.
 
-            MainWindow mw = new MainWindow();
+            MainWindow mw = new MainWindow(ConvertDifficultyButtonToNumber(), ConvertPartyButtonToNumber());
             mw.Show();
             this.Close();
         }
+
+        private int ConvertDifficultyButtonToNumber()
+        {
+            if (difficulty == easyButton)
+                return 1;
+
+            else if (difficulty == normalButton)
+                return 2;
+
+            else
+                return 3;
+        }
+
+        private int ConvertPartyButtonToNumber()
+        {
+            if (party == sharpshooterPartyButton)
+                return 1;
+
+            else if (party == medicsPartyButton)
+                return 2;
+
+            else if (party == tanksPartyButton)
+                return 3;
+
+            else
+                return 4;
+        }
+
+        private void MenuExitClick(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void AboutMenuClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Developer: Brogrammers\r\n\r\nVersion: 1.0\r\n\r\n.NET Framework Version: 4.5.2\r\n\r\nBit Version: 32-bit" +
+                "\r\n\r\nBattle Music: Property of Nintendo,\r\n\t     Composed by Junichi Masuda");
+        }
+
+        private void HelpMenuClick(object sender, RoutedEventArgs e)
+        {
+            HelpWindow hw = new HelpWindow();
+            hw.Show();
+        }
     }
-
-
 }

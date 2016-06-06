@@ -31,7 +31,7 @@ namespace BattleView
     {
         SoundPlayer music;
         private Party user;
-        private IBadGuy enemy;
+        private IEnemyParty enemy;
 
         internal Party User
         {
@@ -48,7 +48,7 @@ namespace BattleView
             }
         }
 
-        internal IBadGuy Enemy
+        internal IEnemyParty Enemy
         {
             get
             {
@@ -58,7 +58,7 @@ namespace BattleView
             set
             {
                 enemy = value;
-                EnemyHealth.Value = enemy.GetHP();
+                EnemyHealth.Value = enemy.getHP();
                 WriteOutput("You are being attacked by " + enemy.GetName());
             }
         }
