@@ -201,7 +201,7 @@ namespace BattleView
         private bool EnemyDefend()
         {
             Random rand = new Random();
-            if (((enemy.GetDefense() + floor) * rand.NextDouble()) < rand.NextDouble()*user.GetLevel())
+            if (((enemy.GetDefense() + floor) * rand.NextDouble()) < rand.NextDouble()*(user.GetLevel()+3))
             {
                 return true;
             }
@@ -283,12 +283,28 @@ namespace BattleView
             Border b = (Border)sender;
             if (b.Tag != null)
             {
+                Itemeffect((IInvItem)b.Tag);
                 user.GetInventory().UseItem((IInvItem)b.Tag);
                 foreach (Border bor in BattleInventoryGrid.Children)
                 {
                     bor.Background = Brushes.Gray;
                 }
                 RedrawInventory();
+            }
+        }
+        private void Itemeffect(IInvItem item)
+        {
+            if(item.GetEffect() > 0)
+            {
+                WriteOutput("You have used a " + item.GetName() + "and healed the party " + item.GetEffect() + " hp points");
+                user.setHealth(user.GetHP() + item.GetEffect());
+                UserHealth.Value = user.GetHP();
+            }
+            else
+            {
+                WriteOutput("You have used a " + item.GetName() + " and caused " + Math.Abs(item.GetEffect()) + "points of damage");
+                enemy.TakeDamage(Math.Abs(item.GetEffect()));
+                EnemyHealth.Value = enemy.getHP();
             }
         }
     }
