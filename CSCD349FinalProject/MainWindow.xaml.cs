@@ -119,8 +119,12 @@ namespace CSCD349FinalProject
             GameBoard.Children.Clear();           
         }
 
-        private void InitializeInventory()
-         {
+        public void InitializeInventory()
+        {
+            InventoryGrid.RowDefinitions.Clear();
+            InventoryGrid.ColumnDefinitions.Clear();
+            InventoryGrid.Children.Clear();
+
             int slots = party.GetInventory().GetNumSlots();
             Border[] borderArray = new Border[slots];
 
