@@ -31,7 +31,7 @@ namespace CSCD349FinalProject
     public partial class MainWindow : Window
     {
         private static Map gameBoardMap;
-        private static int floor = 1;
+        private static int floor;
         private Party party;
         private int difficulty;
         private int LoadedHealth;
@@ -42,6 +42,7 @@ namespace CSCD349FinalProject
             gameBoardMap = new Map(10, 10, party);
             CreateGameBoard();
             LoadedHealth = 100;
+            floor = 1;
         }
 
         public MainWindow(int difficulty, int party)
@@ -57,12 +58,15 @@ namespace CSCD349FinalProject
             ToggleStatCheats.InputGestures.Add(new KeyGesture(Key.P, ModifierKeys.Control));
             CommandBindings.Add(new CommandBinding(ToggleStatCheats, ToggleCheats));
             LoadedHealth = 100;
+            floor = 1;
         }
-        public MainWindow(int difficulty, int party,int health)
+        public MainWindow(int difficulty, int party,int health,int plevel,int mlevel)
         {
             InitializeComponent();
             this.difficulty = difficulty;
             this.party = new Party(party);
+            this.party.setHealth(health);
+            this.party.SetPartyLevel(plevel);
             PartyLevel.Text = this.party.GetLevel().ToString();
             gameBoardMap = new Map(10, 10, this.party);
             CreateGameBoard();
@@ -72,6 +76,9 @@ namespace CSCD349FinalProject
             CommandBindings.Add(new CommandBinding(ToggleStatCheats, ToggleCheats));
             LoadedHealth = health;
             HealthBar.Value = LoadedHealth;
+            floor = mlevel;
+            FloorNumberLabel.Content = floor;
+            PartyLevel.Text = this.party.GetLevel().ToString();
         }
         private void CreateGameBoard()
         {
@@ -195,7 +202,7 @@ namespace CSCD349FinalProject
         private void checkSpace()
         {
             gameBoardMap.GetBoardSpace((int)gameBoardMap.GetCurrentPosition().X, (int)gameBoardMap.GetCurrentPosition().Y).runAction(party,this);
-            
+            HealthBar.Value = party.GetHP();
         }
 
         private void MainWindow1_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -257,21 +264,17 @@ namespace CSCD349FinalProject
             Random random = new Random();
 
             string connection = "Data Source = ../../GameSaves.db; Version = 3; Password = test;";
-            string command = "INSERT INTO  [SavedGames] Values(" + Convert.ToInt32(Math.Floor(random.NextDouble() * 1000)) + ",'" + party.Savedname + "', " + gameBoardMap.getLevel() + ", " + party.GetLevel() + ", " + party.GetPartyType() + ", " + party.GetHP() + ");";
+            string command = "INSERT INTO  [SavedGames] Values(" + Convert.ToInt32(Math.Floor(random.NextDouble() * 1000)) + ",'" + party.Savedname + "', " + floor.ToString() + ", " + party.GetLevel() + ", " + party.GetPartyType() + ", " + party.GetHP() + ");";
             SQLiteConnection connect = new SQLiteConnection(connection);
             connect.Open();
             SQLiteCommand run = new SQLiteCommand(command,connect);
             run.ExecuteNonQuery();
         }
-
-        private SqlDataAdapter SqlDataAdapter(object selectCommand, object connectionString)
-        {
-            throw new NotImplementedException();
-        }
         public void setLevel(int lv)
         {
             PartyLevel.Text = lv.ToString();
         }
+
         public void setPartyHP(int hp)
         {
             HealthBar.Value = hp;
