@@ -21,6 +21,7 @@ using System.ComponentModel;
 using CSCD349FinalProject.Characters;
 using System.Threading;
 using System.Windows.Controls.Primitives;
+using CSCD349FinalProject.Inventory;
 
 namespace BattleView
 {
@@ -45,6 +46,8 @@ namespace BattleView
             {
                 user = value;
                 UserHealth.Value = user.GetHP();
+                InitializeInventory();
+                RedrawInventory();
                 UserParty.Fill = user.GetImg();
             }
         }
@@ -81,7 +84,7 @@ namespace BattleView
         public BattleMainWindow()
         {
             InitializeComponent();
-            InitializeEnemy();
+            InitializeEnemy();            
             PlayFile();
         }
         private void Attack_Click(object sender, RoutedEventArgs e)
@@ -237,6 +240,56 @@ namespace BattleView
             EnemyHealth.Value = enemy.getHP();
             EnemyParty.Fill = enemy.GetImg();
             WriteOutput("You are being attacked by " + enemy.GetName());
+        }
+
+
+        private void InitializeInventory()
+        {
+            int slots = user.GetInventory().GetNumSlots();
+            Border[] borderArray = new Border[slots];
+
+            for (int x = 0; x < slots; x++)
+            {
+                BattleInventoryGrid.ColumnDefinitions.Add(new ColumnDefinition());
+                borderArray[x] = new Border();
+                borderArray[x].Height = BattleInventoryGrid.Height;
+                borderArray[x].Width = BattleInventoryGrid.Width / slots;
+                borderArray[x].Background = Brushes.Gray;
+                borderArray[x].VerticalAlignment = VerticalAlignment.Center;
+                borderArray[x].SetValue(Grid.ColumnProperty, x);
+
+                BattleInventoryGrid.Children.Add(borderArray[x]);
+
+            }
+        }
+
+        public void RedrawInventory()
+        {
+
+            int numItems = user.GetInventory().GetItems().Count;
+
+            for (int x = 0; x < numItems; x++)
+            {
+                Border b = (Border)BattleInventoryGrid.Children[x];
+                b.Background = user.GetInventory().GetItems().ElementAt(x).GetImg();
+                b.Tag = user.GetInventory().GetItems().ElementAt(x);
+                BattleInventoryGrid.Children[x].MouseLeftButtonDown -= new MouseButtonEventHandler(InventoryItemClick);
+                BattleInventoryGrid.Children[x].MouseLeftButtonDown += new MouseButtonEventHandler(InventoryItemClick);
+            }
+        }
+
+        private void InventoryItemClick(object sender, RoutedEventArgs e)
+        {
+            Border b = (Border)sender;
+            if (b.Tag != null)
+            {
+                user.GetInventory().UseItem((IInvItem)b.Tag);
+                foreach (Border bor in BattleInventoryGrid.Children)
+                {
+                    bor.Background = Brushes.Gray;
+                }
+                RedrawInventory();
+            }
         }
     }
 }
