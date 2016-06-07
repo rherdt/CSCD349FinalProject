@@ -10,5 +10,7 @@ namespace CSCD349FinalProject.Characters
     interface IEnemyParty : ICharacter
     {
         ImageBrush GetImg();
+        int getHP();
+        bool TakeDamage(int amount);
     }
 }

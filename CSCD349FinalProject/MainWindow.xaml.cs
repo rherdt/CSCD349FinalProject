@@ -19,6 +19,9 @@ using CSCD349FinalProject.GamePlay;
 using CSCD349FinalProject.Characters;
 using System.Windows.Controls.Primitives;
 using CSCD349FinalProject.Inventory;
+using System.Data.SQLite;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace CSCD349FinalProject
 {
@@ -31,12 +34,14 @@ namespace CSCD349FinalProject
         private static int floor = 1;
         private Party party;
         private int difficulty;
+        private int LoadedHealth;
 
         public MainWindow()
         {
             InitializeComponent();
             gameBoardMap = new Map(10, 10, party);
             CreateGameBoard();
+            LoadedHealth = 100;
         }
 
         public MainWindow(int difficulty, int party)
@@ -44,11 +49,30 @@ namespace CSCD349FinalProject
             InitializeComponent();
             this.difficulty = difficulty;
             this.party = new Party(party);
+            PartyLevel.Text = this.party.GetLevel().ToString();
             gameBoardMap = new Map(10, 10, this.party);
             CreateGameBoard();
             InitializeInventory();
+            RoutedCommand ToggleStatCheats = new RoutedCommand();
+            ToggleStatCheats.InputGestures.Add(new KeyGesture(Key.P, ModifierKeys.Control));
+            CommandBindings.Add(new CommandBinding(ToggleStatCheats, ToggleCheats));
+            LoadedHealth = 100;
         }
-
+        public MainWindow(int difficulty, int party,int health)
+        {
+            InitializeComponent();
+            this.difficulty = difficulty;
+            this.party = new Party(party);
+            PartyLevel.Text = this.party.GetLevel().ToString();
+            gameBoardMap = new Map(10, 10, this.party);
+            CreateGameBoard();
+            InitializeInventory();
+            RoutedCommand ToggleStatCheats = new RoutedCommand();
+            ToggleStatCheats.InputGestures.Add(new KeyGesture(Key.P, ModifierKeys.Control));
+            CommandBindings.Add(new CommandBinding(ToggleStatCheats, ToggleCheats));
+            LoadedHealth = health;
+            HealthBar.Value = LoadedHealth;
+        }
         private void CreateGameBoard()
         {
             ISpace currentSpace;
@@ -96,7 +120,7 @@ namespace CSCD349FinalProject
         }
 
         private void InitializeInventory()
-         {
+        {
             int slots = party.GetInventory().getNumSlots();
             Border[] borderArray = new Border[slots];
 
@@ -137,8 +161,14 @@ namespace CSCD349FinalProject
             gameBoardMap.SetCurrentPosition(gameBoardMap.GetRows() - 1, 0);
         }
 
+        public int GetFloor()
+        {
+            return floor;
+        }
+
         public void NextFloor()
         {
+            CheckIfWin();
             Reset();
             gameBoardMap = new Map(10, 10, this.party);
             CreateGameBoard();
@@ -186,6 +216,8 @@ namespace CSCD349FinalProject
                 PlayerMovement.KeyLeft(gameBoardMap);
                 //checkSpace();
             }
+
+            PartyLevel.Text = party.GetLevel().ToString();
         }
 
         private void MenuExitClick(object sender, RoutedEventArgs e)
@@ -205,6 +237,76 @@ namespace CSCD349FinalProject
             hw.Show();
         }
 
+        private void MainWindow1_Activated(object sender, EventArgs e)
+        {
+            HealthBar.Value = party.GetHP();
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            SaveGame();
+        }
+        private void SaveGame()
+        {
+            party.Savedname = textBox.Text;
+            Random random = new Random();
+
+            string connection = "Data Source = ../../GameSaves.db; Version = 3; Password = test;";
+            string command = "INSERT INTO  [SavedGames] Values(" + Convert.ToInt32(Math.Floor(random.NextDouble() * 1000)) + ",'" + party.Savedname + "', " + gameBoardMap.getLevel() + ", " + party.GetLevel() + ", " + party.GetPartyType() + ", " + party.GetHP() + ");";
+            SQLiteConnection connect = new SQLiteConnection(connection);
+            connect.Open();
+            SQLiteCommand run = new SQLiteCommand(command,connect);
+            run.ExecuteNonQuery();
+        }
+
+        private SqlDataAdapter SqlDataAdapter(object selectCommand, object connectionString)
+        {
+            throw new NotImplementedException();
+        }
+        public void setLevel(int lv)
+        {
+            PartyLevel.Text = lv.ToString();
+        }
+        public void setPartyHP(int hp)
+        {
+            HealthBar.Value = hp;
+        }
+        private void ToggleCheats(object sender, ExecutedRoutedEventArgs e)
+        {
+            party.ToggleCheat();
+            MessageBox.Show("Cheats Toggled");
+        }
+
+        private void CheckIfWin()
+        {
+            if (difficulty == 1)
+            {
+                if (floor == 5)
+                {
+                    Winner win = new Winner();
+                    win.ShowDialog();
+                }
+            }
+
+            if (difficulty == 2)
+            {
+                if (floor == 10)
+                {
+                    Winner win = new Winner();
+                    win.ShowDialog();
+                }
+            }
+
+            if (difficulty == 3)
+            {
+                if (floor == 15)
+                {
+                    Winner win = new Winner();
+                    win.ShowDialog();
+                }
+            }
+        }
+
         private void InventoryItemClick(object sender, RoutedEventArgs e)
         {
             Border b = (Border)sender;
@@ -217,6 +319,11 @@ namespace CSCD349FinalProject
                 }
                 RedrawInventory();
             }
+        }
+
+        private void textBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            textBox.Text = "";
         }
     }
 }

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CSCD349FinalProject"
         mc:Ignorable="d"
+        Activated="MainWindow1_Activated"
         Title="MainWindow" Height="834" Width="978" WindowStartupLocation="CenterScreen" PreviewKeyDown="MainWindow1_PreviewKeyDown">
     <Grid x:Name="MainGrid" Background="#FF666565">
         <Grid x:Name="GameBoard" Height="600" Width="600" Margin="185,97,0,0" VerticalAlignment="Top" Background="#FF1E1F1E" Focusable="True" HorizontalAlignment="Left"/>
@@ -21,8 +22,14 @@
         <Label x:Name="FloorLabel" Content="Floor:" HorizontalAlignment="Left" Height="30" Margin="803,152,0,0" VerticalAlignment="Top" Width="61" FontSize="18.667" FontFamily="Aharoni"/>
         <Label x:Name="FloorNumberLabel" Content="1" HorizontalAlignment="Left" Height="34" Margin="864,148,0,0" VerticalAlignment="Top" Width="38" FontSize="24" FontFamily="Aharoni"/>
         <Grid x:Name="InventoryGrid" HorizontalAlignment="Left" Height="65" Margin="185,715,0,0" VerticalAlignment="Top" Width="600"/>
-        <Rectangle x:Name="BackgroundHealthBar" Fill="#FF2FEC06" HorizontalAlignment="Left" Height="472" Margin="803,225,0,0" Stroke="Black" VerticalAlignment="Top" Width="100"/>
-        <Rectangle x:Name="ForegroundHealthBar" Fill="Black" HorizontalAlignment="Left" Height="1" Margin="803,225,0,0" Stroke="Black" VerticalAlignment="Top" Width="100"/>
+        <ProgressBar Name="HealthBar" HorizontalAlignment="Left" Orientation="Vertical" Background="red" Height="510" Margin="802,187,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="SaveButton" Click="SaveButton_Click" Content="Save Game" Margin="10,62,0,0" FontSize="24" Foreground="Lime" Background="Gray" HorizontalContentAlignment="Center" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="132"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" GotFocus="textBox_GotFocus" Height="23" Margin="22,34,0,0" TextWrapping="Wrap" Text="Game Name" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Background="Transparent" Height="23" Margin="793,120,0,0" TextWrapping="Wrap" Text="PartyLevel:" VerticalAlignment="Top" Width="123" FontSize="18.667" FontFamily="Aharoni"/>
+        <TextBox x:Name="PartyLevel" HorizontalAlignment="Left" Height="23" Margin="923,120,0,0" Background="Transparent" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="37" RenderTransformOrigin="0.054,0.391" FontSize="18.667" FontFamily="Aharoni"/>
 
+
+
+           
     </Grid>
 </Window>

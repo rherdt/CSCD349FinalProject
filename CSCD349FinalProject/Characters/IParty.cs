@@ -9,12 +9,14 @@ namespace CSCD349FinalProject.Characters
 {
     interface IParty
     {
-        int GetPartyHealth();
-        void Damage(int hp);
+        int GetHP();
+        void TakeDamage(int hp);
         int GetPartyAttack();
         int GetPartyDefense();
         int GetLevel();
         ImageBrush GetImg();
+        Inventory.Inventory GetInventory();
         void LevelUp();
+        bool UpgradeWeapon();
     }
 }

@@ -49,6 +49,26 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -65,6 +85,7 @@
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.101.0\lib\net451\System.Data.SQLite.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Net" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -84,6 +105,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BattleView\BattleMainWindow.xaml.cs" />
+    <Compile Include="Characters\IBadGuy.cs" />
     <Compile Include="Characters\ICharacter.cs" />
     <Compile Include="Characters\IEnemyParty.cs" />
     <Compile Include="Characters\IGoodGuy.cs" />
@@ -95,6 +117,9 @@
     <Compile Include="Characters\Sharpshooter.cs" />
     <Compile Include="Characters\Tank.cs" />
     <Compile Include="Characters\Zombies.cs" />
+    <Compile Include="GameOver.xaml.cs">
+      <DependentUpon>GameOver.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GamePlay\PlayerMovement.cs" />
     <Compile Include="HelpWindow.xaml.cs" />
     <Compile Include="Inventory\Bandage.cs" />
@@ -103,6 +128,9 @@
     <Compile Include="Inventory\Inventory.cs" />
     <Compile Include="Inventory\Medkit.cs" />
     <Compile Include="Inventory\Molotov.cs" />
+    <Compile Include="LoadGame.xaml.cs">
+      <DependentUpon>LoadGame.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Spaces\ASpace.cs" />
     <Compile Include="Spaces\BlankSquare.cs" />
     <Compile Include="Spaces\EdgeSquare.cs" />
@@ -121,11 +149,22 @@
     <Compile Include="Weapons\P90.cs" />
     <Compile Include="Weapons\Scout.cs" />
     <Compile Include="Weapons\USPS.cs" />
+    <Compile Include="Winner.xaml.cs">
+      <DependentUpon>Winner.xaml</DependentUpon>
+    </Compile>
     <Page Include="BattleView\BattleMainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="GameOver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HelpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoadGame.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -143,6 +182,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="StartMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Winner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,19 +208,31 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="GameSaves.db" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="SavedGames.db" />
+    <None Include="SavedGames.sqlite3" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="StartWindow\" />
+    <COMReference Include="InteropExtensionLib">
+      <Guid>{C3D19104-7A67-4EB0-B459-D5B2E734D430}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\Sharpshooters.png" />
     <Resource Include="Images\Medics.png" />
@@ -187,6 +242,9 @@
     <Resource Include="Images\Bandaid.png" />
     <Resource Include="Images\Grenade.png" />
     <Resource Include="Images\Molotov.png" />
+    <Resource Include="Images\Mutants.png" />
+    <Resource Include="Images\Raiders.png" />
+    <Resource Include="Images\Zombies.png" />
     <Content Include="Music\battlemusic.wav" />
     <None Include="Resources\battlemusic.wav" />
   </ItemGroup>

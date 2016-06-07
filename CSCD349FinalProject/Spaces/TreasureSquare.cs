@@ -31,7 +31,8 @@ namespace CSCD349FinalProject.Spaces
                 Console.WriteLine("Number of items: " + user.GetInventory().GetItems().Count);
                 if (temp < 2)
                 {
-                    //user.UpgradeWeapon();
+                    if (user.UpgradeWeapon())
+                        MessageBox.Show("upgrade");
                 }
                 else
                 {
