@@ -2,10 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Shapes;
+
+[assembly: InternalsVisibleTo("CSCD349FinalProjectTests")]
 
 namespace CSCD349FinalProject.GamePlay
 {
@@ -67,7 +70,9 @@ namespace CSCD349FinalProject.GamePlay
                     gameBoardMap.DrawSprite((int)newPosition.X, (int)newPosition.Y);
 
                     gameBoardMap.SetCurrentPosition((int)newPosition.X, (int)newPosition.Y);
-                    gameBoardMap.GetBoardSpace((int)newPosition.X, (int)newPosition.Y).runAction(gameBoardMap.getParty(),(MainWindow)Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive));
+
+                    if(Application.Current != null)
+                        gameBoardMap.GetBoardSpace((int)newPosition.X, (int)newPosition.Y).runAction(gameBoardMap.getParty(),(MainWindow)Application.Current.Windows.OfType<Window>().SingleOrDefault(x => x.IsActive));
                 }
             }
         }
