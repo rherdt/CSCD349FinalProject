@@ -21,8 +21,10 @@ namespace CSCD349FinalProject.Spaces
                 bv.User = user;
                 bv.Floor = gameboard.GetFloor();
                 bv.ShowDialog();
+
+                gameboard.InitializeInventory();
+                gameboard.RedrawInventory();
             }
-            gameboard.RedrawInventory();
         }
         public override string ToString()
         {
