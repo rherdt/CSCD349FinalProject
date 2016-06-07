@@ -19,9 +19,9 @@ namespace CSCD349FinalProject.Inventory
         }
 
         //Damage enemy
-        public int GetEffect()
+        public void GetEffect()
         {
-            return -10;
+            throw new NotImplementedException();
         }
 
         public ImageBrush GetImg()

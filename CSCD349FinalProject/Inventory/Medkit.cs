@@ -20,9 +20,9 @@ namespace CSCD349FinalProject.Inventory
         }
 
         //Replenish health
-        public int GetEffect()
+        public void GetEffect()
         {
-            return 10;
+            throw new NotImplementedException();
         }
 
         public ImageBrush GetImg()

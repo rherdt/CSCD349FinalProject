@@ -10,7 +10,7 @@ namespace CSCD349FinalProject.Inventory
     interface IInvItem
     {
         string GetName();
-        int GetEffect();
+        void GetEffect();
         ImageBrush GetImg();
     }
 }

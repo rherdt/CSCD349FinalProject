@@ -19,9 +19,9 @@ namespace CSCD349FinalProject.Inventory
         }
 
         //Damage enemy more than grenade
-        public int GetEffect()
+        public void GetEffect()
         {
-            return -5;
+            throw new NotImplementedException();
         }
 
         public ImageBrush GetImg()

@@ -145,11 +145,6 @@ namespace BattleView
                 WriteOutput("Your attack missed...");
             }
         }
-        private string UseItem()
-        {
-
-            return "";
-        }
         private void EnemyAttack()
         {
             int damage = EnemyAttacking();
@@ -203,7 +198,7 @@ namespace BattleView
         private bool EnemyDefend()
         {
             Random rand = new Random();
-            if (((enemy.GetDefense() + floor) * rand.NextDouble()) < rand.NextDouble()*user.GetLevel()+2)
+            if (((enemy.GetDefense() + floor) * rand.NextDouble()) < rand.NextDouble()*user.GetLevel())
             {
                 return true;
             }

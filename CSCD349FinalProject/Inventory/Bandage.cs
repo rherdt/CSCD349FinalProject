@@ -19,9 +19,9 @@ namespace CSCD349FinalProject.Inventory
         }
         
         //Replenish health less than medkit
-        public int GetEffect()
+        public void GetEffect()
         {
-            return 5;
+            throw new NotImplementedException();
         }
 
         public ImageBrush GetImg()
