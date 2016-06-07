@@ -32,7 +32,7 @@ namespace CSCD349FinalProject.Spaces
                 if (temp < 2)
                 {
                     if (user.UpgradeWeapon())
-                        MessageBox.Show("upgrade");
+                        MessageBox.Show("Weapon Upgrade!");
                 }
                 else
                 {
