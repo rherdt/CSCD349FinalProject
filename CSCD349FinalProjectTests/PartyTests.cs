@@ -12,18 +12,18 @@ namespace CSCD349FinalProjectTests
         public void TestPartyHealth()
         {
             Party p = new Party(1);
-            Assert.AreEqual(100, p.GetPartyHealth());
+            Assert.AreEqual(100, p.GetHP());
         }
 
         [TestMethod]
         public void TestTakeDamage()
         {
             Party p = new Party(1);
-            Assert.AreEqual(100, p.GetPartyHealth());
+            Assert.AreEqual(100, p.GetHP());
             p.Damage(10);
-            Assert.AreEqual(90, p.GetPartyHealth());
+            Assert.AreEqual(90, p.GetHP());
             p.Damage(100);
-            Assert.AreEqual(0, p.GetPartyHealth());
+            Assert.AreEqual(0, p.GetHP());
         }
 
         [TestMethod]
@@ -88,11 +88,11 @@ namespace CSCD349FinalProjectTests
         }
 
         [TestMethod]
-        public void TestPickupWeapon()
+        public void TestUpgradeWeapon()
         {
             Party p = new Party(1);
             int originalAttack = p.GetPartyAttack();
-            p.PickupWeapon(1, new AWP());
+            p.UpgradeWeapon();
             int newAttack = p.GetPartyAttack();
             Assert.IsTrue(newAttack > originalAttack);
         }
