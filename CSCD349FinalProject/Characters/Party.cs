@@ -85,7 +85,7 @@ namespace CSCD349FinalProject.Characters
                 party[0] = new Sharpshooter();
                 party[1] = new Medic();
                 party[2] = new Tank();
-            img = new ImageBrush();
+                img = new ImageBrush();
                 inventory = new Inventory.Inventory(7);
                 img.ImageSource = new BitmapImage(new Uri(@"../../Images/Balanced.png", UriKind.Relative));
             }
@@ -93,6 +93,11 @@ namespace CSCD349FinalProject.Characters
 
         private void RecalcStats()
         {
+            double factor = Math.Pow(level, (1.0 / 3.0));
+
+            partyAttack = (int)(factor * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack()));
+            partyDefense = (int)(factor * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense()));
+
             if (!cheatEnabled)
             {
                 double factor = Math.Pow(level, (1.0 / 3.0));
@@ -100,6 +105,14 @@ namespace CSCD349FinalProject.Characters
                 partyAttack = (int)(factor * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack()));
                 partyDefense = (int)(factor * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense()));
             }
+        }
+
+        public void Damage(int hp)
+        {
+            partyHealth -= hp;
+
+            if (partyHealth < 0)
+                partyHealth = 0;
         }
 
         public int GetPartyAttack()
@@ -163,7 +176,7 @@ namespace CSCD349FinalProject.Characters
 
                 else
                     return false;
-            }
+        }
 
             party[character].UpgradeWeapon();
             RecalcStats();
