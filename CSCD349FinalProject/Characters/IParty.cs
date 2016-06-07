@@ -18,5 +18,9 @@ namespace CSCD349FinalProject.Characters
         Inventory.Inventory GetInventory();
         void LevelUp();
         bool UpgradeWeapon();
+        void ToggleCheat();
+        void SetPartyLevel(int level);
+        void setHealth(int health);
+        int GetPartyType();
     }
 }
