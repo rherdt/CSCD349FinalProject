@@ -50,7 +50,7 @@ namespace CSCD349FinalProject.Inventory
             }
         }
 
-        public int getNumSlots()
+        public int GetNumSlots()
         {
             return this.numSlots;
         }

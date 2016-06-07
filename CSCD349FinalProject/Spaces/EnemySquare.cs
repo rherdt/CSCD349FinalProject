@@ -22,7 +22,7 @@ namespace CSCD349FinalProject.Spaces
                 bv.Floor = gameboard.GetFloor();
                 bv.ShowDialog();
             }
-            
+            gameboard.RedrawInventory();
         }
         public override string ToString()
         {
