@@ -119,8 +119,12 @@ namespace CSCD349FinalProject
             GameBoard.Children.Clear();           
         }
 
-        private void InitializeInventory()
+        public void InitializeInventory()
         {
+            InventoryGrid.RowDefinitions.Clear();
+            InventoryGrid.ColumnDefinitions.Clear();
+            InventoryGrid.Children.Clear();
+
             int slots = party.GetInventory().GetNumSlots();
             Border[] borderArray = new Border[slots];
 
@@ -240,6 +244,7 @@ namespace CSCD349FinalProject
         private void MainWindow1_Activated(object sender, EventArgs e)
         {
             HealthBar.Value = party.GetHP();
+            PartyLevel.Text = party.GetLevel().ToString();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
