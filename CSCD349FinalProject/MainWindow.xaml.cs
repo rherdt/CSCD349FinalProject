@@ -120,8 +120,8 @@ namespace CSCD349FinalProject
         }
 
         private void InitializeInventory()
-        {
-            int slots = party.GetInventory().getNumSlots();
+         {
+            int slots = party.GetInventory().GetNumSlots();
             Border[] borderArray = new Border[slots];
 
             for(int x = 0; x < slots; x++)

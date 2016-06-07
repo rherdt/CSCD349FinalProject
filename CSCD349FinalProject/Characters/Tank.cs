@@ -14,17 +14,17 @@ namespace CSCD349FinalProject.Characters
         private int attack;
         private int defense;
         private IWeapon weapon;
-        //private int invSlots;
-       // private IInvItem[] inv;
+        private int invSlots;
+        private IInvItem[] inv;
 
         public Tank()
         {
             this.name = "Medic";
-            this.attack = 6;
             this.defense = 10;
             this.weapon = new P90();
-            //this.invSlots = 3;
-            //this.inv = new IInvItem[invSlots];
+            this.attack = this.attack = this.weapon.GetAttack();
+            this.invSlots = 3;
+            this.inv = new IInvItem[invSlots];
         }
 
         public string GetName()
@@ -32,11 +32,11 @@ namespace CSCD349FinalProject.Characters
             return name;
         }
 
-        //public void DropInvItem(int slot)
-        //{
-        //    if (slot >= 0 && slot < inv.Length)
-        //        inv[slot] = null;
-        //}
+        public void DropInvItem(int slot)
+        {
+            if (slot >= 0 && slot < inv.Length)
+                inv[slot] = null;
+        }
 
         public int GetAttack()
         {
@@ -48,64 +48,57 @@ namespace CSCD349FinalProject.Characters
             return defense;
         }
 
-        public void UpgradeWeapon()
+        public IInvItem GetInvItem(int slot)
         {
-            weapon = new Negev();
+            if (slot >= 0 && slot < inv.Length)
+                return inv[slot];
+
+            else
+                return null;
         }
 
-        public bool IsUpgraded()
+        public bool InventoryFull()
         {
-            if (weapon.GetName().Equals("Negev"))
-                return true;
+            bool full = true;
 
-            return false;
+            foreach (IInvItem i in inv)
+            {
+                if (i == null)
+                    full = false;
+            }
+
+            return full;
         }
 
-        //public IInvItem GetInvItem(int slot)
-        //{
-        //    if (slot >= 0 && slot < inv.Length)
-        //        return inv[slot];
+        public void PickUpInvItem(IInvItem item)
+        {
+            if (!InventoryFull())
+            {
+                int slot = NextEmptyInvSlot();
+                inv[slot] = item;
+            }
+        }
 
-        //    else
-        //        return null;
-        //}
+        public int NextEmptyInvSlot()
+        {
+            int emptySlot = 0;
 
-        //public bool InventoryFull()
-        //{
-        //    bool full = true;
+            for (int i = 0; i < inv.Length; i++)
+            {
+                if (inv[i] == null)
+                {
+                    emptySlot = i;
+                    i = inv.Length;
+                }
+            }
 
-        //    foreach (IInvItem i in inv)
-        //    {
-        //        if (i == null)
-        //            full = false;
-        //    }
+            return emptySlot;
+        }
 
-        //    return full;
-        //}
-
-        //public void PickUpInvItem(IInvItem item)
-        //{
-        //    if (!InventoryFull())
-        //    {
-        //        int slot = NextEmptyInvSlot();
-        //        inv[slot] = item;
-        //    }
-        //}
-
-        //public int NextEmptyInvSlot()
-        //{
-        //    int emptySlot = 0;
-
-        //    for (int i = 0; i < inv.Length; i++)
-        //    {
-        //        if (inv[i] == null)
-        //        {
-        //            emptySlot = i;
-        //            i = inv.Length;
-        //        }
-        //    }
-
-        //    return emptySlot;
-        //}
+        public void ChangeWeapon(IWeapon weapon)
+        {
+            this.weapon = weapon;
+            this.attack = weapon.GetAttack();
+        }
     }
 }
