@@ -318,6 +318,7 @@ namespace CSCD349FinalProject
             if(b.Tag != null)
             {
                 party.GetInventory().UseItem((IInvItem)b.Tag);
+                Itemeffect((IInvItem)b.Tag);
                 foreach(Border bor in InventoryGrid.Children)
                 {
                     bor.Background = Brushes.Gray;
@@ -325,7 +326,19 @@ namespace CSCD349FinalProject
                 RedrawInventory();
             }
         }
-
+        private void Itemeffect(IInvItem item)
+        {
+            if (item.GetEffect() > 0)
+            {
+                party.setHealth(party.GetHP() + item.GetEffect());
+                HealthBar.Value = party.GetHP();
+            }
+            else
+            {
+                MessageBox.Show("Cannot use outside of Battle");
+                party.GetInventory().AddItem(item);
+            }
+        }
         private void textBox_GotFocus(object sender, RoutedEventArgs e)
         {
             textBox.Text = "";
