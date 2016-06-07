@@ -99,11 +99,6 @@ namespace CSCD349FinalProject.Characters
 
             partyAttack = (int)(factor * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack()));
             partyDefense = (int)(factor * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense()));
-
-            if (!cheatEnabled)
-            {
-            partyAttack = level * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack());
-            partyDefense = level * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense());
         }
         }
 
@@ -147,7 +142,7 @@ namespace CSCD349FinalProject.Characters
             if(hp < 1)
             {
                 PartyDead();
-            }
+        }
         }
 
         public void Damage(int damage)
@@ -168,7 +163,7 @@ namespace CSCD349FinalProject.Characters
 
                 else
                     return false;
-            }
+        }
 
             party[character].UpgradeWeapon();
             RecalcStats();
