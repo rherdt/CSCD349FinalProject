@@ -72,6 +72,25 @@ namespace CSCD349FinalProject
             CommandBindings.Add(new CommandBinding(ToggleStatCheats, ToggleCheats));
             LoadedHealth = health;
             HealthBar.Value = LoadedHealth;
+            RoutedCommand ToggleStatCheats = new RoutedCommand();
+            ToggleStatCheats.InputGestures.Add(new KeyGesture(Key.P, ModifierKeys.Control));
+            CommandBindings.Add(new CommandBinding(ToggleStatCheats, ToggleCheats));
+            LoadedHealth = 100;
+        }
+        public MainWindow(int difficulty, int party,int health)
+        {
+            InitializeComponent();
+            this.difficulty = difficulty;
+            this.party = new Party(party);
+            PartyLevel.Text = this.party.GetLevel().ToString();
+            gameBoardMap = new Map(10, 10, this.party);
+            CreateGameBoard();
+            InitializeInventory();
+            RoutedCommand ToggleStatCheats = new RoutedCommand();
+            ToggleStatCheats.InputGestures.Add(new KeyGesture(Key.P, ModifierKeys.Control));
+            CommandBindings.Add(new CommandBinding(ToggleStatCheats, ToggleCheats));
+            LoadedHealth = health;
+            HealthBar.Value = LoadedHealth;
         }
         private void CreateGameBoard()
         {
@@ -120,7 +139,7 @@ namespace CSCD349FinalProject
         }
 
         public void InitializeInventory()
-        {
+         {
             InventoryGrid.RowDefinitions.Clear();
             InventoryGrid.ColumnDefinitions.Clear();
             InventoryGrid.Children.Clear();
@@ -245,6 +264,57 @@ namespace CSCD349FinalProject
         {
             HealthBar.Value = party.GetHP();
             PartyLevel.Text = party.GetLevel().ToString();
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            SaveGame();
+        }
+        private void SaveGame()
+        {
+            party.Savedname = textBox.Text;
+            Random random = new Random();
+
+            string connection = "Data Source = ../../GameSaves.db; Version = 3; Password = test;";
+            string command = "INSERT INTO  [SavedGames] Values(" + Convert.ToInt32(Math.Floor(random.NextDouble() * 1000)) + ",'" + party.Savedname + "', " + gameBoardMap.getLevel() + ", " + party.GetLevel() + ", " + party.GetPartyType() + ", " + party.GetHP() + ");";
+            SQLiteConnection connect = new SQLiteConnection(connection);
+            connect.Open();
+            SQLiteCommand run = new SQLiteCommand(command,connect);
+            run.ExecuteNonQuery();
+        }
+
+        private SqlDataAdapter SqlDataAdapter(object selectCommand, object connectionString)
+        {
+            throw new NotImplementedException();
+        }
+        public void setLevel(int lv)
+        {
+            PartyLevel.Text = lv.ToString();
+        }
+        public void setPartyHP(int hp)
+        {
+            HealthBar.Value = hp;
+        }
+        private void ToggleCheats(object sender, ExecutedRoutedEventArgs e)
+        {
+            party.ToggleCheat();
+            MessageBox.Show("Cheats Toggled");
+        }
+
+        private void CheckIfWin()
+        {
+            if (difficulty == 1)
+            {
+                if (floor == 5)
+                {
+                    Winner win = new Winner();
+                    win.ShowDialog();
+                }
+            }
+
+        private void MainWindow1_Activated(object sender, EventArgs e)
+        {
+            HealthBar.Value = party.GetHP();
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)

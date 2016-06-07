@@ -95,11 +95,11 @@ namespace CSCD349FinalProject.Characters
         {
             if (!cheatEnabled)
             {
-                double factor = Math.Pow(level, (1.0 / 3.0));
+            double factor = Math.Pow(level, (1.0 / 3.0));
 
-                partyAttack = (int)(factor * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack()));
-                partyDefense = (int)(factor * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense()));
-            }
+            partyAttack = (int)(factor * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack()));
+            partyDefense = (int)(factor * (party[0].GetDefense() + party[1].GetDefense() + party[2].GetDefense()));
+        }
         }
 
         public int GetPartyAttack()
@@ -142,7 +142,7 @@ namespace CSCD349FinalProject.Characters
             if(hp < 1)
             {
                 PartyDead();
-            }
+        }
         }
 
         public void Damage(int damage)
@@ -178,8 +178,53 @@ namespace CSCD349FinalProject.Characters
             else
                 TurnOnCheat();
         }
+        public int GetHP()
+        {
+            return hp;
+        }
+        public void TakeDamage(int damage)
+        {
+            hp = hp - damage;
+            if(hp < 1)
+            {
+                PartyDead();
+        }
+        }
+        public bool UpgradeWeapon()
+        {
+            int character = 0;
+
+            while (party[character].IsUpgraded())
+            {
+                if (character <= 1)
+                    character++;
+
+                else
+                    return false;
+        }
+
+            party[character].UpgradeWeapon();
+            RecalcStats();
+            return true;
+        }
+
+        public void ToggleCheat()
+        {
+            if (cheatEnabled)
+                TurnOffCheat();
+
+            else
+                TurnOnCheat();
+        }
 
         private void TurnOnCheat()
+        {
+            cheatEnabled = true;
+            partyAttack = 1000000;
+            partyDefense = 1000000;
+        }
+
+        private void TurnOffCheat()
         {
             cheatEnabled = true;
             partyAttack = 1000000;
