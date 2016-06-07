@@ -23,7 +23,7 @@
             <Button x:Name="Attack" Content="Attack" Width="75" Click="Attack_Click"/>
         </Menu>
         <TextBox x:Name="Output" Grid.ColumnSpan="2" IsReadOnly="True" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" TextWrapping="Wrap" BorderThickness="2px" BorderBrush="Black" VerticalAlignment="Top" Width="287"/>
-        <TextBox x:Name="Output" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" TextWrapping="Wrap" BorderThickness="2px" BorderBrush="Black" VerticalAlignment="Top" Width="287"/>
+        <TextBox x:Name="Output2" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" TextWrapping="Wrap" BorderThickness="2px" BorderBrush="Black" VerticalAlignment="Top" Width="287"/>
         <CheckBox x:Name="Mute" Grid.ColumnSpan="2" Content="Mute" HorizontalAlignment="Left" Margin="462,249,0,0" VerticalAlignment="Top" Checked="Mute_Checked"/>
         <Grid x:Name="BattleInventoryGrid" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="54" Margin="115,210,0,0" VerticalAlignment="Top" Width="342" Background="#FF6C6B6B"/>
 
