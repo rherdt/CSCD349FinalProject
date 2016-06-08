@@ -305,10 +305,6 @@ namespace BattleView
                 WriteOutput("You have used a " + item.GetName() + " and caused " + Math.Abs(item.GetEffect()) + "points of damage");
                 enemy.TakeDamage(Math.Abs(item.GetEffect()));
                 EnemyHealth.Value = enemy.getHP();
-                if(enemy.getHP() < 1)
-                {
-                    BattleVictory();
-                }
             }
         }
     }

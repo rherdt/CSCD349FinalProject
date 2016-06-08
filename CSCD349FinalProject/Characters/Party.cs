@@ -21,7 +21,6 @@ namespace CSCD349FinalProject.Characters
         private ImageBrush img;
         private bool cheatEnabled = false;
         private string savedname;
-        private int mapLevel;
 
         public string Savedname
         {
@@ -39,7 +38,6 @@ namespace CSCD349FinalProject.Characters
         public Party(int p)
         {
             level = 1;
-            mapLevel = 1;
             hp = 100;
             ConvertNumToParty(p);
             partyAttack = level * (party[0].GetAttack() + party[1].GetAttack() + party[2].GetAttack());
@@ -206,14 +204,6 @@ namespace CSCD349FinalProject.Characters
         public void setHealth(int health)
         {
             hp = health;
-        }
-        public void setMPL(int lv)
-        {
-            mapLevel = lv;
-        }
-        public int getMPL()
-        {
-            return mapLevel;
         }
         public int GetPartyType()
         {
