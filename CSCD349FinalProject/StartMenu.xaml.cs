@@ -143,8 +143,7 @@ namespace CSCD349FinalProject
             lgScreen.ShowDialog();
             Party partyLoad = LoadGame();
             Map loadedMap = new Map(10, 10, partyLoad);
-            MainWindow mw = new MainWindow(1, ConvertPartyButtonToNumber(), partyLoad.GetHP());
-            mw.setLevel(partyLoad.GetLevel());
+            MainWindow mw = new MainWindow(1, partyLoad.GetPartyType(), partyLoad.GetHP(),partyLoad.GetLevel(),partyLoad.getMPL());
             connection.Close();
             this.Close();
             mw.ShowDialog();
@@ -171,8 +170,9 @@ namespace CSCD349FinalProject
             level = Convert.ToInt32(read[3].ToString());
             partytype = Convert.ToInt32(read[4].ToString());
             health = Convert.ToInt32(read[5].ToString());
-            floornumber = Convert.ToInt32(read[2].ToString());
             Party ret = new Party(partytype);
+            floornumber = Convert.ToInt32(read[2]);
+            ret.setMPL(floornumber);
             ret.setHealth(health);
             ret.SetPartyLevel(level);
             ret.Savedname = name;

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CSCD349FinalProject.Spaces.ASpace">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAIAAAAAAAAAEAAAAAAAAABAAAAAAAAgAACAAAAA=</HashCode>
+      <FileName>Spaces\ASpace.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CSCD349FinalProject.Spaces.BlankSquare">
+    <Position X="10.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Spaces\BlankSquare.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSCD349FinalProject.Spaces.EdgeSquare">
+    <Position X="8.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Spaces\EdgeSquare.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSCD349FinalProject.Spaces.EnemySquare">
+    <Position X="6.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Spaces\EnemySquare.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSCD349FinalProject.Spaces.Map">
+    <Position X="5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAIAAAAEoAABACQAEAQAACIAMAAAAIAIAAAABEAAA=</HashCode>
+      <FileName>Spaces\Map.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSCD349FinalProject.Spaces.StairSquare">
+    <Position X="12" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAgAAAAgAAA=</HashCode>
+      <FileName>Spaces\StairSquare.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSCD349FinalProject.Spaces.TrapSquare">
+    <Position X="13.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Spaces\TrapSquare.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CSCD349FinalProject.Spaces.TreasureSquare">
+    <Position X="15.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAgAAAIgAAA=</HashCode>
+      <FileName>Spaces\TreasureSquare.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="CSCD349FinalProject.Spaces.ISpace">
+    <Position X="8.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAACAAAAA=</HashCode>
+      <FileName>Spaces\ISpace.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

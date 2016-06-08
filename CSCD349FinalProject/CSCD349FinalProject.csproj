@@ -217,6 +217,7 @@
     <AppDesigner Include="Properties\" />
     <None Include="SavedGames.db" />
     <None Include="SavedGames.sqlite3" />
+    <None Include="SpacesDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
