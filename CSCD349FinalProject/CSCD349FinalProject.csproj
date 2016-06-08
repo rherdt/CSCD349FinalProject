@@ -246,6 +246,11 @@
     <Resource Include="Images\Mutants.png" />
     <Resource Include="Images\Raiders.png" />
     <Resource Include="Images\Zombies.png" />
+    <Resource Include="Images\door.png" />
+    <Resource Include="Images\metal_plates.png" />
+    <Resource Include="Images\stairs.png" />
+    <Resource Include="Images\treasure_chest.png" />
+    <Resource Include="Images\player.png" />
     <Content Include="Music\battlemusic.wav" />
     <None Include="Resources\battlemusic.wav" />
   </ItemGroup>
